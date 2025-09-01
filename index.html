@@ -7,87 +7,79 @@
       font-family: Arial, sans-serif;
       margin: 0;
     }
-    nav {
+    .tab-bar {
       background-color: #333;
       overflow: hidden;
     }
-    nav a {
-      float: left;
+    .tab-bar button {
+      background-color: inherit;
+      border: none;
       color: white;
       padding: 14px 16px;
-      text-decoration: none;
-      text-align: center;
+      cursor: pointer;
+      float: left;
+      font-size: 16px;
     }
-    nav a:hover {
-      background-color: #ddd;
-      color: black;
+    .tab-bar button:hover {
+      background-color: #575757;
     }
-    section {
+    .tab-bar button.active {
+      background-color: #4CAF50;
+    }
+    .tab-content {
+      display: none;
       padding: 20px;
+    }
+    .tab-content.active {
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <a href="#intro">Introduction</a>
-    <a href="#conclusions">Conclusions</a>
-    <a href="#eda">DataPrep_EDA</a>
-    <a href="#clustering">Clustering</a>
-    <a href="#pca">PCA</a>
-    <a href="#nb">NaiveBayes</a>
-    <a href="#dt">DecTrees</a>
-    <a href="#svm">SVMs</a>
-    <a href="#regression">Regression</a>
-    <a href="#nn">Neural Networks</a>
-  </nav>
+  <!-- Navigation Bar with Buttons -->
+  <div class="tab-bar">
+    <button class="tab-link active" onclick="openTab(event, 'intro')">Introduction</button>
+    <button class="tab-link" onclick="openTab(event, 'conclusions')">Conclusions</button>
+    <button class="tab-link" onclick="openTab(event, 'eda')">DataPrep_EDA</button>
+    <button class="tab-link" onclick="openTab(event, 'clustering')">Clustering</button>
+    <button class="tab-link" onclick="openTab(event, 'pca')">PCA</button>
+    <button class="tab-link" onclick="openTab(event, 'nb')">NaiveBayes</button>
+    <button class="tab-link" onclick="openTab(event, 'dt')">DecTrees</button>
+    <button class="tab-link" onclick="openTab(event, 'svm')">SVMs</button>
+    <button class="tab-link" onclick="openTab(event, 'regression')">Regression</button>
+    <button class="tab-link" onclick="openTab(event, 'nn')">Neural Networks</button>
+  </div>
 
   <!-- Content Sections -->
-  <section id="intro">
+  <div id="intro" class="tab-content active">
     <h2>Introduction</h2>
     <p>
       This research aims to draw conclusions and insights from the
       <a href="https://www.childhealthdata.org/learn-about-the-nsch" target="_blank">
       National Survey of Children's Health (NSCH)
-      </a>
-      , a survey developed and administered each year by the U.S. Census Bureau with funding from the
-      <a href="https://www.hrsa.gov" target="_blank">
-      Health Resources and Services Administration (HRSA)
-      </a>
-      <a href="https://mchb.hrsa.gov" target="_blank">
-      Maternal and Child Health Bureau (MCHB)
-      </a>
-      . This household survey collects national- and state- estimates of the physical and mental health of children 0-17 years old. All 50 states and the District of Columbia participate. The NSCH includes the following topics:
-      Demographics for the children and families 
-      Children’s physical and mental health status
-      Health insurance status, adequacy, and type of coverage 
-      Access to and use of health care services 
-      Early childhood-specific information (0-5 years) 
-      Middle childhood and adolescent-specific information (6-17 years) 
-      Family health and activities 
-      Parental perceptions of neighborhood and community characteristics
-
-      Community-level data are available for participating areas, allowing them to compare their areas to their neighbors, other states and the nation. Local public health agencies, day-care centers and schools can use their community results to honestly evaluate their systems and processes, gaining insights into where improvements can be made. This survey also promotes inter-agency cooperation for reform and lasting change. This analysis is limited to state-level comparisons and national estimates, as identifiers at the local level are not available on the public database.
-      
-      Data from the NSCH are used for a variety of purposes and as such a large body of reports and peer-reviewed publications are available. 
+      </a>,
+      a survey developed and administered each year by the U.S. Census Bureau with funding from the
+      <a href="https://www.hrsa.gov" target="_blank">Health Resources and Services Administration (HRSA)</a>,
+      <a href="https://mchb.hrsa.gov" target="_blank">Maternal and Child Health Bureau (MCHB)</a>.
+      This household survey collects national- and state-level estimates of the physical and mental health of children 0–17 years old.
     </p>
-  </section>
 
+    <p>
+      Data from the NSCH are used for a variety of purposes and as such a large body of reports and peer-reviewed publications are available. This analysis is limited to state-level comparisons and national estimates.
+    </p>
 
-  <p>
-    This project explores various machine learning models applied to data from the 
-    <strong>National Survey of Children's Health (NSCH)</strong>. The dataset includes a wide range of variables
-    related to children’s physical and mental health, family environment, and access to healthcare.
-  </p>
+    <p>
+      This project explores various machine learning models applied to data from the 
+      <strong>National Survey of Children's Health (NSCH)</strong>. The dataset includes a wide range of variables
+      related to children’s physical and mental health, family environment, and access to healthcare.
+    </p>
 
-  <p>
-    The primary goal is to build and compare different models for classification, regression, clustering, and
-    dimensionality reduction to extract meaningful insights and make predictions about child health outcomes.
-  </p>
+    <p>
+      The primary goal is to build and compare different models for classification, regression, clustering, and
+      dimensionality reduction to extract meaningful insights and make predictions about child health outcomes.
+    </p>
 
-  <p>
-    Techniques explored include:
     <ul>
       <li>Data Cleaning and Exploratory Data Analysis (EDA)</li>
       <li>Clustering (K-means, Hierarchical)</li>
@@ -95,64 +87,79 @@
       <li>Classification (Naive Bayes, Decision Trees, SVM, Neural Networks)</li>
       <li>Regression Analysis</li>
     </ul>
-  </p>
 
-  <p>
-    All models are evaluated based on accuracy, interpretability, and their relevance to public health insights.
-  </p>
+    <p>
+      All models are evaluated based on accuracy, interpretability, and their relevance to public health insights.
+    </p>
 
-  <!-- Optional image -->
-  <img src="images/nsch_logo.png" alt="NSCH Logo" width="300">
-  <p><em>Figure: National Survey of Children's Health logo</em></p>
-</section>
-  
-  
+    <img src="images/nsch_logo.png" alt="NSCH Logo" width="300">
+    <p><em>Figure: National Survey of Children's Health logo</em></p>
+  </div>
 
-  
-  <section id="conclusions">
+  <div id="conclusions" class="tab-content">
     <h2>Conclusions</h2>
     <p>Summary of findings</p>
-  </section>
+  </div>
 
-  <section id="eda">
+  <div id="eda" class="tab-content">
     <h2>Data Preparation & EDA</h2>
-    <p>How, where, and why you gathered your data. You will also visually explore and discuss your data. Include websites (if downloaded data), links to all raw data (required), APIs (Application Programming Interface) you used (include the website and a core endpoint and URL GET example), etc.</p>
-  </section>
+    <p>
+      How, where, and why you gathered your data. You will also visually explore and discuss your data.
+      Include websites (if downloaded data), links to all raw data (required), APIs (Application Programming Interface) you used (include the website and a core endpoint and URL GET example), etc.
+    </p>
+  </div>
 
-  <section id="clustering">
+  <div id="clustering" class="tab-content">
     <h2>Clustering</h2>
     <p>K-means and hierarchical clustering results and visualizations</p>
-  </section>
+  </div>
 
-  <section id="pca">
+  <div id="pca" class="tab-content">
     <h2>Principal Component Analysis (PCA)</h2>
     <p>PCA results and visualizations</p>
-  </section>
- 
-  <section id="nb">
+  </div>
+
+  <div id="nb" class="tab-content">
     <h2>Naive Bayes</h2>
     <p>Naive Bayes results and visualizations</p>
-  </section>
+  </div>
 
-  <section id="dt">
+  <div id="dt" class="tab-content">
     <h2>Decision Trees</h2>
     <p>Decision tree results and visualizations</p>
-  </section>
+  </div>
 
-  <section id="svm">
+  <div id="svm" class="tab-content">
     <h2>Support Vector Machines (SVM)</h2>
     <p>SVM results and visualizations</p>
-  </section>
+  </div>
 
-  <section id="regression">
+  <div id="regression" class="tab-content">
     <h2>Regression</h2>
     <p>Linear and logistic regression model results and visualizations</p>
-  </section>
+  </div>
 
-  <section id="nn">
+  <div id="nn" class="tab-content">
     <h2>Neural Networks</h2>
     <p>Neural Network results and visualizations</p>
-  </section>
+  </div>
+
+  <!-- JavaScript for Tab Switching -->
+  <script>
+    function openTab(event, tabId) {
+      // Hide all tab content
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Remove active class from all buttons
+      const tabs = document.querySelectorAll('.tab-link');
+      tabs.forEach(t => t.classList.remove('active'));
+
+      // Show the selected tab and mark the button as active
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
