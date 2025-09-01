@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NSCH ML Project</title>
+  <title>NSCH Machine Learning Project</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,23 +36,23 @@
   </style>
 </head>
 <body>
-
+  
   <!-- Navigation Bar with Buttons -->
   <div class="tab-bar">
-    <button class="tab-link active" onclick="openTab(event, 'intro')">Introduction</button>
-    <button class="tab-link" onclick="openTab(event, 'conclusions')">Conclusions</button>
-    <button class="tab-link" onclick="openTab(event, 'eda')">DataPrep_EDA</button>
-    <button class="tab-link" onclick="openTab(event, 'clustering')">Clustering</button>
-    <button class="tab-link" onclick="openTab(event, 'pca')">PCA</button>
-    <button class="tab-link" onclick="openTab(event, 'nb')">NaiveBayes</button>
-    <button class="tab-link" onclick="openTab(event, 'dt')">DecTrees</button>
-    <button class="tab-link" onclick="openTab(event, 'svm')">SVMs</button>
-    <button class="tab-link" onclick="openTab(event, 'regression')">Regression</button>
-    <button class="tab-link" onclick="openTab(event, 'nn')">Neural Networks</button>
+    <button class="tab-link active" onclick="openTab(event, 'Introduction')">Introduction</button>
+    <button class="tab-link" onclick="openTab(event, 'Conclusions')">Conclusions</button>
+    <button class="tab-link" onclick="openTab(event, 'DataPrep_EDA')">DataPrep_EDA</button>
+    <button class="tab-link" onclick="openTab(event, 'Clustering')">Clustering</button>
+    <button class="tab-link" onclick="openTab(event, 'PCA (Principle Component Analysis)')">PCA (Principle Component Analysis)</button>
+    <button class="tab-link" onclick="openTab(event, 'NaiveBayes')">NaiveBayes</button>
+    <button class="tab-link" onclick="openTab(event, 'DecTrees')">DecTrees</button>
+    <button class="tab-link" onclick="openTab(event, 'SVMs')">SVMs</button>
+    <button class="tab-link" onclick="openTab(event, 'Regression')">Regression</button>
+    <button class="tab-link" onclick="openTab(event, 'NN')">NN</button>
   </div>
 
   <!-- Content Sections -->
-  <div id="intro" class="tab-content active">
+  <div id="Introduction" class="tab-content active">
     <h2>Introduction</h2>
     <p>
       This research aims to draw conclusions and insights from the
@@ -62,46 +62,36 @@
       a survey developed and administered each year by the U.S. Census Bureau with funding from the
       <a href="https://www.hrsa.gov" target="_blank">Health Resources and Services Administration (HRSA)</a>,
       <a href="https://mchb.hrsa.gov" target="_blank">Maternal and Child Health Bureau (MCHB)</a>.
-      This household survey collects national- and state-level estimates of the physical and mental health of children 0–17 years old.
+      This household survey collects data on the physical and mental health of children 0–17 years old. All 50 states and the District of Columbia participate.
+    </p> 
+
+    <p>
+    The NSCH includes the following topics:
+      <ul> 
+        <li>Demographics for the children and families</li>
+        <li>Children’s physical and mental health status</li>
+        <li>Health insurance status, adequacy, and type of coverage</li>
+        <li>Access to and use of health care services Early childhood-specific information (0-5 years)</li>
+        <li>Middle childhood and adolescent-specific information (6-17 years)</li>
+        <li>Family health and activities</li>
+        <li>Parental perceptions of neighborhood and community characteristics</li> 
+      </ul>
+    <p>
+      Community-level data are available for participating areas, allowing them to compare their areas to their neighbors, other states and the nation. Local public health agencies, day-care centers and schools can use their community results to honestly evaluate their systems and processes, gaining insights into where improvements can be made. This survey also promotes inter-agency cooperation for reform and lasting change. This analysis is limited to state-level comparisons and national estimates, as identifiers at the local level are not available on the public database.
     </p>
 
     <p>
       Data from the NSCH are used for a variety of purposes and as such a large body of reports and peer-reviewed publications are available. This analysis is limited to state-level comparisons and national estimates.
     </p>
-
-    <p>
-      This project explores various machine learning models applied to data from the 
-      <strong>National Survey of Children's Health (NSCH)</strong>. The dataset includes a wide range of variables
-      related to children’s physical and mental health, family environment, and access to healthcare.
-    </p>
-
-    <p>
-      The primary goal is to build and compare different models for classification, regression, clustering, and
-      dimensionality reduction to extract meaningful insights and make predictions about child health outcomes.
-    </p>
-
-    <ul>
-      <li>Data Cleaning and Exploratory Data Analysis (EDA)</li>
-      <li>Clustering (K-means, Hierarchical)</li>
-      <li>Dimensionality Reduction (PCA)</li>
-      <li>Classification (Naive Bayes, Decision Trees, SVM, Neural Networks)</li>
-      <li>Regression Analysis</li>
-    </ul>
-
-    <p>
-      All models are evaluated based on accuracy, interpretability, and their relevance to public health insights.
-    </p>
-
-    <img src="images/nsch_logo.png" alt="NSCH Logo" width="300">
-    <p><em>Figure: National Survey of Children's Health logo</em></p>
+ 
   </div>
 
-  <div id="conclusions" class="tab-content">
+  <div id="Conclusions" class="tab-content">
     <h2>Conclusions</h2>
     <p>Summary of findings</p>
   </div>
 
-  <div id="eda" class="tab-content">
+  <div id="DataPrep_EDA" class="tab-content">
     <h2>Data Preparation & EDA</h2>
     <p>
       How, where, and why you gathered your data. You will also visually explore and discuss your data.
@@ -114,32 +104,32 @@
     <p>K-means and hierarchical clustering results and visualizations</p>
   </div>
 
-  <div id="pca" class="tab-content">
+  <div id="PCA (Principle Component Analysis)" class="tab-content">
     <h2>Principal Component Analysis (PCA)</h2>
     <p>PCA results and visualizations</p>
   </div>
 
-  <div id="nb" class="tab-content">
+  <div id="NaiveBayes" class="tab-content">
     <h2>Naive Bayes</h2>
     <p>Naive Bayes results and visualizations</p>
   </div>
 
-  <div id="dt" class="tab-content">
+  <div id="DecTrees" class="tab-content">
     <h2>Decision Trees</h2>
     <p>Decision tree results and visualizations</p>
   </div>
 
-  <div id="svm" class="tab-content">
+  <div id="SVMs" class="tab-content">
     <h2>Support Vector Machines (SVM)</h2>
     <p>SVM results and visualizations</p>
   </div>
 
-  <div id="regression" class="tab-content">
+  <div id="Regression" class="tab-content">
     <h2>Regression</h2>
     <p>Linear and logistic regression model results and visualizations</p>
   </div>
 
-  <div id="nn" class="tab-content">
+  <div id="NN" class="tab-content">
     <h2>Neural Networks</h2>
     <p>Neural Network results and visualizations</p>
   </div>
