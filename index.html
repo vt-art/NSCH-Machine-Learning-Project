@@ -88,12 +88,21 @@
 
     <p>
       This research explores characteristics of healthy children and aims to draw insights from the 2023
-      <a href="https://www.childhealthdata.org/learn-about-the-nsch" target="_blank">National Survey of Children's Health (NSCH)</a>,
-      a survey developed and administered each year by the U.S. Census Bureau with funding from the
+      <a href="https://www.childhealthdata.org/learn-about-the-nsch" target="_blank">National Survey of Children's Health (NSCH)</a> 
+      and 
+      <a href="https://www.childhealthdata.org/learn-about-the-nsch" target="_blank">America's Health Rankings (AHR).</a> 
+    </p>
+    
+    <p>
+      NSCH is a survey developed and administered each year by the U.S. Census Bureau with funding from the
       <a href="https://www.hrsa.gov" target="_blank">Health Resources and Services Administration (HRSA)</a>,
       <a href="https://mchb.hrsa.gov" target="_blank">Maternal and Child Health Bureau (MCHB)</a>.
       This annual household survey began in 2003 and collects data on the physical and mental health of children 0–17 years old. All 50 states
-      and the District of Columbia participate.
+      and the District of Columbia participate. The NSCH 2023 data are not available directly through an API, as users must agree to follow 
+      the NSCH data use requirements. Instead, SAS or Stata data files with corresponding codebooks can be downloaded from the 
+      <a href="https://www.childhealthdata.org/help/dataset" target="_blank">Data Resource Center link</a> 
+      and the 
+      <a href="https://www.census.gov/programs-surveys/nsch/data/datasets.html" target="_blank">US Census Bureau</a>. 
     </p> 
 
     <p>
@@ -115,19 +124,26 @@
       care. Community-level data are available for participating areas, allowing them to compare their areas to neighboring communities, other 
       states and the nation. Local public health agencies, day-care centers and schools can use their results to evaluate their systems and 
       processes, gaining insights into where improvements can be made. This survey also promotes inter-agency cooperation for reform and lasting 
-      change. For example, data can promote greater openness between schools, medical and mental-health providers, police and the courts.
-    </p>
-
-    <p>
+      change. For example, data can promote greater openness between schools, medical and mental-health providers, police and the courts. 
       Data from the NSCH are used for a variety of purposes and as such a large body of reports and peer-reviewed publications are available. 
       Publications include exploring aspects of overall child health, school-readiness, mental health and children with special needs. 
       A full list of publications authored by MCHB staff are available through the  
-      <a href="https://mchb.hrsa.gov/data-research/national-survey-childrens-health/publications-presentations" target="_blank">NSCH Publications Page</a>.         
-      
+      <a href="https://mchb.hrsa.gov/data-research/national-survey-childrens-health/publications-presentations" target="_blank">NSCH Publications Page</a>.       
     </p>
 
     <p> 
-      This project explores the NSCH 2023 database with machine learning techniques including regression, K-nearest neighbors, decision trees and 
+      Each year AHR takes stock of the health and well-being of Americans by examining 280 measures of health from 80 distinct data sources. 
+      Topics include access to care, air and water quality, behavioral health, climate and health, community and family safety, demographics,  
+      economic resources, education, housing and transit, mortality, nutrition and physical activity, physical health, preventative clinical 
+      care, quality of care, sexual health, sleep health, smoking and tobacco use and social support and engagement. Data are available through 
+      the 
+      <a href="https://developers.americashealthrankings.org/" target="_blank">AHR API</a>, which requires that users register and obtain an API 
+      key. Data use is intended for non-commercial, educational, scientific, or charitable use. Additionally, attribution of source (AHR and any
+      underlying data sources) is required in any output.
+    </p>
+    
+    <p>
+      This project explores the NSCH 2023 and AHR databases with machine learning techniques including regression, K-nearest neighbors, decision trees and 
       random forest, support vector machines, neural networks, K-means clustering and hierarchical clustering. Analyses are limited to state-level 
       comparisons and national estimates, as identifiers at the local level are not available on the public database.
     </p>  
