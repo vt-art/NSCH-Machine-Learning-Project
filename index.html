@@ -102,7 +102,7 @@
       <a href="https://mchb.hrsa.gov" target="_blank">Maternal and Child Health Bureau (MCHB)</a>.
       This household survey began in 2003 and collects data on the physical and mental health of children 0–17 years old. All 50 states
       and the District of Columbia participate. The NSCH 2023 data are not available directly through an API, as users must agree to follow 
-      the NSCH data use requirements. Instead, SAS or Stata data files with corresponding codebooks can be downloaded from the 
+      the NSCH data use requirements. Instead, SAS, Stata, or CSV data files with corresponding codebooks can be downloaded from the 
       <a href="https://www.childhealthdata.org/help/dataset" target="_blank">Data Resource Center link</a> 
       and the 
       <a href="https://www.census.gov/programs-surveys/nsch/data/datasets.html" target="_blank">US Census Bureau</a>. 
@@ -153,15 +153,25 @@
       comparisons and national estimates, as identifiers at the local level are not available on the NSCH public database.
     </p>  
 
-    <p>The research questions explored by these analyses are:
+    <p>The research questions explored by these analyses are below. State-level comparisons include the 50 states and District of Columbia (N=51). For state-level 
+      comparisons, the NSCH is of the weighted counts. Individual-level comparisons for the NSCH include all respondents with non-missing values (N=55,162):
       <ol> 
-        <li>What is the relationship between ... and ... </li>
-        <li>What impact does ... have on ...</li>
-        <li>What factors influence ... </li>
-        <li>How does ... relate to </li>
-        <li>How does ... influence </li>
-        <li>What effect does ... have on 
-        <li>How does ... impact ...</li>
+        <li>What is the relationship between the percentage of households living below the federal poverty level (**AHR, 16184:poverty**) and children receiving 
+          preventative care check-ups (**NSCH, state-level, C1/C2, 1 or more visits versus no visits**)?</li>
+        <li>What impact does the percentage of children who received by age 24 months all recommended vaccines (**AHR, 18114:vaccination**) have on overall child 
+          health (**NSCH, state-level, A1, excellent/very good versus good/fair/poor**)?</li>
+        <li>How does public health funding per person (**AHR, 3837:public health funding**) influence overall child health (**NSCH, state-level, A1, 
+          excellent/very good/good/fair/poor**)? </li>
+        <li>How does the number of active primary care providers per 100,000 population (**AHR, 17673:primary care provider**) relate to a child usually getting 
+          care first from somewhere other than the doctor's office (**NSCH, state-level, C9, Hospital Emergency Room/Hospital Outpatient Department/Urgent Care 
+          Center/Clinic within a drug store or grocery store/School (Nurse’s Office, Athletic Trainer’s Office)/Other Clinic or Health Center/Some other place 
+          versus Doctor's Office**)? </li>
+        <li>How does (**NSCH, individual-level, C1/C2, 1 or more visits versus no visits**) influence overall child health (**NSCH, individual-level, A1, 
+          excellent/very good/good/fair/poor**)?</li>
+        <li>What effect does insurance status (**NSCH, individual-level, E2/E3, no insurance, public insurance, private insurance**) have on overall child health 
+          (**NSCH, individual-level, A1, excellent/very good versus good/fair/poor**)?</li>
+        <li>How does family's ability to cover the basic needs (**NSCH, individual-level, I5, never/rarely/somewhat often/very often **) impact overall child 
+          health (**NSCH, individual-level, A1, excellent/very good versus good/fair/poor**)?</li>
         <li>What is the relationship between ... and ... </li>
         <li>What impact does ... have on ...</li>
         <li>What factors influence ... </li>
