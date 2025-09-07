@@ -237,24 +237,107 @@
     <h1>Data Preparation & EDA</h1>
     
     <img src="Website_Pic3.jpg" alt="EDA image." width="1200">
-        
+
+    <h3>Data Preparation</h3>
     <p>
-      How, where, and why you gathered your data. You will also visually explore and discuss your data.
-      Include websites (if downloaded data), links to all raw data (required), APIs (Application Programming Interface) you used (include the website and a core endpoint and URL GET example), etc.
-      
       <br>
       The NSCH 2023 data are not available directly through an API, as users must agree to follow 
       the NSCH data use requirements. Instead, SAS, Stata, or CSV data files with corresponding codebooks can be downloaded from the 
-      <a href="https://www.childhealthdata.org/help/dataset" target="_blank">Data Resource Center link</a> 
+      <a href="https://www.childhealthdata.org/help/dataset" target="_blank">Data Resource Center</a> 
       and the 
-      <a href="https://www.census.gov/programs-surveys/nsch/data/datasets.html" target="_blank">US Census Bureau</a>.
+      <a href="https://www.census.gov/programs-surveys/nsch/data/datasets.html" target="_blank">US Census Bureau</a>. Due to these 
+      requirements, the data are not stored directly on the GitHub page, as each user must agree to these conditions.
+      <br>
+      Once the NSCH 2023 CSV file was downloaded, the data were read into Python using the program
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1a_NSCH_family.ipynb" target="_blank" rel="noopener noreferrer">
+        1a_NSCH_family.
+      </a>
+       Identifiers and features of interst were kept. The NSCH data include FIPS codes for the states. New variables for the state long and short names were added. Missing codes of 95 and 99 
+      were replaced with NAN. Records that were missing data for important analysis variables were removed, as the number missing relative to 
+      the total is small, specifically:      
+      <ul> 
+        <li>overall health of the child (missing 131),</li>
+        <li>preventative care (missing 457), </li>
+        <li>place where take child when sick (missing 219),</li>
+        <li>insurance (missing 348),</li>
+        <li>poverty level not missing, as they used imputation</li>
+      </ul>
+      <br>
+      Other variables that are missing more often are family WIC status (missing 1272), screen time (missing 749), and number places lived 
+      in the last year (missing 1420). For analyses which include these variables, we will limit the analysis to non-missing responses, as 
+      missing values are across all states and appear to be missing at random. Lastly, the program outputs a csv file (NSCH_fam.csv with 
+      N=54,159 children).
+      <br>
+      Next, the child-level data (NSCH_fam.csv) are rolled-up to the state-level by calculating weighted proportions of the children with a 
+      given response using the Python program
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1b_NSCH_state_data.ipynb" target="_blank" rel="noopener noreferrer">
+        1b_NSCH_state_data. 
+      </a>
+      A csv file with the state-level weighted proportions is output (NSCH_state.csv with 51 records (each of the 50 states and Washington DC)).
       
       <br>    
-      Data are available through the 
+      The AHR data are available through the 
       <a href="https://developers.americashealthrankings.org/" target="_blank">AHR API</a>, which requires that users register and obtain an API 
       key. Data use is intended for non-commercial, educational, scientific, or charitable use. Additionally, attribution of source (AHR and any
-      underlying data sources) is required in any output.
+      underlying data sources) is required in any output.<br>
+      <br>
+      The API was called using Python following the code  
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1c_AHR_API_and_state_data.ipynb" target="_blank" rel="noopener noreferrer">
+        1c_AHR_API_and_state_data. A csv file of the data was output (AHR_state.csv with 51 records).
+      </a>
+      <br>
+      Finally, the NSCH and AHR state-level data were merged together and the csv of the combined data was output (NSCH_AHR_state.csv with 51 records) using the python program 
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1d_NSCH_AHR_combined_state_data.ipynb" target="_blank" rel="noopener noreferrer">
+        1d_NSCH_AHR_combined_state_data.
+      </a>
+      This datafile includes analysis variables, which are used in the data exploration and analysis.
+      
     </p>
+
+    <h3>Exploratory Data Analysis</h3>
+    <br>
+    <p>
+    <img src="images/Q1_preventative_care_Poverty_reg.png" alt="Q1 Preventative Care Poverty" width="600"><br><br>
+    </p>
+    <br>
+    <p>    
+    <img src="images/Q2_preventative_care_good_immun_cat_box.png" alt="Q2 Immunization Coverage Boxplot" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q3_providers_public_health_reg_LT400.png" alt="Q3 Providers Public Health" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q4_place_for_care_providers_reg_LT450.png" alt="Q4 Place For Care Providers" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q5_PrevMed_K2Q01_bar.png" alt="Q5 Preventive Medical Visits Bar" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q6_K2Q01_smAdeqIns_heat.png" alt="Q6 Adequate Insurance Heatmap" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q7_K2Q01_povlev4_bar.png" alt="Q7 Poverty Level Barplot" width="600"><br><br>
+    
+    <img src="images/Q7_K2Q01_povlev4_line.png" alt="Q7 Poverty Level Lineplot" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q8_K2Q01_WIC_line.png" alt="Q8 WIC Lineplot" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q9_K2Q01_WIC_bar.png" alt="Q9 WIC Barplot" width="600"><br><br>
+    <img src="images/Q9_ScreenTime_HrsSleepNo_Line.png" alt="Q9 ScreenTime & HrsSleep Lineplot" width="600"><br><br>
+    </p>
+    <br>
+    <p>
+    <img src="images/Q10_PrevMed_PlacesLived_Tab.png" alt="Q10 Preventive Medical Visits by Places Lived" width="600"><br><br>
+    
   </div>
 
   <div id="clustering" class="tab-content">
