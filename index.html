@@ -249,7 +249,7 @@
       requirements, the data are not stored directly on the GitHub page, as each user must agree to these conditions.
       <br>
       Once the NSCH 2023 CSV file was downloaded, the data were read into Python using the program
-      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1a_NSCH_family.ipynb" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1a_NSCH_family_data.ipynb" target="_blank" rel="noopener noreferrer">
         1a_NSCH_family.
       </a>
        Identifiers and features of interst were kept. The NSCH data include FIPS codes for the states. New variables for the state long and short names were added. Missing codes of 95 and 99 
@@ -271,7 +271,7 @@
       Next, the child-level data (NSCH_fam.csv) are rolled-up to the state-level by calculating weighted proportions of the children with a 
       given response using the Python program
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1b_NSCH_state_data.ipynb" target="_blank" rel="noopener noreferrer">
-        1b_NSCH_state_data. 
+        1b_NSCH_state_data.  
       </a>
       A csv file with the state-level weighted proportions is output (NSCH_state.csv with 51 records (each of the 50 states and Washington DC)).
       
@@ -283,8 +283,9 @@
       <br>
       The API was called using Python following the code  
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1c_AHR_API_and_state_data.ipynb" target="_blank" rel="noopener noreferrer">
-        1c_AHR_API_and_state_data. A csv file of the data was output (AHR_state.csv with 51 records).
-      </a>
+        1c_AHR_API_and_state_data.
+      </a>  
+      A csv file of the data was output (AHR_state.csv with 51 records).
       <br>
       Finally, the NSCH and AHR state-level data were merged together and the csv of the combined data was output (NSCH_AHR_state.csv with 51 records) using the python program 
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1d_NSCH_AHR_combined_state_data.ipynb" target="_blank" rel="noopener noreferrer">
@@ -297,7 +298,12 @@
     <h3>Exploratory Data Analysis (EDA)</h3>
    
     <p>
-      As noted in the introduction, this research explored 10 questions. Results of the EDA for each question are provided below. As a reminder, state-level comparisons 
+      As noted in the introduction, this research explored 10 questions. Data were explored in Python using the program
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/2_NSCH_AHR_Visualizations.ipynb" target="_blank" rel="noopener noreferrer">
+        2_NSCH_AHR_Visualizations.
+      </a>
+      
+      Results of the EDA for each question are provided below. As a reminder, state-level comparisons 
       included the 50 states and District of Columbia (N=51). For state-level comparisons, the NSCH was weighted using the sampling and response rate for the child and 
       rolled up to the state level. Individual-level comparisons for the NSCH are weighted with the sampling and response weights and include all respondents with non-missing
       values (N=54,159). 
