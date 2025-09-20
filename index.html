@@ -448,18 +448,18 @@
     <h3>Overview</h3>
    
     <p> 
-      Clustering, a type of unsupervised and non-parametric learning, can be carried out primarilly through two different approaches. The first utilizes partitional methods in which 
+      Clustering, a type of unsupervised and non-parametric learning, can be carried out primarily through two different approaches. The first utilizes partitional methods in which 
       observations are organized together based on similar characteristics. K-Means clustering is one of these approaches and groups observations based on the their distance from the 
-      cluster centroids. K-Means clustering employs euclidean distance to determine the distance between each point and the cluster centroids. Points are assigned the cluster closest 
+      cluster centroids. K-Means clustering employs Euclidean distance to determine the distance between each point and the cluster centroids. Points are assigned the cluster closest 
       to the point. After the first iteration, the process is repeated, recomputing the centroids and the clusters for each point. This continues until the cluster assignments reach static
       equilibrium and the clusters remain the same. K-Means can be sensitive to the initial pick of k as well as outliers. We can address the challenges of picking k by implementing the 
-      elbow method, gap statistic and/or silhouette method. Although there are more sophistocated clustering methods that do not have these issues, K-Means provides a great first pass for 
+      elbow method, gap statistic and/or silhouette method. Although there are more sophisticated clustering methods that do not have these issues, K-Means provides a great first pass for 
       initial data mining.<br> 
       <br>
       The second approach is hierarchical clustering, which groups observations together either by splitting observations into smaller and smaller clusters (i.e. divisive or top-down 
       hierarchical clustering) or joining observations together from the bottom-up (i.e. agglomerative clustering (AGNES)). AGNES begins with each observation as its own cluster. Points are
       merged together with other observations that are the most similar to the point, where similarity is based on distance. An advantage of hierarchical clustering is that the method does 
-      not require specifying the number of clusters in advance. Additionally, as with K-Means, distance can assessed using euclidean distance; however, other distances, such as Manhattan, 
+      not require specifying the number of clusters in advance. Additionally, as with K-Means, distance can assessed using Euclidean distance; however, other distances, such as Manhattan, 
       maximum and Ward can also be used.<br> 
       <br>
       For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest stems from Questions 2 and 6, which explore the 
@@ -467,7 +467,7 @@
       this analysis is good vaccination coverage (< 67.5% of the state population is low coverage and 67.5% or greater is medium to high coverage). <br>
       <br>
       <b>Figure 10</b><br>
-      <img src="images/Q2_uninsured_pcare_good_immun_scatter.png" alt="Q2 Good Immunization Scatterplot" width="1200"><br><br>
+      <img src="images/Q2_insured_pcare_good_immun_scatter.png" alt="Q2 Good Immunization Scatterplot" width="1200"><br><br>
 
       As shown in Figure 10, there is a positive correlation between insurance and preventative care. As the percent of the population of the state covered by insurance increases, the percent 
       engaging in preventative care also increases. When colored by immunization coverage, we see that most of the states with low coverage also have lower percentages of their population 
@@ -481,10 +481,10 @@
     Clustering analysis requires the use of unlabeled numerical data. Unlabeled means that we have not included in the clustering analysis the labeled groupings. As such, for this analysis we 
     looked for clustering patterns between insurance and preventative care. We did not include immunization coverage in the models. Additionally, because clustering looks at the distance between 
     points, the features were standardized before analysis. To simplify the interpretation of the data, insurance status was flipped from uninsured to insured (100 - the percent 
-    uninsured). Table 2 shows the orginial and standardized distributions of the features.  
+    uninsured). Table 2 shows the original and standardized distributions of the features.  
     <br>
     <b>Table 2</b><br>
-    <img src="images/Q2_uninsured_pcare_good_immun_features.png" alt="Q2 Good Immunization features" width="1200"><br><br>
+    <img src="images/Q2_insured_pcare_good_immun_features.png" alt="Q2 Good Immunization features" width="1200"><br><br>
   
     </p>
 
@@ -497,7 +497,7 @@
         3_NSCH_AHR_Cluster_Analysis.
       </a>
       After the data are read in and the features are standardized, the next step of the code is finding the best value for k. From here, the program completes K-Means clustering 
-      with the determined value of k. The code iteratively shows how the clusters stablize over the iterations. Next the clusters are compared to the true values for immunization status. 
+      with the determined value of k. The code iteratively shows how the clusters stabilize over the iterations. Next the clusters are compared to the true values for immunization status. 
       The accuracy is assessed and the confusion matrix is generated. <br>
       <br>
       After completing K-Means, the next section of the program focuses on hierarchical clustering for the same features and comparison to the same outcome. The model uses the Agglomerative 
@@ -525,7 +525,7 @@
       <b>Figure 13</b><br>
       <img src="images/Q2_insured_pcare_good_immun_silhouette.png" alt="Q2 Good Immunization silhouette" width="1200"><br><br>
 
-      Once two clusers were identified for k, K-Means was completed. Figure 14 shows how the clusters stablized after the first iteration. The bottom panels of the figure show how 
+      Once two clusters were identified for k, K-Means was completed. Figure 14 shows how the clusters stabilized after the first iteration. The bottom panels of the figure show how 
       the clusters generated by K-Means analysis compare to the true values for immunization coverage. 
       <br>
       <b>Figure 14</b><br>
@@ -556,7 +556,7 @@
       [[16  9]<br>
       [ 4 22]]<br>
       <br>
-      The confusion matrix illustrates that the accuracy is 0.7451 and the misclassification rate is 0.2549. As such, heirarchical clustering performed better than K-Means. Figure 15 
+      The confusion matrix illustrates that the accuracy is 0.7451 and the misclassification rate is 0.2549. As such, hierarchical clustering performed better than K-Means. Figure 15 
       shows the clusters which were correctly identified and those that were missed. As with K-Means, the clusters on the further sides were identified correctly, while the area of 
       intersection was more problematic.<br>
       <br>
