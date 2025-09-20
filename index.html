@@ -439,25 +439,31 @@
     <h3>Overview</h3>
    
     <p> 
-      Clustering, a type of unsupervised  and non-parametric learning, can be carried out primarilly through two different approaches. The first utilizes partitional methods in which 
-      observations are organized together in similar groups based on their distance from the cluster centroid using K- Means clustering. K-Means clustering employs euclidean distance to 
-      determine the distance between each point and the cluster centroids.<br> 
+      Clustering, a type of unsupervised and non-parametric learning, can be carried out primarilly through two different approaches. The first utilizes partitional methods in which 
+      observations are organized together based on similar characteristics. K-Means clustering is one of these approaches and groups observations based on the their distance from the 
+      cluster centroids. K-Means clustering employs euclidean distance to determine the distance between each point and the cluster centroids. Points are assigned the cluster closest 
+      to the point. After the first iteration, the process is repeated, recomputing the centroids and the clusters for each point. This continues until the cluster assignments reach static
+      equilibrium and the clusters remain the same. K-Means can be sensitive to the initial pick of k as well as outliers. We can address the challenges of picking k by implementing the 
+      elbow method, gap statistic and/or silhouette method. Although there are more sophistocated clustering methods that do not have these issues, K-Means provides a great first pass for 
+      initial data mining.<br> 
       <br>
-      The second approach is hierarchical clustering, which can employ one of three different distance measures. There .  Note the distance metrics used. Discuss how you plan to use clustering to engage in discovery. Have two images. More is fine.
-    <br>  
-      <b>Question 2: What impact does the percentage of children who received by age 24 months all recommended vaccines (<b>AHR, 18114:vaccination, low versus medium or high coverage</b>) 
-          have on children receiving preventative care check-ups (<b>NSCH, state-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>)?</b>
-      <br><br>
-      Median vaccine coverage was 67.7% across the states. If we considered < 67.5% as low coverage and 67.5% or greater as medium to high coverage, we see that the percentage 
-      of children receiving at least one preventative care visit is slightly higher in the medium or high group. Specifically, in the low immunization group, a median 
-      of 79.4% of children and for the medium or high group, a median of 80.9% of children received a preventative care visit. This suggests that preventative care may 
-      play a role in childhood immunization coverage.<br>
+      The second approach is hierarchical clustering, which groups observations together either by splitting observations into smaller and smaller clusters (i.e. divisive or top-down 
+      hierarchical clustering) or joining observations together from the bottom-up (i.e. agglomerative clustering (AGNES)). AGNES begins with each observation as its own cluster. Points are
+      merged together with other observations that are the most similar to the point, where similarity is based on distance. An advantage of hierarchical clustering is that the method does 
+      not require specifying the number of clusters in advance. Additionally, as with K-Means, distance can assessed using euclidean distance; however, other distances, such as Manhattan, 
+      maximum and Ward can also be used.<br> 
       <br>
-      <b>Figure 2</b><br>
-      <img src="images/Q2_preventative_care_good_immun_cat_box.png" alt="Q2 Immunization Coverage Boxplot" width="1200"><br><br>
+      For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest stems from Questions 2 and 6, which explore the 
+      relationships between children receiving preventative care check-ups and insurance coverage with good vaccination coverage for children by age two and health. The outcome of interest for 
+      the analysis was good vaccination coverage (< 67.5% is low coverage and 67.5% or greater is medium to high coverage). <br>
+      <br>
+      <b>Figure 10</b><br>
+      <img src="images/Q2_uninsured_pcare_good_immun_scatter.png" alt="Q2 Good Immunization Scatterplot" width="1200"><br><br>
     </p>
     <br>
 
+iscuss how you plan to use clustering to engage in discovery. Have two images. More is fine.
+    
     <h3>Data Preparation</h3>
    
     <p> 
