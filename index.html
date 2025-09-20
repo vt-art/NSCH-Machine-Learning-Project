@@ -214,7 +214,12 @@
     
     <p>    
       At the state-level, increasing the percentage of children receiving at least one preventative care visit can improve their overall ability to identify adverse health conditions 
-      in children early by getting them seen. Preventative visits also establish relationships with providers, which are crutial when children are ill.
+      in children early by getting them seen. Preventative visits also establish relationships with providers, which are crutial when children are ill. We examined the relationship between 
+      preventative care, insurance coverage and immunizations at the state level. Through K-Means and hierarchical clustering, we found that states that have similar rates of insurance and 
+      preventative care coverage cluster together. Those with lower coverage tended to also have lower immunization rates. Those with medium to high insurance and preventative care 
+      rates also clustered together. This group tended to also have medium to high immunization coverage. These results illustrate the interrelatedness of preventative care with insurance 
+      and immunizations. They identify that a gap in coverage for insurance and preventative care corresponds to a gap in childhood immunization rates. This interdependency suggests that 
+      improving one of these measures may positively influence the others.
     </p>
     
     <p>
@@ -469,9 +474,9 @@
     <h3>Data Preparation</h3>
    
     <p> 
-    Clustering analysis requires that we use unlabeled numerical data. Unlabeled means that we have not included in the clustering analysis the labeled groupings. As such, for this analysis we 
-    looked for clustering patterns between insurance and preventative care. We did not include immunization coverage in the model. Additionally, because clustering looks at the distance between 
-    points, the features were standardized before analysis. Additionally, to simplify the interpretation of the data insurance status was flipped from uninsured to insured (100 - the percent 
+    Clustering analysis requires the use of unlabeled numerical data. Unlabeled means that we have not included in the clustering analysis the labeled groupings. As such, for this analysis we 
+    looked for clustering patterns between insurance and preventative care. We did not include immunization coverage in the models. Additionally, because clustering looks at the distance between 
+    points, the features were standardized before analysis. To simplify the interpretation of the data, insurance status was flipped from uninsured to insured (100 - the percent 
     uninsured). Table 2 shows the orginial and standardized distributions of the features.  
     <br>
     <b>Table 2</b><br>
@@ -483,24 +488,30 @@
     <h3>Code</h3>
    
     <p> 
-    All programming was completed in Python using the program 
+      All programming was completed in Python using the program 
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/3_NSCH_AHR_Cluster_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
         3_NSCH_AHR_Cluster_Analysis.
-    The first step of the code is finding the best value for k.
-        
-      to code k-means clustering and to code hierarchical clustering. Use Cosine Similarity as the distance measure for the h-clust.
+      After the data are read in and the features are standardized, the next step of the code is finding the best value for k. From here, the program completes K-Means clustering 
+      with the determined value of k. The code iteratively shows how the clusters stablize over the iterations. Next the clusters are compared to the true values for immunization status. 
+      The accuracy is assessed and the confusion matrix is generated. <br>
+      <br>
+      After completing K-Means, the next section of the program focuses on hierarchical clustering for the same features and comparison to the same outcome. The model uses the Agglomerative 
+      or bottom-up method. Cosine Similarity is implemented to measure distance and the average linkage is used. Once the dendrogram is produced, it is cut at two clusters and the clusters 
+      are compared to the true values for immunization status. The accuracy is assessed and the confusion matrix is generated. 
     </p>
 
     <br>
     <h3>Results</h3>
    
     <p> 
-    Discuss, illustrate, describe, and visualize the results. Have at least one dendrogram and at least one clustering image (that is not a dendrogram). What values of k did you use for k - means (you should use at least 3 different k values to compare). What did the Silhouette method tell you about the "best k". Include a vis of the silhouette results. Using the hierarchical clustering, how did this compare and coincide with the k-means? What value of k does h-clust suggest?
-
+      Figure 11 shows how the groupings varied when attempting k=2-10 clusters. On visual inspection, 2-3 clusters look the best.
       <br>
       <b>Figure 11</b><br>
       <img src="images/Q2_insured_pcare_good_immun_k.png" alt="Q2 Good Immunization k" width="1200"><br><br>
-      
+
+      Visual inspection of the clusters was followed by applying the elbow and Silhouette methods to selecting k. The elbow method (Figure 12) was inconclusive, as the graph 
+      descends without a clear "elbow". Conversely, the Silhouette method showed a clear winner with two clusters having the highest value (Figure 13). This is in line with 
+      the visual inspection of the clusters.
       <br>
       <b>Figure 12</b><br>
       <img src="images/Q2_insured_pcare_good_immun_elbow.png" alt="Q2 Good Immunization elbow" width="1200"><br><br>
@@ -508,39 +519,58 @@
       <br>
       <b>Figure 13</b><br>
       <img src="images/Q2_insured_pcare_good_immun_silhouette.png" alt="Q2 Good Immunization silhouette" width="1200"><br><br>
-      
+
+      Once two clusers were identified for k, K-Means was completed. Figure 14 shows how the clusters stablized after the first iteration. The bottom panels of the figure show how 
+      the clusters generated by K-Means analysis compare to the true values for immunization coverage. 
       <br>
       <b>Figure 14</b><br>
       <img src="images/Q2_insured_pcare_good_immun_kmeans.png" alt="Q2 Good Immunization kmeans" width="1200"><br><br>
-      
+      The corresponding confusion matrix is below:<br>
+      [[17  8]<br>
+      [ 7 19]]<br>
+      <br>
+      The confusion matrix illustrates that the accuracy is 0.7059 and the misclassification rate is 0.2941. This is visually represented in Figure 15, where we can see that the 
+      clusters differentiated well on the outer edges, while performing less well where the clusters intersect.<br>
       <br>
       <b>Figure 15</b><br>
       <img src="images/Q2_insured_pcare_good_immun_kmeans_correct.png" alt="Q2 Good Immunization kmeans correct" width="1200"><br><br>
       
       <br>
+      Next, we completed the same analysis using hierarchical clustering techniques. From the dendrogram (Figure 16), we see that the clusters differentiate well at around two clusters, 
+      which is what we found with the Silhouette method in K-Means.
+      <br>
       <b>Figure 16</b><br>
       <img src="images/Q2_insured_pcare_good_immun_dendrogram.png.png" alt="Q2 Good Immunization dendrogram" width="1200"><br><br>
-      
+       
+      Figure 17 illustrates the comparison of the hierarchical clusters with the true values for immunization coverage.
       <br>
       <b>Figure 17</b><br>
       <img src="images/Q2_insured_pcare_good_immun_hc.png" alt="Q2 Good Immunization hc" width="1200"><br><br>
-        
+
+      The corresponding confusion matrix is below:<br>
+      [[16  9]<br>
+      [ 4 22]]<br>
+      <br>
+      The confusion matrix illustrates that the accuracy is 0.7451 and the misclassification rate is 0.2549. As such, heirarchical clustering performed better than K-Means. Figure 15 
+      shows the clusters which were correctly identified and those that were missed. As with K-Means, the clusters on the further sides were identified correctly, while the area of 
+      intersection was more problematic.<br>
       <br>
       <b>Figure 18</b><br>
       <img src="images/Q2_insured_pcare_good_immun_hc_correct.png" alt="Q2 Good Immunization hc correct" width="1200"><br><br>
-      
-      
+            
     </p>    
 
     <br>
     <h3>Conclusions</h3>
    
     <p> 
-    What did you learn that pertains to your topic?
+    K-Means and hierarchical clustering showed that there are unique similarities within states that have similar rates of insurance and preventative care coverage. States clustering together 
+    with lower coverage tended to also have lower immunization coverage. Those with medium to high insurance and preventative care rates clustered together. This group tended to also have 
+    medium to high immunization coverage. These results are in-line with the visual inspection of the data which showed a positive correlation between insurance and preventative care, as well as 
+    higher immunization rates for states with higher insurance and preventative care coverage.  These results identify a gap for states with low coverage. Making care accessible through insurance 
+    and preventative care appears to be related to higher childhood immunization rates. 
     </p>
-    
-
-    
+        
   </div>
 
   <div id="PCA (Principle Component Analysis)" class="tab-content">
