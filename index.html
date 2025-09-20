@@ -434,7 +434,59 @@
 
   <div id="clustering" class="tab-content">
     <h2>Clustering</h2>
-    <p>K-means and hierarchical clustering results and visualizations</p>
+    <p>This section includes the results and visualizations from employing K-means and hierarchical clustering.</p>
+    <br>
+    <h3>Overview</h3>
+   
+    <p> 
+      Clustering, a type of unsupervised  and non-parametric learning, can be carried out primarilly through two different approaches. The first utilizes partitional methods in which 
+      observations are organized together in similar groups based on their distance from the cluster centroid using K- Means clustering. K-Means clustering employs euclidean distance to 
+      determine the distance between each point and the cluster centroids.<br> 
+      <br>
+      The second approach is hierarchical clustering, which can employ one of three different distance measures. There .  Note the distance metrics used. Discuss how you plan to use clustering to engage in discovery. Have two images. More is fine.
+    <br>  
+      <b>Question 2: What impact does the percentage of children who received by age 24 months all recommended vaccines (<b>AHR, 18114:vaccination, low versus medium or high coverage</b>) 
+          have on children receiving preventative care check-ups (<b>NSCH, state-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>)?</b>
+      <br><br>
+      Median vaccine coverage was 67.7% across the states. If we considered < 67.5% as low coverage and 67.5% or greater as medium to high coverage, we see that the percentage 
+      of children receiving at least one preventative care visit is slightly higher in the medium or high group. Specifically, in the low immunization group, a median 
+      of 79.4% of children and for the medium or high group, a median of 80.9% of children received a preventative care visit. This suggests that preventative care may 
+      play a role in childhood immunization coverage.<br>
+      <br>
+      <b>Figure 2</b><br>
+      <img src="images/Q2_preventative_care_good_immun_cat_box.png" alt="Q2 Immunization Coverage Boxplot" width="1200"><br><br>
+    </p>
+    <br>
+
+    <h3>Data Preparation</h3>
+   
+    <p> 
+    All models and methods require specific data formats. Clustering requires ONLY unlabeled numeric data. Explain this and show an image of the sample of data you plan to use. LINK to the sample of data as well. 
+    </p>
+
+    <br>
+    <h3>Code</h3>
+   
+    <p> 
+    Use R or Python to code k-means clustering and to code hierarchical clustering. Use Cosine Similarity as the distance measure for the h-clust.
+    </p>
+
+    <br>
+    <h3>Results</h3>
+   
+    <p> 
+    Discuss, illustrate, describe, and visualize the results. Have at least one dendrogram and at least one clustering image (that is not a dendrogram). What values of k did you use for k - means (you should use at least 3 different k values to compare). What did the Silhouette method tell you about the "best k". Include a vis of the silhouette results. Using the hierarchical clustering, how did this compare and coincide with the k-means? What value of k does h-clust suggest?
+    </p>    
+
+    <br>
+    <h3>Conclusions</h3>
+   
+    <p> 
+    What did you learn that pertains to your topic?
+    </p>
+    
+
+    
   </div>
 
   <div id="PCA (Principle Component Analysis)" class="tab-content">
