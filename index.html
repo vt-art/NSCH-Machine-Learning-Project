@@ -455,26 +455,40 @@
       <br>
       For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest stems from Questions 2 and 6, which explore the 
       relationships between children receiving preventative care check-ups and insurance coverage with good vaccination coverage for children by age two and health. The outcome of interest for 
-      the analysis was good vaccination coverage (< 67.5% is low coverage and 67.5% or greater is medium to high coverage). <br>
+      this analysis is good vaccination coverage (< 67.5% of the state population is low coverage and 67.5% or greater is medium to high coverage). <br>
       <br>
       <b>Figure 10</b><br>
       <img src="images/Q2_uninsured_pcare_good_immun_scatter.png" alt="Q2 Good Immunization Scatterplot" width="1200"><br><br>
+
+      As shown in Figure 10, there is a positive correlation between insurance and preventative care. As the percent of the population of the state covered by insurance increases, the percent 
+      engaging in preventative care also increases. When colored by immunization coverage, we see that most of the states with low coverage also have lower percentages of their population 
+      covered by insurance and preventative care. 
     </p>
     <br>
-
-iscuss how you plan to use clustering to engage in discovery. Have two images. More is fine.
     
     <h3>Data Preparation</h3>
    
     <p> 
-    All models and methods require specific data formats. Clustering requires ONLY unlabeled numeric data. Explain this and show an image of the sample of data you plan to use. LINK to the sample of data as well. 
+    Clustering analysis requires that we use unlabeled numerical data. Unlabeled means that we have not included in the clustering analysis the labeled groupings. As such, for this analysis we 
+    looked for clustering patterns between insurance and preventative care. We did not include immunization coverage in the model. Additionally, because clustering looks at the distance between 
+    points, the features were standardized before analysis. Additionally, to simplify the interpretation of the data insurance status was flipped from uninsured to insured (100 - the percent 
+    uninsured). Table 2 shows the orginial and standardized distributions of the features.  
+    <br>
+    <b>Table 2</b><br>
+    <img src="images/Q2_uninsured_pcare_good_immun_features.png" alt="Q2 Good Immunization features" width="1200"><br><br>
+  
     </p>
 
     <br>
     <h3>Code</h3>
    
     <p> 
-    Use R or Python to code k-means clustering and to code hierarchical clustering. Use Cosine Similarity as the distance measure for the h-clust.
+    All programming was completed in Python using the program 
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/3_NSCH_AHR_Cluster_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        3_NSCH_AHR_Cluster_Analysis.
+    The first step of the code is finding the best value for k.
+        
+      to code k-means clustering and to code hierarchical clustering. Use Cosine Similarity as the distance measure for the h-clust.
     </p>
 
     <br>
@@ -482,6 +496,40 @@ iscuss how you plan to use clustering to engage in discovery. Have two images. M
    
     <p> 
     Discuss, illustrate, describe, and visualize the results. Have at least one dendrogram and at least one clustering image (that is not a dendrogram). What values of k did you use for k - means (you should use at least 3 different k values to compare). What did the Silhouette method tell you about the "best k". Include a vis of the silhouette results. Using the hierarchical clustering, how did this compare and coincide with the k-means? What value of k does h-clust suggest?
+
+      <br>
+      <b>Figure 11</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_k.png" alt="Q2 Good Immunization k" width="1200"><br><br>
+      
+      <br>
+      <b>Figure 12</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_elbow.png" alt="Q2 Good Immunization elbow" width="1200"><br><br>
+      
+      <br>
+      <b>Figure 13</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_silhouette.png" alt="Q2 Good Immunization silhouette" width="1200"><br><br>
+      
+      <br>
+      <b>Figure 14</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_kmeans.png" alt="Q2 Good Immunization kmeans" width="1200"><br><br>
+      
+      <br>
+      <b>Figure 15</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_kmeans_correct.png" alt="Q2 Good Immunization kmeans correct" width="1200"><br><br>
+      
+      <br>
+      <b>Figure 16</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_dendrogram.png.png" alt="Q2 Good Immunization dendrogram" width="1200"><br><br>
+      
+      <br>
+      <b>Figure 17</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_hc.png" alt="Q2 Good Immunization hc" width="1200"><br><br>
+        
+      <br>
+      <b>Figure 18</b><br>
+      <img src="images/Q2_insured_pcare_good_immun_hc_correct.png" alt="Q2 Good Immunization hc correct" width="1200"><br><br>
+      
+      
     </p>    
 
     <br>
