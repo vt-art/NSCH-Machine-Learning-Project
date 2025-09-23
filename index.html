@@ -449,22 +449,31 @@
    
     <p> 
       Clustering, a type of unsupervised and non-parametric learning, can be carried out primarily through two different approaches. The first utilizes partitional methods in which 
-      observations are organized together based on similar characteristics. K-Means clustering is one of these approaches and groups observations based on the their distance from the 
-      cluster centroids. K-Means clustering employs Euclidean distance to determine the distance between each point and the cluster centroids. Points are assigned the cluster closest 
-      to the point. After the first iteration, the process is repeated, recomputing the centroids and the clusters for each point. This continues until the cluster assignments reach static
-      equilibrium and the clusters remain the same. K-Means can be sensitive to the initial pick of k as well as outliers. We can address the challenges of picking k by implementing the 
-      elbow method, gap statistic and/or silhouette method. Although there are more sophisticated clustering methods that do not have these issues, K-Means provides a great first pass for 
-      initial data mining.<br> 
+      observations are organized together based on similar characteristics. K-Means clustering is one of these approaches and groups observations based on the their Euclidean distance from the 
+      cluster centroids. Points are assigned the cluster closest to the given observation. After the first iteration, the process is repeated, recomputing the centroids and the clusters for 
+      each point. This continues until the cluster assignments reach static equilibrium and the clusters remain the same. <br>
+      
+      <br>
+      <b>Illistration of K Means Clustering (Source: Davis, 2024)</b><br>
+      <img src="images/K_Means_Davis_Towards_Data_Science.gif" alt="K_Means_Davis_TDS" style="width: 1200px; height: auto;"><br><br>
+            
+      K-Means can be sensitive to the initial pick of k as well as outliers. We can address the challenges of picking k by implementing the elbow method, gap statistic and/or silhouette method. 
+      Although there are more sophisticated clustering methods that do not have these issues, K-Means provides a great first pass for initial data mining.<br> 
       <br>
       The second approach is hierarchical clustering, which groups observations together either by splitting observations into smaller and smaller clusters (i.e. divisive or top-down 
       hierarchical clustering) or joining observations together from the bottom-up (i.e. agglomerative clustering (AGNES)). AGNES begins with each observation as its own cluster. Points are
       merged together with other observations that are the most similar to the point, where similarity is based on distance. An advantage of hierarchical clustering is that the method does 
       not require specifying the number of clusters in advance. Additionally, as with K-Means, distance can assessed using Euclidean distance; however, other distances, such as Manhattan, 
       maximum and Ward can also be used.<br> 
+
+      <br>
+      <b>Illistration of Hierarchical Clustering (Source: Davis, 2024)</b><br>
+      <img src="imagesHierarchical_Clustering_David_Towards_Data_Science.webp" alt=HC_Davis_TDS" style="width: 1200px; height: auto;"><br><br>        
+      
       <br>
       For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest stems from Questions 2 and 6, which explore the 
-      relationships between children receiving preventative care check-ups and insurance coverage with good vaccination coverage for children by age two and health. The outcome of interest for 
-      this analysis is good vaccination coverage (< 67.5% of the state population is low coverage and 67.5% or greater is medium to high coverage). <br>
+      relationships between children receiving preventative care check-ups and insurance coverage with good vaccination coverage for children by age two and the overall health of the children. 
+      The outcome of interest for this analysis is good vaccination coverage (< 67.5% of the state population is low coverage and 67.5% or greater is medium to high coverage). <br>
       <br>
       <b>Figure 10</b><br>
       <img src="images/Q2_insured_pcare_good_immun_scatter.png" alt="Q2 Good Immunization Scatterplot" style="width: 1200px; height: auto;"><br><br>
@@ -580,7 +589,12 @@
     higher immunization rates for states with higher insurance and preventative care coverage.  These results identify a gap for states with low coverage. Making care accessible through insurance 
     and preventative care appears to be related to higher childhood immunization rates. 
     </p>
-        
+
+    <br>
+    <h3>References</h3>
+
+    Davis, Alex. Towards Data Science. A Guide to Clustering Algorithms: An overview of clustering and the different families of clustering algorithms. Sep 6, 2024
+    
   </div>
 
   <div id="PCA (Principle Component Analysis)" class="tab-content">
@@ -595,6 +609,11 @@
     <h3>Data Prep</h3>
     
     <p> 
+    <br>
+    <b>Figure 19</b><br>
+    <img src="images/Q2_good_immun_pairwise_scatter.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+
+      
       All models and methods require specific data formats. Explain what kind of data is needed for PCA and show an image of the sample of data you plan to use. LINK to the sample of data as well. 
     </p>
     
@@ -602,7 +621,18 @@
     <h3>Code</h3>
     
     <p> 
-      Use R or Python to code PCA. LINK to the code.
+      Python was used for the principal component analysis coding using the program 
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/4_NSCH_AHR_PCA_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        4_NSCH_AHR_PCA_Analysis.
+      </a>
+      The first step of the code is to read in the state-level data from NSCH and AHR. Next, the following continuous state-level features were kept and standardized: percent of children receiving at least one 
+      preventative_care visit, percentage of children that are in excellent or very good health', percent of children who had a place they usually went for healthcare, percentage of the population younger than 
+      age 18, percentage of adults age 25 and older with at least a high school diploma or equivalent, percentage of households living at or above the federal poverty level, number of active primary care 
+      providers per 100,000 population, public health funding per capita, percentage of the population covered by private or public health insurance, and sum of the social support and engagement measures.
+      
+      <br>
+      <br>
+      
     </p>
     
     <br>
@@ -618,8 +648,8 @@
     <iframe src="tables/PCA_loadings.html" width="100%" height="300" style="border:none;"></iframe></b><br>
 
     <br>
-    <b>Figure 19</b><br>
-    <img src="images/Q2_Q6_good_immun_PC_variance.png" alt="Q2 PC Variance" width="1200"><br><br>
+    <b>Figure 20</b><br>
+    <img src="images/Q2_good_immun_PC_variance.png" alt="Q2 PC Variance" width="1200"><br><br>
 
     <br>
     <b>Table 4</b><br>
@@ -627,12 +657,12 @@
     <iframe src="tables/PCA_cumulative_variance.html" width="100%" height="300" style="border:none;"></iframe></b><br>
 
     <br>
-    <b>Figure 20</b><br>
-    <img src="images/Q2_Q6_good_immun_2PC.png" alt="Q2_Q6 Good Immunization 2 PC" width="1200"><br><br>
+    <b>Figure 21</b><br>
+    <img src="images/Q2_good_immun_2PC.png" alt="Q2 Good Immunization 2 PC" width="1200"><br><br>
 
     <br>
-    <b>Figure 21</b><br>
-    <img src="images/Q2_Q6_good_immun_3PC.png" alt="Q2_Q6 Good Immunization 3 PC" width="1200"><br><br>
+    <b>Figure 22</b><br>
+    <img src="images/Q2_good_immun_3PC.png" alt="Q2 Good Immunization 3 PC" width="1200"><br><br>
      
     <br>
     <h3>Conclusions</h3>
