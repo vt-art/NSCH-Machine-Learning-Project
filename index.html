@@ -603,30 +603,47 @@
     
     <br>
     <h3>Overview</h3>
+    
+    <p>
+      
+      
     Here, describe PCA. Explain the concept of eigenvalues and eigenvectors, which are crucial for PCA. What is dimensionality reduction and why is reducing the dimensionality of data is important for simplifying analysis and visualization? Elaborate the challenges posed by high-dimensional data and how dimensionality reduction can help address them. Have two images. More is fine.
+    </p>
     
     <br>
     <h3>Data Prep</h3>
     
     <p> 
+
+
     <br>
     <b>Figure 19</b><br>
+    <img src="images/Q2_PCA_heat.png" alt="Q2 heat" width="1200"><br><br>
+      
+    <br>
+    <b>Figure 20</b><br>
     <img src="images/Q2_good_immun_pairwise_scatter.png" alt="Q2 pairwise scatter" width="1200"><br><br>
 
       
       All models and methods require specific data formats. Explain what kind of data is needed for PCA and show an image of the sample of data you plan to use. LINK to the sample of data as well. 
+
+    Due to the data use agreement, these data are stored on a private repository here:
+    <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/df_state_std_PCA.csv" target="_blank" rel="noopener noreferrer">
+      df_state_std_PCA.csv.  
+    </a> 
+      
     </p>
     
     <br>
     <h3>Code</h3>
     
     <p> 
-      Python was used for the principal component analysis coding using the program 
+      The following Python program contains the code for the principal component analysis:
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/4_NSCH_AHR_PCA_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
         4_NSCH_AHR_PCA_Analysis.
       </a>
       The first step of the code is to read in the state-level data from NSCH and AHR. Next, the following continuous state-level features were kept and standardized: percent of children receiving at least one 
-      preventative_care visit, percentage of children that are in excellent or very good health', percent of children who had a place they usually went for healthcare, percentage of the population younger than 
+      preventative_care visit, percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, percentage of the population younger than 
       age 18, percentage of adults age 25 and older with at least a high school diploma or equivalent, percentage of households living at or above the federal poverty level, number of active primary care 
       providers per 100,000 population, public health funding per capita, percentage of the population covered by private or public health insurance, and sum of the social support and engagement measures.
       
@@ -648,17 +665,8 @@
     <iframe src="tables/PCA_loadings.html" width="100%" height="300" style="border:none;"></iframe></b><br>
 
     <br>
-    <b>Figure 20</b><br>
-    <img src="images/Q2_good_immun_PC_variance.png" alt="Q2 PC Variance" width="1200"><br><br>
-
-    <br>
-    <b>Table 4</b><br>
-    <!-- Embed table as iframe -->
-    <iframe src="tables/PCA_cumulative_variance.html" width="100%" height="300" style="border:none;"></iframe></b><br>
-
-    <br>
     <b>Figure 21</b><br>
-    <img src="images/Q2_good_immun_2PC.png" alt="Q2 Good Immunization 2 PC" width="1200"><br><br>
+    <img src="images/Q2_good_immun_PC_variance.png" alt="Q2 PC Variance" width="1200"><br><br>
 
     <br>
     <b>Figure 22</b><br>
