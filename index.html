@@ -468,7 +468,7 @@
 
       <br>
       <b>Illustration of Hierarchical Clustering (Source: Davis, 2024)</b><br>
-      <img src="imagesHierarchical_Clustering_David_Towards_Data_Science.webp" alt=HC_Davis_TDS" style="width: 1200px; height: auto;"><br><br>        
+      <img src="images/Hierarchical_Clustering_David_Towards_Data_Science.webp" alt=HC_Davis_TDS" style="width: 1200px; height: auto;"><br><br>        
       
       <br>
       For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest stems from Questions 2 and 6, which explore the 
@@ -583,11 +583,11 @@
     <h3>Conclusions</h3>
    
     <p> 
-    K-Means and hierarchical clustering showed that there are unique similarities within states that have similar rates of insurance and preventative care coverage. States clustering together 
-    with lower coverage tended to also have lower immunization coverage. Those with medium to high insurance and preventative care rates clustered together. This group tended to also have 
-    medium to high immunization coverage. These results are in-line with the visual inspection of the data which showed a positive correlation between insurance and preventative care, as well as 
-    higher immunization rates for states with higher insurance and preventative care coverage.  These results identify a gap for states with low coverage. Making care accessible through insurance 
-    and preventative care appears to be related to higher childhood immunization rates. 
+      K-Means and hierarchical clustering showed that there are unique similarities within states that have similar rates of insurance and preventative care coverage. States clustering together 
+      with lower coverage tended to also have lower immunization coverage. Those with medium to high insurance and preventative care rates clustered together. This group tended to also have 
+      medium to high immunization coverage. These results are in-line with the visual inspection of the data which showed a positive correlation between insurance and preventative care, as well as 
+      higher immunization rates for states with higher insurance and preventative care coverage.  These results identify a gap for states with low coverage. Making care accessible through insurance 
+      and preventative care appears to be related to higher childhood immunization rates. 
     </p>
 
     <br>
@@ -649,23 +649,28 @@
     <h3>Data Prep</h3>
     
     <p> 
-
-
+      PCA requires the use of unlabeled numerical data. Unlabeled means that we have not included in the analysis the labeled groupings. For this analysis we included ten continous variables, specifically
+      the following state-level features were kept and standardized: percent of children receiving at least one preventative_care visit, percentage of children in excellent or very good health, percent of 
+      children who had a place they usually went to for healthcare, percentage of the population younger than age 18, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
+      percentage of households living at or above the federal poverty level, number of active primary care providers per 100,000 population, public health funding per capita, percentage of the population 
+      covered by private or public health insurance, and sum of the social support and engagement measures. Because we were interested in binary immunization coverage as an outcome, we did not include this 
+      variable in the PCA. Figure 19 illustrates the pairwise distributions of the variables colored by immunization coverage. Also provided is a heat map of the standardized distributions of the features 
+      (Figure 20).
+    </p>
+     
     <br>
     <b>Figure 19</b><br>
-    <img src="images/Q2_PCA_heat.png" alt="Q2 heat" width="1200"><br><br>
-      
-    <br>
-    <b>Figure 20</b><br>
     <img src="images/Q2_good_immun_pairwise_scatter.png" alt="Q2 pairwise scatter" width="1200"><br><br>
 
-      
-      All models and methods require specific data formats. Explain what kind of data is needed for PCA and show an image of the sample of data you plan to use. LINK to the sample of data as well. 
+    <br>
+    <b>Figure 20</b><br>
+    <img src="images/Q2_PCA_heat.png" alt="Q2 heat" width="1200"><br><br>
 
-    Due to the data use agreement, these data are stored on a private repository here:
-    <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/df_state_std_PCA.csv" target="_blank" rel="noopener noreferrer">
-      df_state_std_PCA.csv.  
-    </a> 
+    <p> 
+      Using the scaled features, the principal components were calculated and added to the dataframe. Due to the data use agreement, these data are stored on a private repository here:
+      <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/df_state_std_PCA.csv" target="_blank" rel="noopener noreferrer">
+        df_state_std_PCA.csv.  
+      </a> 
       
     </p>
     
@@ -680,33 +685,60 @@
       The first step of the code is to read in the state-level data from NSCH and AHR. Next, the following continuous state-level features were kept and standardized: percent of children receiving at least one 
       preventative_care visit, percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, percentage of the population younger than 
       age 18, percentage of adults age 25 and older with at least a high school diploma or equivalent, percentage of households living at or above the federal poverty level, number of active primary care 
-      providers per 100,000 population, public health funding per capita, percentage of the population covered by private or public health insurance, and sum of the social support and engagement measures.
-      
+      providers per 100,000 population, public health funding per capita, percentage of the population covered by private or public health insurance, and sum of the social support and engagement measures. <br>
       <br>
-      <br>
-      
+      Next, Eigenvectors, eigenvalues and loadings were calculated using both numpy and sklearn. Scree, biplots and scatter plots of the principal components were produced, as well as tables and figures of the 
+      cumulative variance and loadings. Lastly, the program joins the PCA data with the standardized features, outputting a CSV file of the resulting dataframe.<br>            
     </p>
     
     <br>
     <h3>Results</h3> 
     
     <p> 
-      Discuss, illustrate, describe, and visualize the results. Understand and explain how to visualize the relationship between variables and principal components. Include at least 2 visualizations for your data.
+      Eigenvectors, eigenvalues and loadings were calculated two different ways and compared. First, using numpy the covariance matrix for the features was generated and the eigenvalues and eigenvectors calculated 
+      using numpy linalg.eig(). These were sorted in descending order by eigenvalue. The loadings were calculated using the equation: loading = eigenvectors_sorted * np.sqrt(eigenvalues_sorted). The same calculations
+      were repeated using sklearn PCA() to complete the principal component analysis, specifically:<br>
+      <ul>
+        <li>eigenvalues_PCA = pca.explained_variance_</li>
+        <li>eigenvectors_PCA = pca.components_.T</li>
+        <li>loading_PCA = pca.components_.T * np.sqrt(pca.explained_variance_)</li>
+      </ul>
+      <br>
+      The eigenvalues calculated using numpy were identical to sklearn.decomposition PCA(). The sign of the eigenvectors for PC4 and PC10 are opposite between the two methods. Otherwise, the eigenvectors and loadings 
+      are the same between the methods.
+      <br>
+      Scree plots indicated that PC1 accounted for approximately 43% of the variation in the data, followed by PC2 with 23% of the variance (data not shown). When looked at cumulatively, PC1-PC7 accounted for 95% of 
+      the total data variation (Figure 21). Meeting this threshold with seven principal components allows us to reduce our dimensions from 10 to seven.
     </p>
     
+    <br>
+    <b>Figure 21</b><br>
+    <img src="images/Q2_PCA_cumulative_variance.png" alt="Q2 PCA Variance" width="1200"><br><br>
+
+    <p>
+      To better understand the direction, magnitude and features involved in each principal components, we completed a loading analysis. Table 3 provides the loadings for each principal component and feature. 
+      Interestingly, the only feature positively correlated with PC1 is the state population under age 18. All other variables are negatively correlated with PC1. We see greater variability in the loadings for 
+      PC2 with excellent or good health, a place for care, completing high school, above the poverty line and the population less than 18 showing positive correlation with PC2.<br>      
+    </p>  
     <br>
     <b>Table 3</b><br>
     <!-- Embed table as iframe -->
     <iframe src="images/PCA_loadings.html" width="100%" height="300" style="border:none;"></iframe></b><br>
 
-    <br>
-    <b>Figure 21</b><br>
-    <img src="images/Q2_PCA_cummulative_variance.png" alt="Q2 PCA Variance" width="1200"><br><br>
-
+    <p>
+      When we look at the biplot for PC1 and PC2, we find that PC1 uniquely separates states with large numbers of children under age 18 that also have lower values for primary care providers, preventative care and 
+      insurance (Figure 22). States in this quadrant with positive PC1 and positive PC2 include many Southern and Southwest states - South Carolina, Georgia, Arkansas, Oklahoma, Texas and Nevada, as well as Illinois, 
+      Indiana and New Jersey (data not shown). 
+    </p>  
     <br>
     <b>Figure 22</b><br>
     <img src="images/PCA_2D_loadings.png" alt="PC Biplot" width="1200"><br><br>
-    
+
+    <p>
+      Looking at a 3D depiction of PC1, PC2, and PC3, we see that coloring by immunization coverage illuminates an interesting pattern in the data. Specifically, higher values of PC1 
+      and PC2 with lower values of PC3 align with lower immunization coverage (Figure 23). This observation consistently follows the loading analysis above.
+    </p>  
+   
     <br>
     <b>Figure 23</b><br>
     <img src="images/Q2_good_immun_3PC.png" alt="Q2 Good Immunization 3 PC" width="1200"><br><br>
@@ -715,7 +747,9 @@
     <h3>Conclusions</h3>
    
     <p> 
-      What did you learn that pertains to your topic?
+      Through PCA, we found that states with large numbers of children under the age of 18 that also have lower values for primary care providers, preventative care and 
+      insurance experience lower immunization coverage. As with the cluster analysis, these results support that higher immunization rates occur in states with higher insurance and preventative care coverage. 
+      These results identify a gap for states with high proportion of children and a low proportion of preventative care, providers and insurance coverage.      
     </p>
 
     <br>
