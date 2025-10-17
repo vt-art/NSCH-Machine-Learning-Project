@@ -33,6 +33,19 @@ iew<!DOCTYPE html>
     .tab-content.active {
       display: block;
     }
+
+    .top-images {
+      display: flex;
+      gap: 10px; /* Optional: adds space between images */
+      flex-wrap: wrap; /* Optional: allows wrapping on smaller screens */
+    }
+    
+    .top-images img {
+      max-width: 100%; /* Makes images responsive */
+      height: auto;
+      width: 300px; /* Adjust size as needed */
+    }
+    
   </style>
 </head>
 <body>
@@ -46,7 +59,7 @@ iew<!DOCTYPE html>
     <button class="tab-link" onclick="openTab(event, 'PCA (Principle Component Analysis)')">PCA (Principle Component Analysis)</button>
     <button class="tab-link" onclick="openTab(event, 'NaiveBayes')">NaiveBayes</button>
     <button class="tab-link" onclick="openTab(event, 'DecTrees')">DecTrees</button>
-    <button class="tab-link" onclick="openTab(event, 'SVMs')">SVMs</button>
+    <button class="tab-link" onclick="openTab(event, 'GB')">GB</button>
     <button class="tab-link" onclick="openTab(event, 'Regression')">Regression</button>
     <button class="tab-link" onclick="openTab(event, 'NN')">NN</button>
   </div>
@@ -610,11 +623,9 @@ iew<!DOCTYPE html>
     
     <h1>Principal Component Analysis (PCA)</h1>
     
-    <img src="Website_Pic10.jpg" alt="Clustering image"  width="1200"> 
-
     <div class="top-images">
-      <img src="Website_Pic10.jpg" alt="PCA image 1">
-      <img src="Website_Pic8.jpg" alt="PCA image 2">
+      <img src="Website_Pic9.jpg" alt="PCA image 1">
+      <img src="Website_Pic10.jpg" alt="PCA image 2">
     </div>
     
     <br>
@@ -988,9 +999,9 @@ iew<!DOCTYPE html>
   </div>
 
   <div id="GB" class="tab-content">
-    <h2>Gradient Boosters (GB)</h2>
+    <h2>Gradient Boosting (GB)</h2>
 
-    <img src="Website_Pic11.jpg" alt="Clustering image"  width="1200">
+    <img src="Website_Pic11.JPG" alt="Clustering image"  width="1200">
     
     <br>
     <h3>Overview</h3>
@@ -1073,7 +1084,7 @@ iew<!DOCTYPE html>
   <div id="Regression" class="tab-content">
     <h2>Regression</h2>
 
-    <img src="Website_Pic12.jpg" alt="Clustering image"  width="1200">
+    <img src="Website_Pic12.JPG" alt="Clustering image"  width="1200">
     
     <br>
     <h3>Overview</h3>
