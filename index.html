@@ -862,8 +862,44 @@ iew<!DOCTYPE html>
 
     <br>
     <h3>Code</h3>
-    
+
     <p> 
+      The following Python program contains the code for the Multinomial Naive Bayes analysis:
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/5a_NSCH_Multinonial_Naive_Bayes_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        5a_NSCH_Multinonial_Naive_Bayes_Analysis.
+      </a>      
+      
+      The first step of the code is to read in the family-level data from NSCH. Next, the following features were kept and missing values were replaced with the mode: 
+      five-level health status, child's screen time usage, child's age, three-level family food and cash assistance, number of family members in the household, and 
+      highest-level of adult education for the family. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. 
+      Features, target and sample weights are split into training and test sets. <br>
+      <br>
+     
+      Next, the Multinomial Naive Bayes classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The confusion 
+      matrix was assessed and the model performed poorly at a 0.5 threshold. As such, the optimal threshold was assessed from accuracy, recall and f-1 scores. After determining 
+      a threshold of 0.3 was ideal, the model was refit at this level. The following hyperparameters were used: 'alpha': 1.0, 'class_prior': None, 'fit_prior': True, 
+      'force_alpha': True. Measures of model performance are calculated, including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the 
+      calculation of log probabilities for the features. Finally, partial dependency plots are created for each feature.
+    </p>
+        
+    <p> 
+      The following Python program contains the code for the Bernouilli Naive Bayes analysis:
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/5b_NSCH_Bernoulli_Naive_Bayes_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        5b_NSCH_Bernoulli_Naive_Bayes_Analysis.
+      </a>      
+      
+      The first step of the code is to read in the family-level data from NSCH. Next, the following features were kept and missing values were replaced with the mode: 
+      child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
+      visits, and a place to get health care. Dummy variables were created for the features. The reference categories were NOT dropped, as all categories are needed to 
+      complete the Naive Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Features, target 
+      and sample weights are split into training and test sets. <br>
+      <br>
+     
+      Next, the Bernoulli Naive Bayes classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The following 
+      hyperparameters were used: 'alpha': 1.0, 'binarize': 0.0, 'class_prior': None, 'fit_prior': True, 'force_alpha': True. Measures of model performance are calculated, 
+      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of log probabilities for the features. Finally, partial 
+      dependency plots are created for each feature.      
+              
     </p>
     
     <br>
@@ -962,8 +998,44 @@ iew<!DOCTYPE html>
     <h3>Code</h3>
     
     <p> 
-    </p>
-    
+      The following Python program contains the code for the decision tree analysis:
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/6_NSCH_AHR_Decision_Tree_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        6_NSCH_AHR_Decision_Tree_Analysis.
+      </a>
+      The first step of the code is to read in the state-level data from NSCH and AHR. Next, the following continuous state-level features were kept: 
+      percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
+      percent of children receiving at least one preventative_care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
+      percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
+      public health funding per capita, and sum of the social support and engagement measures. The target variable was contructed as good insurance coverage if the 
+      state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
+      adequate insurance (Insurance from NSCH).<br>      
+      <br>
+      
+      Next, the decision tree classifier is instanciated, fit with the above target, feature and sample weight variables, and tuned using the training data. For the 
+      hyperparameter tuning a max_depth of 8, 9, 10, and None and min_samples_split of 2, 4, 6 were assessed with criterion='gini', splitter='best' and min_samples_leaf=1.      
+      The resulting hyperparameters for the optimal model were: 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': 8, 'max_features': None, 
+      'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
+      'random_state': 4567, 'splitter': 'best'. Measures of model performance are calculated, 
+      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. In 
+      order to gain an understanding of how the model was splitting features, one of the trees is plotted. Finally, partial dependency plots are created for each feature.<br> 
+      <br>
+      
+      The Python program for the random forest analysis is located here:
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/7_NSCH_Random_Forest_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        7_NSCH_Random_Forest_Analysis.
+      </a>
+      The first step of the code is to read in the family-level data from NSCH. Next, the following features were kept and missing values were replaced with the mode: 
+      child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
+      visits, and a place to get health care. Dummy variables were created for the features and the reference categories were dropped. The target variable of inadequate 
+      hours of sleep for age was also kept and replaced with the mode if missing. Features, target and sample weights are split into training and test sets. <br>
+      <br>
+      Next, the random forest classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The following hyperparameters were used:
+      'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 
+      'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
+      'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 4567, 'verbose': 0, 'warm_start': False. Measures of model performance are calculated, 
+      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. In 
+      order to gain an understanding of how the model was splitting features, one of the trees is plotted. Finally, partial dependency plots are created for each feature.      
+    </p>    
     <br>
     <h3>Results</h3> 
     
