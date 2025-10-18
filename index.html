@@ -222,9 +222,9 @@ iew<!DOCTYPE html>
     <h1>Conclusions</h1>  
     
     <div class="top-images">
-      <img src="Website_Pic1.jpg" alt="Conclusion image 3">
-      <img src="Website_Pic14.jpg" alt="Conclusion image 2">
-      <img src="Website_Pic16.jpg" alt="Conclusion image 1">
+      <img src="Website_Pic11.JPG" alt="Conclusion image 3">
+      <img src="Website_Pic9.jpg" alt="Conclusion image 2">
+      <img src="Website_Pic18.JPG" alt="Conclusion image 1">
     </div>
         
     <h3>Summary of findings</h3>
@@ -457,6 +457,14 @@ iew<!DOCTYPE html>
   <div id="Clustering" class="tab-content">
     
     <h1>Clustering</h1>
+
+    
+    <div class="top-images">
+      <img src="Website_Pic10.jpg" alt="Cluster image 3">
+      <img src="Website_Pic17.jpg" alt="Cluster image 2">
+      <img src="Website_Pic4.jpg" alt="Cluster image 1">
+    </div>
+
     
     <img src="Website_Pic6.jpg" alt="Clustering image"  width="1200">
     
@@ -624,10 +632,7 @@ iew<!DOCTYPE html>
     
     <h1>Principal Component Analysis (PCA)</h1>
     
-    <div class="top-images">
-      <img src="Website_Pic9.jpg" alt="PCA image 1">
-      <img src="Website_Pic10.jpg" alt="PCA image 2">
-    </div>
+    <img src="Website_Pic12.JPG" alt="PCA image." width="1200"> 
     
     <br>
     <h3>Overview</h3>
@@ -830,7 +835,7 @@ iew<!DOCTYPE html>
       
     <h2>Naive Bayes</h2>
 
-    <img src="Website_Pic9.jpg" alt="NaiveBayes image."
+    <img src="Website_Pic20.JPG" alt="NaiveBayes image."
      style="float: right; margin: 0 0 10px 20px; width: 400px;">
     
     <br>
@@ -1056,22 +1061,53 @@ iew<!DOCTYPE html>
   <div id="DecTrees" class="tab-content">
     <h2>Decision Trees</h2>
 
-    <img src="Website_Pic8.jpg" alt="DecTrees image"  width="1200">
+    <img src="Website_Pic6.jpg" alt="DecTrees image"  width="1200">
     
        
     <br>
     <h3>Overview</h3>
    
     <p> 
+      Decision Trees are a supervised machine learning algorithm for classification analysis. The root node of the tree contains the entire dataset (refer to the 
+      illustration of the tree structure). From the root node, the tree branches out to decision nodes until a leaf or final class assignment node is met. Leaf nodes may 
+      be pure (i.e. all datapoints in the leaf belong to the same class) or impure (i.e. the data in the lead are mixed classes). 
     </p>
 
     <br>
     <b>Illustration of the Structure of Decision Trees (Source: Dash, 2022)</b><br>
     <img src="images/Dash_DT_Structure.png" alt="DT Structure" width="1200"><br><br>
 
+    <p>
+      As illustrated below, decision nodes contain conditions by which the data are split. The algorithm attempts every possible split and picks the split that results in 
+      the highest information gain. Specifically, this is the condition that makes the data and each child node the most predictable. We can measure how mixed the data are 
+      by calculating the entropy before and after the split. We can then use entropy to calculate the information gain. 
+    </p>
+
     <br>
     <b>Illustration of Decision Tree Splits (Source: Dash, 2022)</b><br>
     <img src="images/Dash_DT_Splitting.png" alt="DT Splits" width="1200"><br><br>
+
+    <p>      
+      Entropy is calculated as follows, where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and $P_i$ is the proportion in class i:
+    </p>
+    
+     <p>
+       \[
+         Entropy = H(s) = - \sum_{i=1}^{k} P_i*\log_2(P_i)
+       \]
+     </p>
+
+    <p>
+      Entropy ranges from zero to one inclusive. Entropy of zero indicates perfect purity, where all datapoints are from the same class, while entropy of 1 is perfect 
+      impurity (i.e. a 50/50 split between classes). As the depth of the tree increases the entropy decreases. With these calculations of entropy we can calculate the 
+      information gain. 
+    </p>
+
+    <p>
+       \[
+         Information Gain = entropy of the parent node - entropy of the child nodes
+       \]
+     </p>
     
     <br>
     <h3>Data Prep</h3>
@@ -1177,7 +1213,13 @@ iew<!DOCTYPE html>
   <div id="GB" class="tab-content">
     <h2>Gradient Boosting (GB)</h2>
 
-    <img src="Website_Pic11.JPG" alt="Clustering image"  width="1200">
+        
+    <div class="top-images">
+      <img src="Website_Pic21.JPG" alt="Conclusion image 3">
+      <img src="Website_Pic14.jpg" alt="Conclusion image 2">
+      <img src="Website_Pic1.jpg" alt="Conclusion image 1">
+    </div>
+
     
     <br>
     <h3>Overview</h3>
@@ -1260,7 +1302,7 @@ iew<!DOCTYPE html>
   <div id="Regression" class="tab-content">
     <h2>Regression</h2>
 
-    <img src="Website_Pic12.JPG" alt="Clustering image"  width="1200">
+    <img src="Website_Pic8.jpg" alt="Clustering image"  width="1200">
     
     <br>
     <h3>Overview</h3>
@@ -1343,7 +1385,11 @@ iew<!DOCTYPE html>
   <div id="NN" class="tab-content">
     <h2>Neural Networks</h2>
 
-    <img src="Website_Pic13.jpg" alt="Clustering image"  width="1200">
+    <div class="top-images">
+      <img src="Website_Pic19.JPG" alt="NN image 3">
+      <img src="Website_Pic15.jpg" alt="NN image 2">
+      <img src="Website_Pic16.jpg" alt="NN image 1">
+    </div>
     
     <br>
     <h3>Overview</h3>
