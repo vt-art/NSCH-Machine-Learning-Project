@@ -1037,8 +1037,8 @@ iew<!DOCTYPE html>
     </p> 
 
     <h3>References</h3>
-    <p>
-      <ul> 
+    
+    <ul> 
         <li>Baladram, S. Bernoulli Naive Bayes, Explained: A Visual Guide with Code Examples for Beginners. Unclocking predicive power through Yes/No probability. 
           Towards Data Science. August 2024. <br>
           Available from: https://towardsdatascience.com/bernoulli-naive-bayes-explained-a-visual-guide-with-code-examples-for-beginners-aec39771ddd6/ </li>
@@ -1049,7 +1049,7 @@ iew<!DOCTYPE html>
         <li> Paruthi, S., Brooks, L,  D'Ambrosio, C, et. al. Recommended Amount of Sleep for Pediatric Populations: A Consensus Statement of the American Academy of Sleep 
           Medicine. Journal of Clinical Sleep Medicine (2016). https://doi.org/10.5664/jcsm.5866 </li>
       </ul>
-    
+  
     
   </div>
 
@@ -1066,26 +1066,29 @@ iew<!DOCTYPE html>
     </p>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
+    <b>Illustration of the Structure of Decision Trees (Source: Dash, 2022)</b><br>
+    <img src="images/Dash_DT_Structure.png" alt="DT Structure" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
+    <b>Illustration of Decision Tree Splits (Source: Dash, 2022)</b><br>
+    <img src="images/Dash_DT_Splitting.png" alt="DT Splits" width="1200"><br><br>
     
     <br>
     <h3>Data Prep</h3>
     
     <p> 
+      The state-level data from NSCH and AHR. Next, the following continuous state-level features were kept: 
+      percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
+      percent of children receiving at least one preventative_care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
+      percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
+      public health funding per capita, and sum of the social support and engagement measures. The target variable was contructed as good insurance coverage if the 
+      state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
+      adequate insurance (Insurance from NSCH).
     </p>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
+    <b>Figure 36</b><br>
+    <img src="images/Q6_heatmap_DT_features.png" alt="Q6_heatmap_DT_features" width="1200"><br><br>
 
     <br>
     <h3>Code</h3>
@@ -1135,24 +1138,21 @@ iew<!DOCTYPE html>
     <p> 
     </p>
 
-    <br>
-    <b>Figure</b><br>
-    <img src="images/Q6_heatmap_DT_features.png" alt="Q6_heatmap_DT_features" width="1200"><br><br>
   
     <br>
-    <b>Figure</b><br>
+    <b>Figure 37</b><br>
     <img src="images/Q6_insurance_DT_CM.png" alt="Q6_insurance_DT_CM" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
+    <b>Figure 38</b><br>
     <img src="images/Q6_insurance_DT_feature_importance.png" alt="Q6_insurance_DT_feature_importance" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
+    <b>Figure 39</b><br>
     <img src="images/Q6_insurance_DT_tree_plot.png" alt="Q6_insurance_DT_tree_plot" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
+    <b>Figure 40</b><br>
     <img src="images/Q6_insurance_DT_ROC.png" alt="Q6_insurance_DT_ROC" width="1200"><br><br>
    
     <br>
@@ -1161,6 +1161,17 @@ iew<!DOCTYPE html>
     <p> 
     </p> 
 
+
+
+    <h3>References</h3>
+    
+    <ul> 
+        <li>Dash, S. Decision Trees Explained – Entropy, Information Gain, Gini Index, CCP Pruning. Though Decision Trees look simple and intuitive, there is nothing very 
+          simple about how the algorithm goes about the process deciding on... Towards Data Science. November 2022. <br>
+          Available from: https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/ </li>
+    </ul>
+  
+    
   </div>
 
   <div id="GB" class="tab-content">
