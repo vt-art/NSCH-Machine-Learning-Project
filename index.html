@@ -2,6 +2,7 @@ iew<!DOCTYPE html>
 <html>
 <head>
   <title>NSCH Machine Learning Project</title>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -834,31 +835,82 @@ iew<!DOCTYPE html>
     
     <br>
     <h3>Overview</h3>
-   
-    <p> 
+     <p>
+       Naïve Bayes classification is a method of supervised learning where the model predicts the target variable by calculating the probability of each class. The method 
+       relies on Bayes’ Theorem for the calculation of conditional probabilities, which states:
+     </p>
+
+     <p>
+       \[
+         P(C \mid X) = \frac{P(X \mid C) \cdot P(C)}{P(X)}
+       \]
+     </p>
+
+     <p>
+       In terms of our target class and the features, we have:</p>
+     <ul>
+       <li> \(P(C|X)\) is the posterior probability of class C, given the features X. This is the conditional probability of interest. </li>
+       <li> \(P(X|C)\) is the likelihood of features X, given class C. This quantity is often known or easier to calculate than \(P(C|X)\). 
+            \(P(X|C)\) = \(P(x_1, x_2, x_3,…,x_n|C) = \prod_{i=1}^{n}P(x_i|C)\) </li>
+       <li> \(P(C)\) is the prior probability of class C and is calculated as the number in class C divided by the number in all classes. </li>
+       <li> \(P(X)\) is the marginal probability of the features and acts as a normalizing constant. </li>
+     </ul>
+     
+     <p>
+       Naïve Bayes is used to find the class C that maximizes the posterior (\(P(C|X)\)). Since \(P(X)\) is the same for all classes, we can ignore the denominator in the 
+       classification. Naïve Bayes assumes that all features (\(x_1, x_2, x_3,…,x_n\)) are conditionally independent given the class label. The algorithm stores probability 
+       distributions for each class and feature. The type of distribution depends on the type of features, specifically:
+     </p>
+
+     <ul>
+       <li> Multinomial Naïve Bayes: discrete features (e.g. word counts) </li>
+       <li> Bernoulli Naïve Bayes: binary features (e.g. Yes/No, Present/Absent, True/False) </li>
+       <li> Gaussian Naïve Bayes: continuous features (e.g. test scores) </li>
+     </ul>
+
+    <br>
+    <b>Illustration of three main types of Naive Bayes Classifiers (Source: Baladram, 2024)</b><br>
+    <img src="images/Baladram_Naive_Bayes_Approaches.png" alt="Baladram_Naive_Bayes_Approaches" width="1200"><br><br>
+    
+    <p>
+      It is possible that a given class does not contain any events. Since we are taking the product by each feature, a zero probability for a given feature would result 
+      in a total probability of zero. As such, we implement Laplace Smoothing which adds one to the numerator to prevent zero probabilities. For example, the probability 
+      that a word belongs to a given class then becomes:
     </p>
 
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <p>
+      \[
+         P(\text{word belongs to class}) = \frac{\text{count of the word in the class} + 1}{\text{total words in the class} + \text{magnitude of the full set of words}}
+      \]
+    </p>
     
     <br>
     <h3>Data Prep</h3>
     
     <p> 
+      Both multinomial and Bernoulli Naive Bayes were preformed. As explained above, multinomial Naive Bayes requires discrete features (such as word counts). From the 
+      family-level data from NSCH, we selected count variables. Specifically, the following features were kept and missing values were replaced with the mode: 
+      five-level health status, child's screen time usage, child's age, three-level family food and cash assistance, number of family members in the household, and 
+      highest-level of adult education for the family. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Figure 25 
+      shows the features selected for multinomial Naive Bayes by the adequacy of sleep among teenagers. Features, target and sample weights are split into training and test 
+      sets.
     </p>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <b>Figure 25</b><br>
+    <img src="images/Q9_AdeqSleep_MNB_features.png" alt="Q9_AdeqSleep_MNB_features" width="1200"><br><br>
 
+    <p>
+      The Bernoulli Naive Bayes analysis required binary features. Family-level data from NSCH for the following features were kept and missing values were replaced with 
+      the mode: child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
+      visits, and a place to get health care. Dummy variables were created for the features. The reference categories were NOT dropped, as all categories are needed to 
+      complete the Naive Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. 
+      The raw features by adequacy of sleep among teenagers are provided in Figure 26. Features, target and sample weights are split into training and test sets.
+    </p>
+    
     <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <b>Figure 26</b><br>
+    <img src="images/Q9_AdeqSleep_BNB_features.png" alt="Q9_AdeqSleep_BNB_features" width="1200"><br><br>
 
     <br>
     <h3>Code</h3>
@@ -906,57 +958,98 @@ iew<!DOCTYPE html>
     <h3>Results</h3> 
     
     <p> 
+      The weighted Multinomial Naive Bayes classifier was first run with the default threshold of 0.5. As shown in Figure 27, the model performed poorly with zero true 
+      positives detected. As such, we conducted an analysis of the accuracy, recall and f1-scores by various thresholds (Figure 18 and 29) and determined that a threshold 
+      of 0.3 provided the best balance of these measures.  
     </p>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_MNB_features.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <b>Figure 27</b><br>
+    <img src="images/Q9_AdeqSleep_MNB_CM_Original.png" alt="Q9_AdeqSleep_MNB_CM_Original" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_MNB_CM_Original.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <b>Figure 28</b><br>
+    <img src="images/Q9_AdeqSleep_MNB_Threshold_Tuning.png" alt="Q9_AdeqSleep_MNB_Threshold_Tuning" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_MNB_Threshold_Tuning.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <b>Figure 29</b><br>
+    <img src="images/Q9_AdeqSleep_MNB_PrecRecall.png" alt="Q9_AdeqSleep_MNB_PrecRecall" width="1200"><br><br>
+
+    <p>
+      The multinomial Naive Bayes model was updated with a threshold of 0.3, rerun and assessed for performance. The updated model performed better (Figure 30), although 
+      there were more false positive results, as one would expect with a threshold of 0.3. The accurracy, f1-score and recall of the model were 0.68, 0.25 and 0.18, 
+      respectively. The area under the curve was only 0.56, or slightly better than chance (Figure 31).
+    </p>
+    
+    <br>
+    <b>Figure 30</b><br>
+    <img src="images/Q9_AdeqSleep_MNB_CM_ReviseThreshold.png" alt="Q9_AdeqSleep_MNB_CM_ReviseThreshold" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_MNB_PrecRecall.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <b>Figure 31</b><br>
+    <img src="images/Q9_AdeqSleep_MNB_ROC.png" alt="Q9_AdeqSleep_MNB_ROC" width="1200"><br><br>
+
+    <p>
+      To better understand the relatioship between the features and the target variable, we calculated log-probabilities for each feature. A positive log-probability 
+      score indicates that the feature is more associated with class 1 (inadequate sleep). A negative score means it is more associated with class 0 (adequate sleep).
+      The magnitude of the score shows how influential the feature is. As seen in Figure 32, the child having poorer health status and greater screen time are associated 
+      with inadequate sleep, while care givers having greater education and larger family size are associated with adequate sleep. We verified these relationships with 
+      partial dependency plots (data not shown).
+    </p>  
+    
+    <br>
+    <b>Figure 32</b><br>
+    <img src="images/Q9_AdeqSleep_MNB_LogProb.png" alt="Q9_AdeqSleep_MNB_LogProb" width="1200"><br><br>
+
+    <p>
+      In addition to a multinomial Naive Bayes analysis, we also completed a Bernoulli Naive Bayes analysis. This approach appeared to work much better with our available 
+      data. Creating dummy variables for multi-level features allowed us to differenciate the influence of the groupings within the features. The confusion matrix is provided 
+      in Figure 33. Although the accuracy was okay at 0.70, the f1-score (0.23) and recall (0.15). As illustrated by the ROC-curve in Figure 34, the area under the curve was 
+      0.66.
+    </p>
+    
+    <br>
+    <b>Figure 33</b><br>
+    <img src="images/Q9_AdeqSleep_BNB_CM.png" alt="Q9_AdeqSleep_BNB_CM" width="1200"><br><br>
 
     <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_MNB_CM_ReviseThreshold.png" alt="Q2 pairwise scatter" width="1200"><br><br>
-
+    <b>Figure 34</b><br>
+    <img src="images/Q9_AdeqSleep_BNB_ROC.png" alt="Q9_AdeqSleep_BNB_ROC" width="1200"><br><br>
+    
+    <p>
+      We also looked at log probabilites for the features and saw interesting patterns emerge (Figure 35). Younger children (ages 13 and 14) and children with less screen time 
+      per day (0-2 hours) were associated with having adequate sleep for their age. Conversely, older teens (ages 16 and 17), children with greater screen time per day 
+      (3 or more hours), children experiencing housing instability, and children with poorer health were associated with having inadequate sleep for age. We confirmed these 
+      associations by reviewing partial dependency plots for all features (data not shown).
+    </p>
+    
     <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_MNB_ROC.png" alt="Q2 pairwise scatter" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_MNB_LogProb.png" alt="Q2 pairwise scatter" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_BNB_features.png" alt="Q2 pairwise scatter" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_BNB_CM.png" alt="Q2 pairwise scatter" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_BNB_ROC.png" alt="Q2 pairwise scatter" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/Q9_AdeqSleep_BNB_LogDiff.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <b>Figure 35</b><br>
+    <img src="images/Q9_AdeqSleep_BNB_LogDiff.png" alt="Q9_AdeqSleep_BNB_LogDiff" width="1200"><br><br>
    
     <br>
     <h3>Conclusions</h3>
    
     <p> 
+      The American Academy of Sleep Medicine recommends that to promote optimal health, teens should regularly sleep eight to 10 hours per 24-hour period (Ref: Paruthi). 
+      This Naive Bayes analysis found that older teens, teens using screens for 3 or more hours per day, those with poorer health, and those with housing instability 
+      are more at risk for inadequate sleep. Helping these groups obtain enough sleep could improve overall physical and mental health for these groups.
     </p> 
+
+    <h3>References</h3>
+    <p>
+      <ul> 
+        <li>Baladram, S. Bernoulli Naive Bayes, Explained: A Visual Guide with Code Examples for Beginners. Unclocking predicive power through Yes/No probability. 
+          Towards Data Science. August 2024. <br>
+          Available from: https://towardsdatascience.com/bernoulli-naive-bayes-explained-a-visual-guide-with-code-examples-for-beginners-aec39771ddd6/ </li>
+        <li>Yıldırım, S. Naive Bayes Classifier – Explained. Theory and implementation with scikit-learn. Medium, Towards Data Science Archive. Feb 2020.<br>
+           Available from: https://medium.com/data-science/naive-bayes-classifier-explained-50f9723571ed </li>
+        <li>Mocquin, Y. Multinomial Naive Bayes Classifier. A complete worked example for text-review classification. Towards Data Science. March 2024.<br>
+           Available from: https://towardsdatascience.com/multinomial-naive-bayes-classifier-c861311caff9/</li>
+        <li> Paruthi, S., Brooks, L,  D'Ambrosio, C, et. al. Recommended Amount of Sleep for Pediatric Populations: A Consensus Statement of the American Academy of Sleep 
+          Medicine. Journal of Clinical Sleep Medicine (2016). https://doi.org/10.5664/jcsm.5866 </li>
+      </ul>
+    
     
   </div>
 
@@ -974,11 +1067,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
     
     <br>
     <h3>Data Prep</h3>
@@ -988,11 +1081,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <h3>Code</h3>
@@ -1044,23 +1137,23 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/Q6_heatmap_DT_features.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/Q6_heatmap_DT_features.png" alt="Q6_heatmap_DT_features" width="1200"><br><br>
   
     <br>
     <b>Figure</b><br>
-    <img src="images/Q6_insurance_DT_CM.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/Q6_insurance_DT_CM.png" alt="Q6_insurance_DT_CM" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/Q6_insurance_DT_feature_importance.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/Q6_insurance_DT_feature_importance.png" alt="Q6_insurance_DT_feature_importance" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/Q6_insurance_DT_tree_plot.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/Q6_insurance_DT_tree_plot.png" alt="Q6_insurance_DT_tree_plot" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/Q6_insurance_DT_ROC.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/Q6_insurance_DT_ROC.png" alt="Q6_insurance_DT_ROC" width="1200"><br><br>
    
     <br>
     <h3>Conclusions</h3>
@@ -1083,11 +1176,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
     
     <br>
     <h3>Data Prep</h3>
@@ -1097,11 +1190,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <h3>Code</h3>
@@ -1117,31 +1210,31 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
     
    
     <br>
@@ -1166,11 +1259,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
     
     <br>
     <h3>Data Prep</h3>
@@ -1180,11 +1273,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <h3>Code</h3>
@@ -1200,31 +1293,31 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
     
    
     <br>
@@ -1249,11 +1342,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
     
     <br>
     <h3>Data Prep</h3>
@@ -1263,11 +1356,11 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <h3>Code</h3>
@@ -1283,31 +1376,31 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
 
     <br>
     <b>Figure</b><br>
-    <img src="images/blank.png" alt="Q2 pairwise scatter" width="1200"><br><br>
+    <img src="images/blank.png" alt="blank" width="1200"><br><br>
     
    
     <br>
