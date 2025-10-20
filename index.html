@@ -464,9 +464,6 @@ iew<!DOCTYPE html>
       <img src="Website_Pic17.jpg" alt="Cluster image 2">
       <img src="Website_Pic4.jpg" alt="Cluster image 1">
     </div>
-
-    
-    <img src="Website_Pic6.jpg" alt="Clustering image"  width="1200">
     
     <p>
       This section includes the results and visualizations from employing K-means and hierarchical clustering.
@@ -1088,7 +1085,7 @@ iew<!DOCTYPE html>
     <img src="images/Dash_DT_Splitting.png" alt="DT Splits" width="1200"><br><br>
 
     <p>      
-      Entropy is calculated as follows, where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and $P_i$ is the proportion in class i:
+      Entropy is calculated as follows, where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and \P_i is the proportion in class i:
     </p>
     
      <p>
@@ -1105,7 +1102,7 @@ iew<!DOCTYPE html>
 
     <p>
        \[
-         Information Gain = entropy of the parent node - entropy of the child nodes
+         \text{Information Gain} = \text{entropy of the parent node - entropy of the child nodes}
        \]
      </p>
     
@@ -1113,9 +1110,9 @@ iew<!DOCTYPE html>
     <h3>Data Prep</h3>
     
     <p> 
-      The state-level data from NSCH and AHR. Next, the following continuous state-level features were kept: 
+      This analysis uses the state-level data from NSCH and AHR. The following continuous state-level features were kept: 
       percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
-      percent of children receiving at least one preventative_care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
+      percent of children receiving at least one preventative care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
       percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
       public health funding per capita, and sum of the social support and engagement measures. The target variable was contructed as good insurance coverage if the 
       state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
@@ -1138,7 +1135,8 @@ iew<!DOCTYPE html>
       percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
       percent of children receiving at least one preventative_care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
       percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
-      public health funding per capita, and sum of the social support and engagement measures. The target variable was contructed as good insurance coverage if the 
+      public health funding per capita, and sum of the social support and engagement measures. Social support and engagement measures is missing for Washington DC. This missing 
+      value has been replaced with the median social support. The target variable was contructed as good insurance coverage if the 
       state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
       adequate insurance (Insurance from NSCH).<br>      
       <br>
@@ -1148,8 +1146,8 @@ iew<!DOCTYPE html>
       The resulting hyperparameters for the optimal model were: 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': 8, 'max_features': None, 
       'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
       'random_state': 4567, 'splitter': 'best'. Measures of model performance are calculated, 
-      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. In 
-      order to gain an understanding of how the model was splitting features, one of the trees is plotted. Finally, partial dependency plots are created for each feature.<br> 
+      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. 
+      Additionally, the trees is plotted to assess how the data are split. Finally, partial dependency plots are created for each feature.<br> 
       <br>
       
       The Python program for the random forest analysis is located here:
@@ -1302,7 +1300,7 @@ iew<!DOCTYPE html>
   <div id="Regression" class="tab-content">
     <h2>Regression</h2>
 
-    <img src="Website_Pic8.jpg" alt="Clustering image"  width="1200">
+    <img src="Website_Pic8.jpg" alt="Regression image"  width="1200">
     
     <br>
     <h3>Overview</h3>
