@@ -885,6 +885,12 @@ iew<!DOCTYPE html>
          P(\text{word belongs to class}) = \frac{\text{count of the word in the class} + 1}{\text{total words in the class} + \text{magnitude of the full set of words}}
       \]
     </p>
+
+    <p>
+      As a classification algorithm, Naive Bayes has many uses, including sentiment analysis, image recognition, and recommendation systems. Naive 
+      Bayes is also used for predicting medical diagnoses from symptom data. Additionally, it may be used for text classification to aid in spam filtering or 
+      documentation categorization.  
+    </p>
     
     <br>
     <h3>Data Prep</h3>
@@ -1075,14 +1081,13 @@ iew<!DOCTYPE html>
     <img src="images/Dash_DT_Structure.png" alt="DT Structure" width="1200"><br><br>
 
     <p>
-      As illustrated below, decision nodes contain conditions by which the data are split. The algorithm attempts every possible split and picks the split that results in 
-      the highest information gain. Specifically, this is the condition that makes the data and each child node the most predictable. We can measure how mixed the data are 
-      by calculating the entropy before and after the split. We can then use entropy to calculate the information gain. 
+      Decision nodes contain conditions by which the data are split. The algorithm attempts every possible split and uses either information gain or GINI to determine the 
+      best split. Specifically, the goal is to implement the condition that makes the data and each child node the most predictable or homogenous in the target variable.  
     </p>
 
-
     <p>      
-      Entropy is calculated as follows, where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and \P_i is the proportion in class i:
+      We can measure how mixed the data are by calculating the entropy before and after the split, and then calculate the information gain. Entropy is calculated as follows, 
+      where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and \P_i is the proportion in class i:
     </p>
     
      <p>
@@ -1101,7 +1106,32 @@ iew<!DOCTYPE html>
        \[
          \text{Information Gain} = \text{entropy of the parent node - entropy of the child nodes}
        \]
+    </p>
+
+    <p>
+      Alternatively, we can determine the best split using the GINI index. The GINI Index calculates the probability of misclassifying a random instance. Because we don't 
+      want to incorrectly classify a record, a lower GINI index is better. The formula for the GINI Index is as follows, where "j" is the number of possible classes 
+      (e.g. Yes/No), and \P_i is the proportion of the class in the node:
+    </p>
+    
+     <p>
+       \[
+         Gini = 1 - \sum_{i=1}^{j} P_i^2
+       \]
      </p>
+ 
+    <p>
+      Since decision trees are easy to interpret and understand, they have a variety of uses. A recent article from Geeks for Geeks (Decision Trees) noted six applications 
+      of Decision Trees, as follows:<br> 
+      <ol>
+        <li>Bankers determine whether to accept or reject a loan application based on factors like credit score, income, employment status and loan 
+          history.</li>
+        <li>Health providers may diagnose diseases considering factors like symptoms, biomarkers, family history, and demographics.</li>
+        <li>Educators predict whether students will pass or fail given student attendance, study time and past performance. </li>
+        <li>Businesses predict whether a customer will leave or stay based on purchasing history, behavioral choices and length of tenure.</li>
+        <li>Fraud Detection: In finance, Decision Trees are used to detect fraudulent activities, such as credit card fraud. By analyzing past transaction data and patterns, Decision Trees can identify suspicious activities and flag them for further investigation.
+        <li>A decision tree can also be used to help build automated predictive models which have applications in machine learning, data mining and statistics.
+    </p>  
     
     <br>
     <h3>Data Prep</h3>
@@ -1200,6 +1230,8 @@ iew<!DOCTYPE html>
         <li>Dash, S. Decision Trees Explained – Entropy, Information Gain, Gini Index, CCP Pruning. Though Decision Trees look simple and intuitive, there is nothing very 
           simple about how the algorithm goes about the process deciding on... Towards Data Science. November 2022. <br>
           Available from: https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/ </li>
+        <li> Decision Trees. Geeks for Geeks. June 2025. <br>
+          Available from: https://www.geeksforgeeks.org/machine-learning/decision-tree/ </li>
     </ul>
   
     
