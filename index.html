@@ -1226,13 +1226,13 @@ iew<!DOCTYPE html>
 
     <p>
       The optimal decision tree had a mx depth of 8. For illustrative purposes, Figure 39 shows the first few levels. As seen with the feature importance analysis 
-      public health plays an important role in the classification by splitting the root node at less than or equal to $146 per person spent on public health. 
-      
-      
+      public health plays an important role in the classification by splitting the root node at less than or equal to $146 per person spent on public health. For context 
+      the median value of public health spending is $123 per person. Branching to the left, 25 states spent $146 or less per person on public health and 23 of these were 
+      classified as not good insurance. In contrast, ten states branched to the right because they spent more than $146 per person on public health. Eight of these states 
+      were classified as meeting good insurance coverage.<br>
       <br>
-      
-      
-      As illustrated by the ROC-curve in Figure 40, the area under the curve for this model was 0.709.
+      As illustrated by Figure 40, the ROC-curve of the test data yielded an area under the curve of 0.709. This indicates that the model has a good ability to 
+      distinguish between states with and without good insurance coverage.
     </p>
         
     <br>
@@ -1247,6 +1247,11 @@ iew<!DOCTYPE html>
     <h3>Conclusions</h3>
    
     <p> 
+      The decision tree with the state-level outcome of good insurance found that per capita spending on public health of at least $147 per person deliniated the data fairly well into states with and without good 
+      insurance coverage. This has important implications for states hoping to bolster insurance coverage for their residents. Since the median public health spending is $123, on average states would only need to 
+      increase their spending by approximately $20-$23 per person in order to reach this threshold. Such an investment could provide residents with greater access to health coverage. According to the American Hospital 
+      Association, "studies confirm that coverage improves access to care; supports positive health outcomes, including an individual’s sense of their own health and well-being; incentivizes appropriate use of health care resources; and reduces financial strain 
+      on individuals, families and communities.      
     </p> 
 
 
@@ -1259,6 +1264,8 @@ iew<!DOCTYPE html>
           Available from: https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/ </li>
         <li> Decision Trees. Geeks for Geeks. June 2025. <br>
           Available from: https://www.geeksforgeeks.org/machine-learning/decision-tree/ </li>
+        <li> Schoen C, DesRoches C. Uninsured and unstably insured: the importance of continuous insurance coverage. Health Serv Res. 2000 Apr;35(1 Pt 2):187-206. PMID: 10778809; PMCID: PMC1089095.</li>
+        <li> American Hospital Association. Report: The Importance of Health Coverage.  </li>
     </ul>
   
     
