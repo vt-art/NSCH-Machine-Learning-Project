@@ -1109,9 +1109,17 @@ iew<!DOCTYPE html>
     </p>
 
     <br>
-    <b>Illustration of the Structure of Decision Trees (Source: Modified from Dash, 2022)</b><br>
+    <b>Illustration of Decision Tree Slitting (Source: Modified from Dash, 2022)</b><br>
     <img src="images/Dash_DT_Splitting.png" alt="DT Splitting" width="1200"><br><br>
 
+    <p>
+      The image above illustrates the calculation of entropy and information gain for the decision tree. The entire system has an entropy of 1 or perfect impurity because 
+      the data are split 50/50 at the root node. The first split using the student's background reduces the entropy dramatically, since the computer science students all 
+      passed and the students from other backgrounds all failed the test. These nodes in green are pure leaf nodes (i.e. entropy = 0). Since math students still have a mix 
+      of outcomes, the blue node is further split by whether or not the student is working. Lastly, the information gain of the tree is calculated as the entropy of the 
+      system minus the average child node. The information gain is about 0.8.      
+    </p>
+    
     <p>
       Alternatively, we can determine the best split using the GINI index. The GINI Index calculates the probability of misclassifying a random instance. Because we don't 
       want to incorrectly classify a record, a lower GINI index is better. The formula for the GINI Index is as follows, where "j" is the number of possible classes 
@@ -1201,8 +1209,12 @@ iew<!DOCTYPE html>
     <h3>Results</h3> 
     
     <p> 
+      The decision tree with the state-level outcome of good insurance was fit on the training set, which included 35 states (~70%). The model performance was assessed on the 
+      test set of 16 states. As shown in Figure 37, the model performed pretty well with an accuracy was 0.75. The f1-score (0.60) and recall (0.60) were better than chance. 
+      Per capita spending on public health topped the important features with a feature importance score of 0.5 (Figure 38). Although to a lesser degree, other important 
+      features for predicting good insurance included the proportion of the population above the poverty line, use of preventative care, health status of the population 
+      and a supportive community.      
     </p>
-
   
     <br>
     <b>Figure 37</b><br>
@@ -1212,10 +1224,21 @@ iew<!DOCTYPE html>
     <b>Figure 38</b><br>
     <img src="images/Q6_insurance_DT_feature_importance.png" alt="Q6_insurance_DT_feature_importance" width="1200"><br><br>
 
+    <p>
+      The optimal decision tree had a mx depth of 8. For illustrative purposes, Figure 39 shows the first few levels. As seen with the feature importance analysis 
+      public health plays an important role in the classification by splitting the root node at less than or equal to $146 per person spent on public health. 
+      
+      
+      <br>
+      
+      
+      As illustrated by the ROC-curve in Figure 40, the area under the curve for this model was 0.709.
+    </p>
+        
     <br>
     <b>Figure 39</b><br>
     <img src="images/Q6_insurance_DT_tree_plot.png" alt="Q6_insurance_DT_tree_plot" width="1200"><br><br>
-
+ 
     <br>
     <b>Figure 40</b><br>
     <img src="images/Q6_insurance_DT_ROC.png" alt="Q6_insurance_DT_ROC" width="1200"><br><br>
