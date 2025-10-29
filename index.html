@@ -899,27 +899,64 @@ iew<!DOCTYPE html>
       Both multinomial and Bernoulli Naive Bayes were preformed. As explained above, multinomial Naive Bayes requires discrete features (such as word counts). From the 
       family-level data from NSCH, we selected count variables. Specifically, the following features were kept and missing values were replaced with the mode: 
       five-level health status, child's screen time usage, child's age, three-level family food and cash assistance, number of family members in the household, and 
-      highest-level of adult education for the family. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Figure 25 
-      shows the features selected for multinomial Naive Bayes by the adequacy of sleep among teenagers. Features, target and sample weights are split into training and test 
-      sets.
+      highest-level of adult education for the family. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Figure 25a 
+      shows the features selected for multinomial Naive Bayes by the adequacy of sleep among teenagers. 
     </p>
 
     <br>
-    <b>Figure 25</b><br>
+    <b>Figure 25a</b><br>
     <img src="images/Q9_AdeqSleep_MNB_features.png" alt="Q9_AdeqSleep_MNB_features" width="1200"><br><br>
 
+    <p>
+      Features, target and sample weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
+      in Figure 25b. The training and test data are disjoint because these data sets serve different purposes. The training data are used to train the model and help it to 
+      learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
+      may appear perform better than it actually does, which could lead to misuse of the model. Figures 25c and 25d provide the first five five rows of data for the training and testing data, respectively. 
+    </p> 
+    
+    <br>
+    <b>Figure 25b</b><br>
+    <img src="images/MNB_Train_Test_Target_Split.png" alt="MNB train test split" width="1200"><br><br>
+    
+    <br>
+    <b>Figure 25c</b><br>
+    <img src="images/MNB_Train_Data_Head.png" alt="MNB train head" width="1200"><br><br>
+    
+    <br>
+    <b>Figure 25d</b><br>
+    <img src="images/MNB_Test_Data_Head.png" alt="MNB test head" width="1200"><br><br>
+    
     <p>
       The Bernoulli Naive Bayes analysis required binary features. Family-level data from NSCH for the following features were kept and missing values were replaced with 
       the mode: child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
       visits, and a place to get health care. Dummy variables were created for the features. The reference categories were NOT dropped, as all categories are needed to 
       complete the Naive Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. 
-      The raw features by adequacy of sleep among teenagers are provided in Figure 26. Features, target and sample weights are split into training and test sets.
+      The raw features by adequacy of sleep among teenagers are provided in Figure 26a. 
     </p>
     
     <br>
-    <b>Figure 26</b><br>
+    <b>Figure 26a</b><br>
     <img src="images/Q9_AdeqSleep_BNB_features.png" alt="Q9_AdeqSleep_BNB_features" width="1200"><br><br>
 
+
+    <p>
+      Features, target and sample weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
+      in Figure 26b. Figures 26c and 26d provide the first five five rows of data for the training and testing data, respectively. 
+    </p> 
+    
+    <br>
+    <b>Figure 26b</b><br>
+    <img src="images/BNB_Train_Test_Target_Split.png" alt="BNB train test split" width="1200"><br><br>
+    
+    <br>
+    <b>Figure 26c</b><br>
+    <img src="images/BNB_Train_Data_Head.png" alt="BNB train head" width="1200"><br><br>
+    
+    <br>
+    <b>Figure 26d</b><br>
+    <img src="images/BNB_Test_Data_Head.png" alt="BNB test head" width="1200"><br><br>
+
+    
     <br>
     <h3>Code</h3>
 
