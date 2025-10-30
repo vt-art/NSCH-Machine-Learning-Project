@@ -492,7 +492,7 @@ iew<!DOCTYPE html>
 
       <br>
       <b>Illustration of Hierarchical Clustering (Source: Davis, 2024)</b><br>
-      <img src="images/Hierarchical_Clustering_David_Towards_Data_Science.webp" alt=HC_Davis_TDS" style="width: 1200px; height: auto;"><br><br>        
+      <img src="images/Hierarchical_Clustering_David_Towards_Data_Science.webp" alt="HC_Davis_TDS" style="width: 1200px; height: auto;"><br><br>        
       
       <br>
       For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest stems from Questions 2 and 6, which explore the 
@@ -872,7 +872,7 @@ iew<!DOCTYPE html>
 
     <br>
     <b>Illustration of three main types of Naive Bayes Classifiers (Source: Baladram, 2024)</b><br>
-    <img src="images/Baladram_Naive_Bayes_Approaches.png" alt="Baladram_Naive_Bayes_Approaches" width="1200"><br><br>
+    <img src="images/Baladram_Naive_Bayes_Approaches.png" alt="Baladram_Naive_Bayes_Approaches" width="600"><br><br>
     
     <p>
       It is possible that a given class does not contain any events. Since we are taking the product by each feature, a zero probability for a given feature would result 
@@ -904,26 +904,26 @@ iew<!DOCTYPE html>
     </p>
 
     <br>
-    <b>Figure 25a</b><br>
+    <b>Figure 25</b><br>
     <img src="images/Q9_AdeqSleep_MNB_features.png" alt="Q9_AdeqSleep_MNB_features" width="1200"><br><br>
 
     <p>
       Features, target and sample weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
-      in Figure 25b. The training and test data are disjoint because these data sets serve different purposes. The training data are used to train the model and help it to 
+      in Table 4. The training and test data are disjoint because these data sets serve different purposes. The training data are used to train the model and help it to 
       learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Figures 25c and 25d provide the first five five rows of data for the training and testing data, respectively. 
+      may appear perform better than it actually does, which could lead to misuse of the model. Tables 5 and 6 provide the first five five rows of data for the training and testing data, respectively. 
     </p> 
     
     <br>
-    <b>Figure 25b</b><br>
-    <img src="images/MNB_Train_Test_Target_Split.png" alt="MNB train test split" width="1200"><br><br>
+    <b>Table 4</b><br>
+    <img src="images/MNB_Train_Test_Target_Split.png" alt="MNB train test split" width="600"><br><br>
     
     <br>
-    <b>Figure 25c</b><br>
+    <b>Table 5</b><br>
     <img src="images/MNB_Train_Data_Head.png" alt="MNB train head" width="1200"><br><br>
     
     <br>
-    <b>Figure 25d</b><br>
+    <b>Table 6</b><br>
     <img src="images/MNB_Test_Data_Head.png" alt="MNB test head" width="1200"><br><br>
     
     <p>
@@ -931,31 +931,43 @@ iew<!DOCTYPE html>
       the mode: child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
       visits, and a place to get health care. Dummy variables were created for the features. The reference categories were NOT dropped, as all categories are needed to 
       complete the Naive Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. 
-      The raw features by adequacy of sleep among teenagers are provided in Figure 26a. 
+      The raw features by adequacy of sleep among teenagers are provided in Figure 26. 
     </p>
     
     <br>
-    <b>Figure 26a</b><br>
+    <b>Figure 26</b><br>
     <img src="images/Q9_AdeqSleep_BNB_features.png" alt="Q9_AdeqSleep_BNB_features" width="1200"><br><br>
 
 
     <p>
       Features, target and sample weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
-      in Figure 26b. Figures 26c and 26d provide the first five five rows of data for the training and testing data, respectively. 
+      in Table 7. Tables 8 and 9 provide the first five five rows of data for the training and testing data, respectively. 
     </p> 
     
     <br>
-    <b>Figure 26b</b><br>
-    <img src="images/BNB_Train_Test_Target_Split.png" alt="BNB train test split" width="1200"><br><br>
+    <b>Table 7</b><br>
+    <img src="images/BNB_Train_Test_Target_Split.png" alt="BNB train test split" width="600"><br><br>
     
     <br>
-    <b>Figure 26c</b><br>
+    <b>Table 8</b><br>
     <img src="images/BNB_Train_Data_Head.png" alt="BNB train head" width="1200"><br><br>
     
     <br>
-    <b>Figure 26d</b><br>
+    <b>Table 9</b><br>
     <img src="images/BNB_Test_Data_Head.png" alt="BNB test head" width="1200"><br><br>
 
+    <p>
+      Due to the data use agreement, these data are stored on a private repository. The state-level data  used in the multinomial Naive Bayes are here: 
+      <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_AHR_state.csv" target="_blank" rel="noopener noreferrer">
+        NSCH_AHR_state.csv.  
+      </a> 
+
+      The family-level data used in the Bernoulli Naive Bayes are here:
+      <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_fam.csv" target="_blank" rel="noopener noreferrer">
+        NSCH_fam.csv.  
+      </a> 
+
+    </p>
     
     <br>
     <h3>Code</h3>
@@ -1192,13 +1204,52 @@ iew<!DOCTYPE html>
       percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
       public health funding per capita, and sum of the social support and engagement measures. The target variable was contructed as good insurance coverage if the 
       state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
-      adequate insurance (Insurance from NSCH).
+      adequate insurance (Insurance from NSCH).Figure 36 provides a heatmap of the features that were considered for the model.
     </p>
 
     <br>
     <b>Figure 36</b><br>
     <img src="images/Q6_heatmap_DT_features.png" alt="Q6_heatmap_DT_features" width="1200"><br><br>
 
+    <p>
+      Features and target are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
+      in Table 10. The training and test data are disjoint because the training data are used to train the model and help it to 
+      learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
+      may appear perform better than it actually does, which could lead to misuse of the model. Tables 11 and 12 provide the first five five rows of data for the training and testing data, respectively. 
+    </p> 
+    
+    <br>
+    <b>Table 10</b><br>
+    <img src="images/DT_Train_Test_Target_Split.png" alt="DT train test split" width="600"><br><br>
+    
+    <br>
+    <b>Table 11</b><br>
+    <img src="images/DT_Train_Data_Head.png" alt="DT train head" width="1200"><br><br>
+    
+    <br>
+    <b>Table 12</b><br>
+    <img src="images/DT_Test_Data_Head.png" alt="DT test head" width="1200"><br><br>
+
+    <p>
+      Data for the Random Forest analysis were prepared in a similar manner. Features of interest included: child's screen time usage, child's age, housing instability, family food and cash assistance, 
+      adequate and continuous insurance, health status, preventative care visits, and a place to get health care. Dummy variables were created for the features and the reference categories were dropped. 
+      The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. These data are from the family-level dataset and as such the sampling weights were also 
+      included in the train-test split. Specifically, features, target and sample weights are split into training and test sets. 
+    </p>
+
+    <p>
+      Due to the data use agreement, these data are stored on a private repository. The state-level data  used in the decision tree analysis are here: 
+      <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_AHR_state.csv" target="_blank" rel="noopener noreferrer">
+        NSCH_AHR_state.csv.  
+      </a> 
+
+      The family-level data used in the random forest analysis are here:
+      <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_fam.csv" target="_blank" rel="noopener noreferrer">
+        NSCH_fam.csv.  
+      </a> 
+
+    </p>
+        
     <br>
     <h3>Code</h3>
     
@@ -1235,8 +1286,8 @@ iew<!DOCTYPE html>
       visits, and a place to get health care. Dummy variables were created for the features and the reference categories were dropped. The target variable of inadequate 
       hours of sleep for age was also kept and replaced with the mode if missing. Features, target and sample weights are split into training and test sets. <br>
       <br>
-      Next, the random forest classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The following hyperparameters were used:
-      'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 
+      Next, the random forest classifier is instanciated and fit with the above target, feature and sample weight (sample_weight = FWC_train) variables using the training data. 
+      The following hyperparameters were used: 'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 
       'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
       'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 4567, 'verbose': 0, 'warm_start': False. Measures of model performance are calculated, 
       including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. In 
@@ -1279,7 +1330,12 @@ iew<!DOCTYPE html>
     <br>
     <b>Figure 40</b><br>
     <img src="images/Q6_insurance_DT_ROC.png" alt="Q6_insurance_DT_ROC" width="1200"><br><br>
-   
+
+    <p>    
+      The random forest analyses did not perform well, resulting in an accuracy of 0.57, which is only marginally better than chance (data not shown). Additionally, the f1-score of 0.39 and recall score of 0.48 were 
+      poor. 
+    </p>
+      
     <br>
     <h3>Conclusions</h3>
    
