@@ -1518,7 +1518,7 @@
 
     <p>
       In comparison, Gradient Boost and XGBoost minimize the residuals. As with regression, harder to classify points have larger residuals. Weak 
-      learners are combined to create a strong learner (illustration below). Gradient Boost also uses a learning rate; however, it typically ranges from 0.01 to 1.0 
+      learners are combined to create a strong learner (illustration below). Gradient Boost also uses a learning rate; however, it typically ranges from 0.01 to 3.0 
       and scales the contribution of each new tree to the final combined model. A smaller learning rate genearlly results in a better fitting model, but requires more iterations to converge.
     </p>
     
@@ -1600,7 +1600,7 @@
       Measures of model performance are calculated, including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of 
       feature imporance based on gain. Additionally, we examine the first, fifth and tenth trees to assess how the data are split. This process was repeated twice.  
       First, we used the xgb.XGBClassifier() from `xgboost`. This method integrates well with sklearn; however, it is less efficient with large-survey data that requires 
-      sampling weights. As such, we also implemented the XGBoost model using xgb.DMatrix. Using DMatrix directly results in faster model-building and natural integration 
+      sampling weights. As such, we also implemented the XGBoost model using xgb.DMatrix(). Using DMatrix directly results in faster model-building and natural integration 
       of the sampling weights.<br> 
       <br>    
       
@@ -1680,12 +1680,11 @@
     <h3>References</h3>
     
     <ul> 
-        <li> <br>
-          Available from: </li>
-        <li>  <br>
-          Available from:  </li>
-        <li> </li>
-        <li>   </li>
+        <li> Subha. Boosting — Adaboost, Gradient Boost and XGBoost. Medium. Mar 29, 2024.          
+          <br>
+          Available from: https://medium.com/@pingsubhak/boosting-adaboost-gradient-boost-and-xgboost-bdda87eed44e </li>
+        <li> GradientBoosting vs AdaBoost vs XGBoost vs CatBoost vs LightGBM. GeeksforGeeks. Jul 23, 2025. <br>
+          Available from: https://www.geeksforgeeks.org/machine-learning/gradientboosting-vs-adaboost-vs-xgboost-vs-catboost-vs-lightgbm/ </li>
     </ul>
 
     
