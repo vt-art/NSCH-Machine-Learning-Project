@@ -49,7 +49,28 @@
       width: 300px; /* Adjust size as needed */
     }
 
-  
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 16px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    caption {
+      caption-side: top;
+      margin-bottom: 8px;
+    }
+    
   </style>
 </head>
 <body>
@@ -1235,9 +1256,11 @@
         <li>Health providers may diagnose diseases considering factors like symptoms, biomarkers, family history, and demographics.</li>
         <li>Educators predict whether students will pass or fail given student attendance, study time and past performance. </li>
         <li>Businesses predict whether a customer will leave or stay based on purchasing history, behavioral choices and length of tenure.</li>
-        <li>Fraud Detection: In finance, Decision Trees are used to detect fraudulent activities, such as credit card fraud. By analyzing past transaction data and patterns, Decision Trees can identify suspicious activities and flag them for further investigation.
-        <li>A decision tree can also be used to help build automated predictive models which have applications in machine learning, data mining and statistics.
-    </p>  
+        <li>Fraud Detection: In finance, Decision Trees are used to detect fraudulent activities, such as credit card fraud. By analyzing past transaction data and patterns, Decision Trees can identify suspicious activities and flag them for further investigation.</li>
+        <li>A decision tree can also be used to help build automated predictive models which have applications in machine learning, data mining and statistics.</li>
+      </ol>
+      
+      </p>  
     
     <br>
     <h3>Data Prep</h3>
@@ -1247,7 +1270,7 @@
       percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
       percent of children receiving at least one preventative care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
       percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
-      public health funding per capita, and sum of the social support and engagement measures. The target variable was contructed as good insurance coverage if the 
+      public health funding per capita, and sum of the social support and engagement measures. The target variable was constructed as good insurance coverage if the 
       state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
       adequate insurance (Insurance from NSCH).Figure 36 provides a heatmap of the features that were considered for the model.
     </p>
@@ -1308,7 +1331,7 @@
       percent of children receiving at least one preventative_care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
       percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
       public health funding per capita, and sum of the social support and engagement measures. Social support and engagement measures is missing for Washington DC. This missing 
-      value has been replaced with the median social support. The target variable was contructed as good insurance coverage if the 
+      value has been replaced with the median social support. The target variable was constructed as good insurance coverage if the 
       state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
       adequate insurance (Insurance from NSCH).<br>      
       <br>
@@ -1424,135 +1447,130 @@
     <h3>Overview</h3>
    
     <p> 
-Describe the key ideas behind ensemble and boosting methods. Explain what a weak learner is, and how boosting improves overall accuracy by combining multiple weak learners into a strong model.
-Discuss:
-•	The main differences between AdaBoost, Gradient Boosting, and XGBoost
-•	How boosting methods iteratively reduce bias and variance
-•	The idea of weighting samples or minimizing residuals
-•	The concept of learning rate, number of estimators, and tree depth
-Include at least two images that visually represent boosting (e.g., weak vs. strong learners, residual updates, gradient flow).
-
+      By combining multiple models to improve overall performance, ensemble methods in machine learning provide a powerful alternative to a single model.  
+      Ensemble techniques include boosting, bagging and stacking. For this analysis, we implement boosting, which trains models considered weak leaners 
+      sequentially by focusing on misclassified points in subsequent models. As the name implies, weak learners are simple models (e.g. a decision stump 
+      or a shallow decision tree). Weak learners perform only slightly better than chance. However, by combining them with boosting methods, the collective 
+      result is a strong learner with greater model performance.
+    </p>
+    
+    <p>
+      Boosting models include AdaBoost, Gradient Boosting, and XGBoost (Table 13). These models iteratively reduce variability and bias in the data by 
+      focusing on misclassified or hard to classify points.
     </p>
 
+<table>
+  <caption><strong>Table 13. Comparison of Boosting Methods</strong> <br>
+    <em>Sources: Subha (Medium), GeeksforGeeks</em>
+  </caption>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AdaBoost</th>
+      <th>Gradient Boosting</th>
+      <th>XGBoost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>General Approach</strong></td>
+      <td>Focuses on misclassified points from previous models by increasing their weight.</td>
+      <td>Builds models sequentially, with each new model correcting the residual errors of the previous model.</td>
+      <td>An optimized and regularized version of Gradient Boosting that uses parallel processing and advanced regularization to prevent overfitting.</td>
+    </tr>
+    <tr>
+      <td><strong>Base Estimators</strong></td>
+      <td>Usually, decision stumps.</td>
+      <td>May use deeper trees with 8–32 leaves.</td>
+      <td>Uses a regularized greedy forest algorithm to build trees.</td>
+    </tr>
+    <tr>
+      <td><strong>Handling Overfitting</strong></td>
+      <td>Stumps generally prevent overfitting.</td>
+      <td>Prone to overfitting if not carefully tuned.</td>
+      <td>Regularization hyperparameters (L1 and L2) control complexity and help prevent overfitting.</td>
+    </tr>
+    <tr>
+      <td><strong>Speed and Efficiency</strong></td>
+      <td>Fast to train despite being a serial process.</td>
+      <td>Can be slow to train due to sequential nature.</td>
+      <td>Much faster and more scalable due to parallel processing and a cache-aware algorithm.</td>
+    </tr>
+    <tr>
+      <td><strong>Use Cases</strong></td>
+      <td>Simpler problems or when a quick model is needed for a small dataset.</td>
+      <td>Problems where accuracy is the highest priority and computational resources are limited.</td>
+      <td>Scenarios where performance, speed, and regularization are crucial.</td>
+    </tr>
+  </tbody>
+</table>
+
+    
+    <p>
+      As shown in the image below, Adaboost weights the misclassified points higher in subsequent models. This approach allows the later models to focus on hard to 
+      classify records. Adaboost uses a learning rate (typically between 0.1 - 1.0) to weight the contribution of each weak learner in the overall model (weighted 
+      majority vote).
+    </p>
+    
     <br>
-    <b>Illustration of Boosting Methods (Source: )</b><br>
-    <img src="images/Dash_DT_Structure.png" alt="DT Structure" width="1200"><br><br>
+    <b>Adaboost Weighting Technique</b><br>
+    <img src="images/Adaboost_illustration.png" alt="Adaboost Weights" width="1200"><br><br>
 
     <p>
-      Decision nodes contain conditions by which the data are split. The algorithm attempts every possible split and uses either information gain or GINI to determine the 
-      best split. Specifically, the goal is to implement the condition that makes the data and each child node the most predictable or homogenous in the target variable.  
-    </p>
-
-    <p>      
-      We can measure how mixed the data are by calculating the entropy before and after the split, and then calculate the information gain. Entropy is calculated as follows, 
-      where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and \P_i is the proportion in class i:
+      In comparison, Gradient Boost and XGBoost minimize the residuals. As with regression, harder to classify points have larger residuals. Weak 
+      learners are combined to create a strong learner (illustration below). Gradient Boost also uses a learning rate; however, it typically ranges from 0.01 to 1.0 
+      and scales the contribution of each new tree to the final combined model. A smaller learning rate genearlly results in a better fitting model, but requires more iterations to converge.
     </p>
     
-     <p>
-       \[
-         Entropy = H(s) = - \sum_{i=1}^{k} P_i*\log_2(P_i)
-       \]
-     </p>
-
-    <p>
-      Entropy ranges from zero to one inclusive. Entropy of zero indicates perfect purity, where all datapoints are from the same class, while entropy of 1 is perfect 
-      impurity (i.e. a 50/50 split between classes). As the depth of the tree increases the entropy decreases. With these calculations of entropy we can calculate the 
-      information gain. 
-    </p>
-
-    <p>
-       \[
-         \text{Information Gain} = \text{entropy of the parent node - entropy of the child nodes}
-       \]
-    </p>
-
     <br>
-    <b>Illustration of Decision Tree Slitting (Source: Modified from Dash, 2022)</b><br>
-    <img src="images/Dash_DT_Splitting.png" alt="DT Splitting" width="1200"><br><br>
-
-    <p>
-      The image above illustrates the calculation of entropy and information gain for the decision tree. The entire system has an entropy of 1 or perfect impurity because 
-      the data are split 50/50 at the root node. The first split using the student's background reduces the entropy dramatically, since the computer science students all 
-      passed and the students from other backgrounds all failed the test. These nodes in green are pure leaf nodes (i.e. entropy = 0). Since math students still have a mix 
-      of outcomes, the blue node is further split by whether or not the student is working. Lastly, the information gain of the tree is calculated as the entropy of the 
-      system minus the average child node. The information gain is about 0.8.      
-    </p>
-    
-    <p>
-      Alternatively, we can determine the best split using the GINI index. The GINI Index calculates the probability of misclassifying a random instance. Because we don't 
-      want to incorrectly classify a record, a lower GINI index is better. The formula for the GINI Index is as follows, where "j" is the number of possible classes 
-      (e.g. Yes/No), and \P_i is the proportion of the class in the node:
-    </p>
-    
-     <p>
-       \[
-         Gini = 1 - \sum_{i=1}^{j} P_i^2
-       \]
-     </p>
- 
-    <p>
-      Since decision trees are easy to interpret and understand, they have a variety of uses. A recent article from Geeks for Geeks (Decision Trees) noted six applications 
-      of Decision Trees, as follows:<br> 
-      <ol>
-        <li>Bankers determine whether to accept or reject a loan application based on factors like credit score, income, employment status and loan 
-          history.</li>
-        <li>Health providers may diagnose diseases considering factors like symptoms, biomarkers, family history, and demographics.</li>
-        <li>Educators predict whether students will pass or fail given student attendance, study time and past performance. </li>
-        <li>Businesses predict whether a customer will leave or stay based on purchasing history, behavioral choices and length of tenure.</li>
-        <li>Fraud Detection: In finance, Decision Trees are used to detect fraudulent activities, such as credit card fraud. By analyzing past transaction data and patterns, Decision Trees can identify suspicious activities and flag them for further investigation.
-        <li>A decision tree can also be used to help build automated predictive models which have applications in machine learning, data mining and statistics.
-    </p>  
+    <b>Gradient Boosting Method (Source: CU Boulder CSCI 5612 Machine Learning for Data Science Class Notes)</b><br>
+    <img src="images/Gradient_Boosting_Illustration.png" alt="Gradient Boost" width="1200"><br><br>
     
     <br>
     <h3>Data Prep</h3>
     
     <p> 
-      This analysis uses the state-level data from NSCH and AHR. The following continuous state-level features were kept: 
-      percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
-      percent of children receiving at least one preventative care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
-      percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
-      public health funding per capita, and sum of the social support and engagement measures. The target variable was contructed as good insurance coverage if the 
-      state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
-      adequate insurance (Insurance from NSCH).Figure 36 provides a heatmap of the features that were considered for the model.
+      This analysis includes both individual chatacteristics from NSCH and state-level data from AHR (those that do not overlap with NSCH, e.g., excluded insurance 
+      coverage and poverty). The following individual-level features were kept: place to get health care (binary), age (continuous), birth sex (binary), housing instability (binary), 
+      family receiving WIC (binary), family food and cash assistance (ordinal), poverty level (ordinal), count of related-family members in house (ordinal), health status
+      (ordinal), continuous and adequate insurance (binary), screen time usage (ordinal), adequate sleep (binary), and highest level of education received by an adult in 
+      the household (ordinal). State-level features that were kept included: percentage of the population younger than age 18, number of primary care_providers per 100,000 
+      people, public health funding per capita, sum of the social support and engagement measures, and region (categorical). The target variable was not receiving 
+      preventative care. Ordinal variables entered the model as catgorical with order, binary were recoded as 0/1, and region was one-hot encoded with the first region 
+      dropped. Figure 41 provides a heatmap of the features that were considered for the model.
     </p>
 
     <br>
-    <b>Figure 36</b><br>
-    <img src="images/Q6_heatmap_DT_features.png" alt="Q6_heatmap_DT_features" width="1200"><br><br>
+    <b>Figure 41</b><br>
+    <img src="images/Q10_heatmap_XGB_features.png" alt="Q10_heatmap_GGB_features" width="1200"><br><br>
 
     <p>
       Features and target are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
-      in Table 10. The training and test data are disjoint because the training data are used to train the model and help it to 
+      in Table 14. The training and test data are disjoint because the training data are used to train the model and help it to 
       learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Tables 11 and 12 provide the first five five rows of data for the training and testing data, respectively. 
+      may appear perform better than it actually does, which could lead to misuse of the model. Tables 15 and 16 provide the first five five rows of data for the training 
+      and testing data, respectively. 
     </p> 
     
     <br>
-    <b>Table 10</b><br>
-    <img src="images/DT_Train_Test_Target_Split.png" alt="DT train test split" width="400"><br><br>
+    <b>Table 14</b><br>
+    <img src="images/XGB_Train_Test_Target_Split.png" alt="XGB train test split" width="400"><br><br>
     
     <br>
-    <b>Table 11</b><br>
-    <img src="images/DT_Train_Data_Head.png" alt="DT train head" width="1200"><br><br>
+    <b>Table 15</b><br>
+    <img src="images/XGB_Train_Data_Head.png" alt="XGB train head" width="1200"><br><br>
     
     <br>
-    <b>Table 12</b><br>
-    <img src="images/DT_Test_Data_Head.png" alt="DT test head" width="1200"><br><br>
+    <b>Table 16</b><br>
+    <img src="images/XGB_Test_Data_Head.png" alt="XGB test head" width="1200"><br><br>
 
     <p>
-      Data for the Random Forest analysis were prepared in a similar manner. Features of interest included: child's screen time usage, child's age, housing instability, family food and cash assistance, 
-      adequate and continuous insurance, health status, preventative care visits, and a place to get health care. Dummy variables were created for the features and the reference categories were dropped. 
-      The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. These data are from the family-level dataset and as such the sampling weights were also 
-      included in the train-test split. Specifically, features, target and sample weights are split into training and test sets. 
-    </p>
-
-    <p>
-      Due to the data use agreement, these data are stored on a private repository. The state-level data  used in the decision tree analysis are here: 
+      Due to the data use agreement, these data are stored on a private repository. The state-level data are here: 
       <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_AHR_state.csv" target="_blank" rel="noopener noreferrer">
         NSCH_AHR_state.csv.  
       </a> 
 
-      The family-level data used in the random forest analysis are here:
+      The family-level data are here:
       <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_fam.csv" target="_blank" rel="noopener noreferrer">
         NSCH_fam.csv.  
       </a> 
@@ -1563,97 +1581,98 @@ Include at least two images that visually represent boosting (e.g., weak vs. str
     <h3>Code</h3>
     
     <p> 
-      The following Python program contains the code for the decision tree analysis:
-      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/6_NSCH_AHR_Decision_Tree_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
-        6_NSCH_AHR_Decision_Tree_Analysis.
+      The following Python programs contains the code for the XGBoost analyses:
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/8a_NSCH_AHR_XGB_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        8a_NSCH_AHR_XGB_Analysis.
+      </a> 
+      and 
+      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/8b_NSCH_AHR_XGB_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
+        8b_NSCH_AHR_XGB_Analysis.
       </a>
-      The first step of the code is to read in the state-level data from NSCH and AHR. Next, the following continuous state-level features were kept: 
-      percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
-      percent of children receiving at least one preventative_care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
-      percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
-      public health funding per capita, and sum of the social support and engagement measures. Social support and engagement measures is missing for Washington DC. This missing 
-      value has been replaced with the median social support. The target variable was contructed as good insurance coverage if the 
-      state is both above the mean of states for residents having any insurance (Insured from AHR) AND above the mean of states for children having continuous and 
-      adequate insurance (Insurance from NSCH).<br>      
+      The first step of the code is to read in the state-level and individual-level data from AHR and NSCH. Next, the aformentioned features are kept and missing 
+      value are replaced with the most common values. The target variable of no preventative care was constructed as 1=no preventative care, 0=preventative care 
+      from the variable "PrevMed_23", which is an indicator variable for receiving preventative care. Additionally, class imbalance was addressed with scale_pos_weight
+      where the imbalance weight was determined from a ratio of sample-weighted counts for negative and positive cases (i.e. spw = weighted_neg / weighted_pos). For 
+      preventative care, for each posisive case (i.e. no preventative care) there are 3.87 negative cases. <br>
       <br>
       
-      Next, the decision tree classifier is instanciated, fit with the above target, feature and sample weight variables, and tuned using the training data. For the 
-      hyperparameter tuning a max_depth of 8, 9, 10, and None and min_samples_split of 2, 4, 6 were assessed with criterion='gini', splitter='best' and min_samples_leaf=1.      
-      The resulting hyperparameters for the optimal model were: 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': 8, 'max_features': None, 
-      'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
-      'random_state': 4567, 'splitter': 'best'. Measures of model performance are calculated, 
-      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. 
-      Additionally, the trees is plotted to assess how the data are split. Finally, partial dependency plots are created for each feature.<br> 
-      <br>
+      Next, the XGBoost classifier is instanciated, fit with the above target, feature and sample weight variables, and tuned using the training data. 
+      Measures of model performance are calculated, including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of 
+      feature imporance based on gain. Additionally, we examine the first, fifth and tenth trees to assess how the data are split. This process was repeated twice.  
+      First, we used the xgb.XGBClassifier() from `xgboost`. This method integrates well with sklearn; however, it is less efficient with large-survey data that requires 
+      sampling weights. As such, we also implemented the XGBoost model using xgb.DMatrix. Using DMatrix directly results in faster model-building and natural integration 
+      of the sampling weights.<br> 
+      <br>    
       
-      The Python program for the random forest analysis is located here:
-      <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/7_NSCH_Random_Forest_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
-        7_NSCH_Random_Forest_Analysis.
-      </a>
-      The first step of the code is to read in the family-level data from NSCH. Next, the following features were kept and missing values were replaced with the mode: 
-      child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
-      visits, and a place to get health care. Dummy variables were created for the features and the reference categories were dropped. The target variable of inadequate 
-      hours of sleep for age was also kept and replaced with the mode if missing. Features, target and sample weights are split into training and test sets. <br>
-      <br>
-      Next, the random forest classifier is instanciated and fit with the above target, feature and sample weight (sample_weight = FWC_train) variables using the training data. 
-      The following hyperparameters were used: 'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 
-      'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
-      'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 4567, 'verbose': 0, 'warm_start': False. Measures of model performance are calculated, 
-      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. In 
-      order to gain an understanding of how the model was splitting features, one of the trees is plotted. Finally, partial dependency plots are created for each feature.      
     </p>    
     <br>
     <h3>Results</h3> 
     
     <p> 
-      The decision tree with the state-level outcome of good insurance was fit on the training set, which included 35 states (~70%). The model performance was assessed on the 
-      test set of 16 states. As shown in Figure 37, the model performed pretty well with an accuracy was 0.75. The f1-score (0.60) and recall (0.60) were better than chance. 
-      Per capita spending on public health topped the important features with a feature importance score of 0.5 (Figure 38). Although to a lesser degree, other important 
-      features for predicting good insurance included the proportion of the population above the poverty line, use of preventative care, health status of the population 
-      and a supportive community.      
+      The two approaches for fitting the XGBoost model resulted in almost identicle results. As expected, DMatrix was much faster than xgb.XGBClassifier(). Since the 
+      results were so similar, we will focus on those from DMatrix. As shown in Figure 42, the model performed okay with an accuracy was 0.67. The f1-score (0.46) and 
+      recall (0.66). Although we captured 66% of the true positive cases, we missed 34%.       
     </p>
   
     <br>
-    <b>Figure 37</b><br>
-    <img src="images/Q6_insurance_DT_CM.png" alt="Q6_insurance_DT_CM" width="1200"><br><br>
+    <b>Figure 42</b><br>
+    <img src="images/Q10_nopcare_XGB_CM.png" alt="Q10_XGB_CM" width="1200"><br><br>
 
-    <br>
-    <b>Figure 38</b><br>
-    <img src="images/Q6_insurance_DT_feature_importance.png" alt="Q6_insurance_DT_feature_importance" width="1200"><br><br>
-
+    
     <p>
-      The optimal decision tree had a mx depth of 8. For illustrative purposes, Figure 39 shows the first few levels. As seen with the feature importance analysis 
-      public health plays an important role in the classification by splitting the root node at less than or equal to $146 per person spent on public health. For context 
-      the median value of public health spending is $123 per person. Branching to the left, 25 states spent $146 or less per person on public health and 23 of these were 
-      classified as not good insurance. In contrast, ten states branched to the right because they spent more than $146 per person on public health. Eight of these states 
-      were classified as meeting good insurance coverage.<br>
+      The optimal XGBoost model included the following hyperparameters:
+      <ul>
+        <li>"objective": "binary:logistic",    # Logistic regression on trees</li>
+        <li>"eval_metric": "logloss",</li>
+        <li>"tree_method": "hist",             # histogram trees- good for large weighted datasets</li>
+        <li>"scale_pos_weight": float(spw),</li>
+        <li>"min_child_weight": 5,</li>
+        <li>"lambda":5,                        # L2 regularization</li>
+        <li>"alpha":1,                         # L1 regularization</li>
+        <li>"gamma":5,                         # Loss reduction needed to split</li>  
+        <li>"seed": 4567</li>                         
+        <li>"max_depth": 3,       </li>
+        <li>"eta": 0.1,                        # using bigger eta because there are 
+                                               # 14 million weighted records (54,000 
+                                               # unweighted)  </li>  
+        <li>"subsample": 0.9,                  # Row sampling rate - good regularization</li>
+        <li>"colsample_bytree": 0.7            # feature sampling - good regularization</li>
+      </ul>
+      
+      Based on the max-depth and regularization, the model preferred shallow, simple trees. This approach favored the large, weighted survey data used in the analysis.  <br>
       <br>
-      As illustrated by Figure 40, the ROC-curve of the test data yielded an area under the curve of 0.709. This indicates that the model has a good ability to 
-      distinguish between states with and without good insurance coverage.
+      As illustrated by Figure 43, the ROC-curve of the test data yielded an area under the curve of 0.73. This indicates that the model has a good ability to 
+      distinguish between individuals needing preventative care.
     </p>
         
     <br>
-    <b>Figure 39</b><br>
-    <img src="images/Q6_insurance_DT_tree_plot.png" alt="Q6_insurance_DT_tree_plot" width="1200"><br><br>
- 
-    <br>
-    <b>Figure 40</b><br>
-    <img src="images/Q6_insurance_DT_ROC.png" alt="Q6_insurance_DT_ROC" width="1200"><br><br>
+    <b>Figure 43</b><br>
+    <img src="images/Q10_nopcare_XGB_ROC.png" alt="Q6_insurance_DT_ROC" width="1200"><br><br>
 
-    <p>    
-      The random forest analyses did not perform well, resulting in an accuracy of 0.57, which is only marginally better than chance (data not shown). Additionally, the f1-score of 0.39 and recall score of 0.48 were 
-      poor. 
+    <p>
+      The most important feature for predicting no preventative care when assessed by gain was having a usual place for care (37%) (Figure 44). Although to a lesser 
+      degree, other important features included adult education (7%), the child's age (7%) and Northeastern states (5%). Figure 45 shows the directionality of the 
+      effect with not having a place for care, houshold adults having less education, older children and not living in the Northeast were all related to not receiving 
+      preventative care. 
     </p>
+    
+    <br>
+    <b>Figure 44</b><br>
+    <img src="images/Q10_nopcare_XGB_feature_importance.png" alt="Q10_XGB_feature_importance" width="1200"><br><br>
+
+    <br>
+    <b>Figure 45</b><br>
+    <img src="images/Q10_XGB_predictive_features.png" alt="Q10_XGB_ROC" width="1200"><br><br>
+
+    
       
     <br>
     <h3>Conclusions</h3>
    
     <p> 
-      The decision tree with the state-level outcome of good insurance found that per capita spending on public health of at least $147 per person deliniated the data fairly well into states with and without good 
-      insurance coverage. This has important implications for states hoping to bolster insurance coverage for their residents. Since the median public health spending is $123, on average states would only need to 
-      increase their spending by approximately $20-$23 per person in order to reach this threshold. Such an investment could provide residents with greater access to health coverage. According to the American Hospital 
-      Association, "studies confirm that coverage improves access to care; supports positive health outcomes, including an individual’s sense of their own health and well-being; incentivizes appropriate use of health care resources; and reduces financial strain 
-      on individuals, families and communities.      
+      The XGBoost model found that not having a usual place to receive health care is the most predictive feature of not receiving preventative care. Other features, such 
+      as lower education, older children and living outside of the Northeast, were also important features. This suggests that targetting those who are most likely 
+      to miss visits with public health messaging and helping people find a regular place for care are viable interventions in increasing preventative care coverage.
     </p> 
 
 
@@ -1661,13 +1680,12 @@ Include at least two images that visually represent boosting (e.g., weak vs. str
     <h3>References</h3>
     
     <ul> 
-        <li>Dash, S. Decision Trees Explained – Entropy, Information Gain, Gini Index, CCP Pruning. Though Decision Trees look simple and intuitive, there is nothing very 
-          simple about how the algorithm goes about the process deciding on... Towards Data Science. November 2022. <br>
-          Available from: https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/ </li>
-        <li> Decision Trees. Geeks for Geeks. June 2025. <br>
-          Available from: https://www.geeksforgeeks.org/machine-learning/decision-tree/ </li>
-        <li> Schoen C, DesRoches C. Uninsured and unstably insured: the importance of continuous insurance coverage. Health Serv Res. 2000 Apr;35(1 Pt 2):187-206. PMID: 10778809; PMCID: PMC1089095.</li>
-        <li> American Hospital Association. Report: The Importance of Health Coverage.  </li>
+        <li> <br>
+          Available from: </li>
+        <li>  <br>
+          Available from:  </li>
+        <li> </li>
+        <li>   </li>
     </ul>
 
     
