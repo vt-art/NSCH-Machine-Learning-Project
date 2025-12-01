@@ -296,20 +296,40 @@
     <h3>Summary of findings</h3>
     
     <p>    
-      At the state-level, increasing the percentage of children receiving at least one preventative care visit can improve their overall ability to identify adverse health conditions 
-      in children early by getting them seen. Preventative visits also establish relationships with providers, which are crutial when children are ill. We examined the relationship between 
-      preventative care, insurance coverage and immunizations at the state level. Through K-Means and hierarchical clustering, we found that states that have similar rates of insurance and 
-      preventative care coverage cluster together. Those with lower coverage tended to also have lower immunization rates. Those with medium to high insurance and preventative care 
-      rates also clustered together. This group tended to also have medium to high immunization coverage. These results illustrate the interrelatedness of preventative care with insurance 
-      and immunizations. They identify that a gap in coverage for insurance and preventative care corresponds to a gap in childhood immunization rates. This interdependency suggests that 
-      improving one of these measures may positively influence the others.
+        This research elucidated several important findings across our main outcomes, including rates of full vaccination by 24 months, sufficient sleep among teenagers, 
+        adequate insurance coverage, and uptake of preventative care. We found that preventative care and insurance coverage are good predictors of immunization coverage. 
+        Through K-Means and hierarchical clustering, we found that states that have similar rates of insurance and preventative care coverage cluster together. Those with 
+        lower coverage tended to also have lower immunization rates. Those with medium to high insurance and preventative care rates also clustered together. This group 
+        tended to also have medium to high immunization coverage. These results illustrate the interrelatedness of preventative care with insurance and immunizations. 
+        They identify that a gap in coverage for insurance and preventative care corresponds to a gap in childhood immunization rates. This interdependency suggests that 
+        improving one of these measures may positively influence the others. PCA analysis supported these findings and showed that states with higher populations <18, 
+        fewer primary care providers, less preventative care and reduced insurance coverage may require additional support to increase immunization coverage.
+    </p>
+
+    <p>
+        The American Academy of Sleep Medicine recommends that to promote optimal health, teens should regularly sleep eight to 10 hours per 24-hour period (Ref: Paruthi). 
+        For the sleep analysis, we employed a bernouilli naive Bayes. Influential features for inadequate sleep included: older teens, greater screentime (3+ hrs/day),  
+        housing instability and children in poorer health. Helping these groups obtain enough sleep could improve their overall physical and mental health.
+    </p>
+
+    <p>
+      The decision tree with the state-level outcome of good insurance found that per capita spending on public health of at least $147 per person deliniated the data fairly 
+      well into states with and without good insurance coverage. This has important implications for states hoping to bolster insurance coverage for their residents. Since the 
+      median public health spending is $123, on average states would only need to increase their spending by approximately $20-$23 per person in order to reach this threshold. 
+      Such an investment could provide residents with greater access to health coverage. According to the American Hospital Association, "studies confirm that coverage improves 
+      access to care; supports positive health outcomes, including an individual’s sense of their own health and well-being; incentivizes appropriate use of health care resources; 
+      and reduces financial strain on individuals, families and communities.
+    </p>
+      
+    <p>
+      The XGBoost model found that not having a usual place to receive health care is the most predictive feature of not receiving preventative care. Other features, such 
+      as lower education, older children and living outside of the Northeast, were also important features. This suggests that targetting those who are most likely to miss 
+      visits with public health messaging and helping people find a regular place for care are viable interventions in increasing preventative care coverage.  
     </p>
     
     <p>
-      
     </p>   
 
-    <p>
       
     </p>
 
