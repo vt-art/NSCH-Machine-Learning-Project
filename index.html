@@ -70,6 +70,37 @@
       caption-side: top;
       margin-bottom: 8px;
     }
+
+    /* Reference list styling */
+    .ref-list {
+      margin-left: 1.2em;       /* indentation */
+      line-height: 1.4;
+    }
+
+    .ref-list li {
+      margin-bottom: 12px;      /* spacing between items */
+    }
+
+    .ref-list a {
+      color: #0645AD;           /* typical link blue */
+      text-decoration: underline;
+    }
+
+    .ref-list a:hover {
+      color: #0B0080;           /* darker hover color */
+    }
+
+    .qa-list li {
+      margin-bottom: 20px;
+    }
+    .question {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .answer {
+      margin-left: 10px;
+      color: #444;
+    }
     
   </style>
 </head>
@@ -78,15 +109,17 @@
   <!-- Navigation Bar with Buttons -->
   <div class="tab-bar">
     <button class="tab-link active" onclick="openTab(event, 'Introduction')">Introduction</button>
-    <button class="tab-link" onclick="openTab(event, 'Conclusions')">Conclusions</button>
     <button class="tab-link" onclick="openTab(event, 'DataPrep_EDA')">DataPrep_EDA</button>
     <button class="tab-link" onclick="openTab(event, 'Clustering')">Clustering</button>
     <button class="tab-link" onclick="openTab(event, 'PCA (Principle Component Analysis)')">PCA (Principle Component Analysis)</button>
     <button class="tab-link" onclick="openTab(event, 'NaiveBayes')">NaiveBayes</button>
     <button class="tab-link" onclick="openTab(event, 'DecTrees')">DecTrees</button>
     <button class="tab-link" onclick="openTab(event, 'Boosting')">Boosting</button>
-    <button class="tab-link" onclick="openTab(event, 'Regression')">Regression</button>
-    <button class="tab-link" onclick="openTab(event, 'NN')">NN</button>
+    <button class="tab-link" onclick="openTab(event, 'Results')">Results</button>
+    <button class="tab-link" onclick="openTab(event, 'ProjectChallenges')">ProjectChallenges</button>
+    <button class="tab-link" onclick="openTab(event, 'Conclusions')">Conclusions</button>
+    <button class="tab-link" onclick="openTab(event, 'References')">References</button>
+    <button class="tab-link" onclick="openTab(event, 'About_Me')">About_Me</button>
   </div>
 
   <!-- Content Sections -->
@@ -133,12 +166,12 @@
     </p> 
 
     <p>
-      From early diagnosis to personalized care and support, machine learning can help us in all aspects of child health. These methods allow researchers to identify policies 
+      From early diagnosis to personalized care and support, machine learning can help in all aspects of child health. These methods allow researchers to identify policies 
       and practices that result in the best outcomes with the most impactful use of limited funds.<br>
     </p>
     
     <br>
-      <b>Machine Learning Contributes to All Aspects of Child Health</b><br>
+      <b>Illustration: Machine Learning Contributes to All Aspects of Child Health</b><br>
       <img src="images/ML_ChildHealth.png" alt="Intro2" style="width: 1200px; height: auto;"><br><br>
      
      
@@ -166,8 +199,8 @@
         <li>Children’s physical and mental health status</li>
         <li>Health insurance status, adequacy, and type of coverage</li>
         <li>Access to and use of health care services</li>
-        <li>Early childhood-specific information (0-5 years)</li>
-        <li>Middle childhood and adolescent-specific information (6-17 years)</li>
+        <li>Early childhood characteristics (0-5 years)</li>
+        <li>Middle childhood and adolescent characteristics (6-17 years)</li>
         <li>Family health and activities</li>
         <li>Parental perceptions of neighborhood and community characteristics</li> 
       </ul>
@@ -178,66 +211,41 @@
       Topics include:
       <ul> 
         <li>measures of care, such as access to care, preventative clinical care, quality of care,</li>
-        <li>measures of health, such as mortality, nutrition and physical activity, physical health, sexual health, sleep health, smoking and tobacco use, behavioral health, </li>  
-        <li>environmental factors, such as air and water quality and climate and health,</li> 
+        <li>measures of health, such as mortality, nutrition and physical activity, physical health, sexual health, sleep, smoking and tobacco use, behavioral health, </li>  
+        <li>environmental factors, including air and water quality and climate and health,</li> 
         <li>community characteristics, such as safety, economic resources, housing and transit,</li>
-        <li>family characteristics, such as demographics, education, </li>
+        <li>family characteristics, including demographics, education, </li>
         <li> social support and engagement. </li>
       </ul>
     </p>
 
     <p>
       NSCH and AHR data help communities and families make informed decisions to support the health and well-being of the children and youth in their
-      care. Community-level data are available for participating areas, allowing them to compare their areas to neighboring communities, other 
+      care. Community-level data are available for participating areas, allowing them to compare their location to neighboring communities, other 
       states and the nation. Local public health agencies, day-care centers and schools can use their results to evaluate their systems and 
       processes, gaining insights into where improvements can be made. These data also promote inter-agency cooperation for reform and lasting 
       change. For example, data sharing can encourage greater openness among schools, medical and mental-health providers, police and the courts. 
       Data from the NSCH and AHR are used for a variety of purposes. As such, a large body of reports and peer-reviewed publications are available. 
       NSCH publications include exploring aspects of overall child health, school-readiness, mental health and children with special needs. 
-      A full list of NSCH publications authored by MCHB staff are available through the  
+      A full list of NSCH publications authored by MCHB staff is available through the  
       <a href="https://mchb.hrsa.gov/data-research/national-survey-childrens-health/publications-presentations" target="_blank">NSCH Publications Page</a>. 
       AHR reports are available on their 
       <a href="https://www.americashealthrankings.org/learn/reports" target="_blank">reports page</a>. 
     </p>
         
-    
     <p>
-      This project explores the NSCH 2023 and AHR databases with machine learning techniques including regression, K-nearest neighbors, decision trees and 
-      random forest, support vector machines, neural networks, K-means clustering and hierarchical clustering. Analyses are limited to state-level 
-      comparisons and national estimates, as identifiers at the local level are not available on the NSCH public database.
+      This project explores the NSCH 2023 and AHR databases with machine learning techniques including K-means clustering and hierarchical clustering, principle component analysis, 
+      Naïve Bayes, decision trees, random forest, and XGBoost. Analyses are limited to individual and state-level comparisons. Identifiers at the local level, such as city or zip code, 
+      are not available on the NSCH public database.
     </p>  
 
     <p>
-      This research began with the 10 questions listed below, which were investigated through exploritory data analysis (EDA). State-level comparisons include the 50 states 
+      This research began with the 10 questions listed below under <b>Q&A</b>, which were initially investigated through exploratory data analysis (EDA). State-level comparisons include the 50 states 
       and District of Columbia (N=51). State-wide estimates of NSCH are generated by combining the child’s weighted counts for each response over the weighted total possible responses 
       to obtain state-level weighted percentages (N=51). Individual-level comparisons for the NSCH are weighted with the sampling and response weights and include all respondents 
-      with non-missing values (unweight N=54,159, weighted N=~14 million):
-      <ol> 
-        <li>What is the relationship between the percentage of households living below the federal poverty level (<b>AHR, 16184:poverty</b>) and children receiving 
-          preventative care check-ups (<b>NSCH, state-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>)?</li>
-        <li>What impact does the percentage of children who received by age 24 months all recommended vaccines (<b>AHR, 18114:vaccination, low versus medium or high coverage</b>) 
-          have on children receiving preventative care check-ups (<b>NSCH, state-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>)?</li>
-        <li>How does public health funding per person (<b>AHR, 3837:public health funding</b>) influence number of active primary care providers per 100,000 population (<b>AHR, 
-          17673:primary care provider</b>)?</li>
-        <li>How does the number of active primary care providers per 100,000 population (<b>AHR, 17673:primary care provider</b>) relate to a child having a place to receive care 
-          regularly (<b>NSCH, state-level, C8, place usually take child when sick, K4Q01</b>)? </li>
-        <li>How does at least one preventative care visit (<b>NSCH, individual-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>) influence overall child health 
-          (<b>NSCH, individual-level, A1, excellent/very good/good/fair/poor, K2Q01</b>)?</li>
-        <li>What effect does having continuous and adequate insurance (<b>NSCH, individual-level, E2/E3, insurance status, smAdeqIns_23</b>) have on overall child health 
-          (<b>NSCH, individual-level, A1, excellent/very good/good/fair/poor, nomChHlthSt_23</b>)?</li>
-        <li>How does family's poverty level (<b>NSCH, individual-level, K3, income, povlev4_23	(Income level based on family poverty level status, imputed) </b>) impact overall 
-          child health (<b>NSCH, individual-level, A1, excellent/very good/good/fair/poor, nomChHlthSt_23</b>)?</li>
-        <li>What is the relationship between benefits from the Women, Infants, and Children (WIC) Program (<b>NSCH, individual-level, I7, Yes/No, WIC_23</b>)) and overall child health 
-          (<b>NSCH, individual-level, A1, excellent/very good/good/fair/poor, nomChHlthSt_23</b>)? </li>
-        <li>Among teenagers, what impact does use of electronics (<b>NSCH, individual-level, H6, time spent in front of the TV/computer/cellphone playing games/social 
-          media (not counting homework), ScreenTime_23</b>) have on whether child slept the average recommended number of hours for age (<b>NSCH, individual-level, H5, hours, HrsSleep_23
-          (Child slept recommended age-appropriate hours during an average day/on most weeknights, age 4 months – 17)</b>)? </li>
-        <li>Does moving two or more times in the last year (<b>NSCH, individual-level, I11, number of places lived in the last year greater than 2, PlacesLived_23</b>) influence children
-          receiving preventative care check-ups (<b>NSCH, individual-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>) </li>
-      </ol>    
-      
+      with non-missing values (unweight N=54,159, weighted N=~14 million).
     </p>
-
+    
     <div class="top-images">
       <img src="images/Child_immunized.png" alt="question immune">
       <img src="images/Sleepy_Teen.png" alt="question sleep">
@@ -245,27 +253,80 @@
     </div>
     
     <p>
-        EDA identified interesting patterns in the data. After this initial pass through the data, the analysis honed in on the following four questions:<br>
+        EDA identified interesting patterns in the data. After this initial pass through the data, the analysis honed in on questions 1, 6, 9, and 10 from the <b>Q&A</b> below, specifically:<br>
         <ul>
-          <li>Question 1: Do state-wide insurance coverage and receiving preventative care predict state-wide immunization coverage by 24-months?   </li>
-          <li>Question 2: What state-wide factors predict state-wide immunization coverage by 24-months?</li>
-          <li>Question 3: What state-wide features predict state-wide isurance coverage?</li>
-          <li>Question 4: Among teenagers, what features predict inadequate sleep?  </li>
-          <li>Question 5: What factors contribute to children not accessing preventive care?</li>
+          <li>Question 1: What state-wide factors predict state-wide immunization coverage by 24-months?</li>
+          <li>Question 6: What state-wide features predict state-wide insurance coverage?</li>
+          <li>Question 9: Among teenagers, what features predict inadequate sleep?  </li>
+          <li>Question 10: What factors contribute to children not accessing preventive care?</li>
         </ul>  
 
-        We employed K-means clustering and hierarchical clustering methods to explore Question 1, which focued on only two predictors. Question 2 expanded the predictors to 10 state-wide features, 
+        We employed K-means clustering and hierarchical clustering methods to explore Question 1, focusing on only two predictors. Further exploration expanded the predictors to 10 state-wide features, 
         specifically: 1) receiving preventative care, 2) children in excellent/very good health, 3) having a place to receive health care, 4) insurance coverage, 5) adults completing high school,
         6) population < 18 years old, 7) above the federal poverty line, 8) primary care providers per 100,000, 9) public health spending per capita, and 10) supportive engagement. For this 
         question, we implemented principal component analysis for feature reduction to find patterns in the state-characteristics leading to immunization coverage. With a similar list of state-level 
-        features, we examined Question 3 with a decision tree model.<br>
+        features, we examined Question 6 with a decision tree model.<br>
         <br>
-        Questions 4 and 5 evaluate data at the individual child-level. We analyzed Question 4 using Bernoulli Naïve Bayes with dichotomized variables for: screen time usage, age, housing instability, 
-        family food and cash assistance, adequate and continuous insurance, health status, preventative care visits, and place to get health care. For Question 5, we assessed the performance of 
+        Questions 9 and 10 evaluate data at the individual child-level. We analyzed Question 9 using Bernoulli Naïve Bayes with dichotomized variables for: screen time usage, age, housing instability, 
+        family food and cash assistance, adequate and continuous insurance, health status, preventative care visits, and place to get health care. For Question 10, we assessed the performance of 
         decision tree, random forest and XGBoost classification.<br>
               
     </p>  
-    
+
+<h3>Q&A</h3>
+
+<ol class="qa-list">
+  <li>
+    <p class="question">What state-wide factors predict state-wide immunization coverage by 24-months?</p>
+    <p class="answer"></p>
+  </li>
+
+  <li>
+    <p class="question">What impact does the percentage of children who received all recommended vaccines by 24 months have on children receiving preventative care check-ups at the state-level?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">How does state-level public health funding per person influence number of active primary care providers per 100,000 population at the state-level?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">How does the number of active primary care providers per 100,000 population at the state-level relate to children having a place to receive care regularly?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">How does at least one preventative care visit influence overall child health at the individual-level?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">What state-wide features predict state-wide insurance coverage?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">How does a family's poverty level impact overall child health?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">What is the relationship between benefits from the Women, Infants, and Children (WIC) Program and overall child health?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">Among teenagers, what features predict inadequate sleep?</p>
+    <p class="answer">Answer</p>
+  </li>
+
+  <li>
+    <p class="question">What factors contribute to children not accessing preventive care?</p>
+    <p class="answer">Answer</p>
+  </li>
+</ol>    
+           
     <h3>References</h3>
     <p>
       <ul> 
@@ -281,63 +342,6 @@
       </ul>
     
 
-  </div>
-
-  <div id="Conclusions" class="tab-content"> 
-    
-    <h1>Conclusions</h1>  
-    
-    <div class="top-images">
-      <img src="Website_Pic11.JPG" alt="Conclusion image 3">
-      <img src="Website_Pic9.jpg" alt="Conclusion image 2">
-      <img src="Website_Pic18.JPG" alt="Conclusion image 1">
-    </div>
-        
-    <h3>Summary of findings</h3>
-    
-    <p>    
-        This research elucidated several important findings across our main outcomes, including rates of full vaccination by 24 months, sufficient sleep among teenagers, 
-        adequate insurance coverage, and uptake of preventative care. We found that preventative care and insurance coverage are good predictors of immunization coverage. 
-        Through K-Means and hierarchical clustering, we found that states that have similar rates of insurance and preventative care coverage cluster together. Those with 
-        lower coverage tended to also have lower immunization rates. Those with medium to high insurance and preventative care rates also clustered together. This group 
-        tended to also have medium to high immunization coverage. These results illustrate the interrelatedness of preventative care with insurance and immunizations. 
-        They identify that a gap in coverage for insurance and preventative care corresponds to a gap in childhood immunization rates. This interdependency suggests that 
-        improving one of these measures may positively influence the others. PCA analysis supported these findings and showed that states with higher populations <18, 
-        fewer primary care providers, less preventative care and reduced insurance coverage may require additional support to increase immunization coverage.
-    </p>
-
-    <p>
-        The American Academy of Sleep Medicine recommends that to promote optimal health, teens should regularly sleep eight to 10 hours per 24-hour period (Ref: Paruthi). 
-        For the sleep analysis, we employed a bernouilli naive Bayes. Influential features for inadequate sleep included: older teens, greater screentime (3+ hrs/day),  
-        housing instability and children in poorer health. Helping these groups obtain enough sleep could improve their overall physical and mental health.
-    </p>
-
-    <p>
-      The decision tree with the state-level outcome of good insurance found that per capita spending on public health of at least $147 per person deliniated the data fairly 
-      well into states with and without good insurance coverage. This has important implications for states hoping to bolster insurance coverage for their residents. Since the 
-      median public health spending is $123, on average states would only need to increase their spending by approximately $20-$23 per person in order to reach this threshold. 
-      Such an investment could provide residents with greater access to health coverage. According to the American Hospital Association, "studies confirm that coverage improves 
-      access to care; supports positive health outcomes, including an individual’s sense of their own health and well-being; incentivizes appropriate use of health care resources; 
-      and reduces financial strain on individuals, families and communities.
-    </p>
-      
-    <p>
-      The XGBoost model found that not having a usual place to receive health care is the most predictive feature of not receiving preventative care. Other features, such 
-      as lower education, older children and living outside of the Northeast, were also important features. This suggests that targetting those who are most likely to miss 
-      visits with public health messaging and helping people find a regular place for care are viable interventions in increasing preventative care coverage.  
-    </p>
-    
-    <p>
-    </p>   
-
-      
-    </p>
-
-    <p>
-      
-    </p>
-
-    
   </div>
 
   <div id="DataPrep_EDA" class="tab-content">
@@ -360,18 +364,18 @@
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1a_NSCH_family_data.ipynb" target="_blank" rel="noopener noreferrer">
         1a_NSCH_family.
       </a>
-       Identifiers and features of interst were kept. The NSCH data include FIPS codes for the states. New variables for the state long and short names were added. Missing codes of 95 and 99 
+       Identifiers and features of interest were kept. The NSCH data include FIPS codes for the states. New variables for the state long and short names were added. Missing codes of 95 and 99 
       were replaced with NAN. Records that were missing data for important analysis variables were removed, as the number missing relative to 
       the total is small, specifically:      
       <ul> 
         <li>overall health of the child (missing 131),</li>
         <li>preventative care (missing 457), </li>
-        <li>place where take child when sick (missing 219),</li>
-        <li>insurance (missing 348),</li>
+        <li>regular place to receive care when the child when sick (missing 219),</li>
+        <li>insurance satus (missing 348),</li>
         <li>poverty level not missing, as they used imputation</li>
       </ul>
       <br>
-      Other variables that are missing more often are family WIC status (missing 1272), screen time (missing 749), and number places lived 
+      Other variables that are missing more often are family WIC status (missing 1272), screen time (missing 749), and number of places lived 
       in the last year (missing 1420). For analyses which include these variables, we will limit the analysis to non-missing responses, as 
       missing values are across all states and appear to be missing at random. Lastly, the program outputs a csv file (NSCH_fam.csv with 
       N=54,159 children).
@@ -395,7 +399,7 @@
       </a>  
       A csv file of the data was output (AHR_state.csv with 51 records).
       <br>
-      Finally, the NSCH and AHR state-level data were merged together and the  of the combined data was output (NSCH_AHR_state. with 51 records) using the python program 
+      Finally, the NSCH and AHR state-level data were merged together and the combined data was output (NSCH_AHR_state. with 51 records) using the python program 
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/1d_NSCH_AHR_combined_state_data.ipynb" target="_blank" rel="noopener noreferrer">
         1d_NSCH_AHR_combined_state_data.
       </a>
@@ -916,7 +920,7 @@
 
   <div id="NaiveBayes" class="tab-content">
       
-    <h2>Naive Bayes</h2>
+    <h2>Naïve Bayes</h2>
 
     <img src="Website_Pic20.JPG" alt="NaiveBayes image."
      style="float: right; margin: 0 0 10px 20px; width: 400px;">
@@ -957,7 +961,7 @@
      </ul>
 
     <br>
-    <b>Illustration of three main types of Naive Bayes Classifiers (Source: Baladram, 2024)</b><br>
+    <b>Illustration of three main types of Naïve Bayes Classifiers (Source: Baladram, 2024)</b><br>
     <img src="images/Baladram_Naive_Bayes_Approaches.png" alt="Baladram_Naive_Bayes_Approaches" width="600"><br><br>
     
     <p>
@@ -973,7 +977,7 @@
     </p>
 
     <p>
-      As a classification algorithm, Naive Bayes has many uses, including sentiment analysis, image recognition, and recommendation systems. Naive 
+      As a classification algorithm, Naïve Bayes has many uses, including sentiment analysis, image recognition, and recommendation systems. Naïve 
       Bayes is also used for predicting medical diagnoses from symptom data. Additionally, it may be used for text classification to aid in spam filtering or 
       documentation categorization.  
     </p>
@@ -982,11 +986,11 @@
     <h3>Data Prep</h3>
     
     <p> 
-      Both multinomial and Bernoulli Naive Bayes were preformed. As explained above, multinomial Naive Bayes requires discrete features (such as word counts). From the 
+      Both multinomial and Bernoulli Naïve Bayes were preformed. As explained above, multinomial Naïve Bayes requires discrete features (such as word counts). From the 
       family-level data from NSCH, we selected count variables. Specifically, the following features were kept and missing values were replaced with the mode: 
       five-level health status, child's screen time usage, child's age, three-level family food and cash assistance, number of family members in the household, and 
       highest-level of adult education for the family. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Figure 25a 
-      shows the features selected for multinomial Naive Bayes by the adequacy of sleep among teenagers. 
+      shows the features selected for multinomial Naïve Bayes by the adequacy of sleep among teenagers. 
     </p>
 
     <br>
@@ -997,7 +1001,7 @@
       Features, target and sample weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
       in Table 4. The training and test data are disjoint because these data sets serve different purposes. The training data are used to train the model and help it to 
       learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Tables 5 and 6 provide the first five five rows of data for the training and testing data, respectively. 
+      may appear perform better than it actually does, which could lead to misuse of the model. Tables 5 and 6 provide the first five rows of data for the training and testing data, respectively. 
     </p> 
     
     <br>
@@ -1013,10 +1017,10 @@
     <img src="images/MNB_Test_Data_Head.png" alt="MNB test head" width="1200"><br><br>
     
     <p>
-      The Bernoulli Naive Bayes analysis required binary features. Family-level data from NSCH for the following features were kept and missing values were replaced with 
+      The Bernoulli Naïve Bayes analysis required binary features. Family-level data from NSCH for the following features were kept and missing values were replaced with 
       the mode: child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
       visits, and a place to get health care. Dummy variables were created for the features. The reference categories were NOT dropped, as all categories are needed to 
-      complete the Naive Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. 
+      complete the Naïve Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. 
       The raw features by adequacy of sleep among teenagers are provided in Figure 26. 
     </p>
     
@@ -1027,7 +1031,7 @@
 
     <p>
       Features, target and sample weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
-      in Table 7. Tables 8 and 9 provide the first five five rows of data for the training and testing data, respectively. 
+      in Table 7. Tables 8 and 9 provide the first five rows of data for the training and testing data, respectively. 
     </p> 
     
     <br>
@@ -1043,12 +1047,12 @@
     <img src="images/BNB_Test_Data_Head.png" alt="BNB test head" width="1200"><br><br>
 
     <p>
-      Due to the data use agreement, these data are stored on a private repository. The state-level data  used in the multinomial Naive Bayes are here: 
+      Due to the data use agreement, these data are stored on a private repository. The state-level data  used in the multinomial Naïve Bayes are here: 
       <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_AHR_state.csv" target="_blank" rel="noopener noreferrer">
         NSCH_AHR_state.csv.  
       </a> 
 
-      The family-level data used in the Bernoulli Naive Bayes are here:
+      The family-level data used in the Bernoulli Naïve Bayes are here:
       <a href="https://github.com/vt-art/NSCH_AHR_Data/blob/main/NSCH_fam.csv" target="_blank" rel="noopener noreferrer">
         NSCH_fam.csv.  
       </a> 
@@ -1059,7 +1063,7 @@
     <h3>Code</h3>
 
     <p> 
-      The following Python program contains the code for the Multinomial Naive Bayes analysis:
+      The following Python program contains the code for the Multinomial Naïve Bayes analysis:
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/5a_NSCH_Multinonial_Naive_Bayes_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
         5a_NSCH_Multinonial_Naive_Bayes_Analysis.
       </a>      
@@ -1070,7 +1074,7 @@
       Features, target and sample weights are split into training and test sets. <br>
       <br>
      
-      Next, the Multinomial Naive Bayes classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The confusion 
+      Next, the Multinomial Naïve Bayes classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The confusion 
       matrix was assessed and the model performed poorly at a 0.5 threshold. As such, the optimal threshold was assessed from accuracy, recall and f-1 scores. After determining 
       a threshold of 0.3 was ideal, the model was refit at this level. The following hyperparameters were used: 'alpha': 1.0, 'class_prior': None, 'fit_prior': True, 
       'force_alpha': True. Measures of model performance are calculated, including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the 
@@ -1078,7 +1082,7 @@
     </p>
         
     <p> 
-      The following Python program contains the code for the Bernouilli Naive Bayes analysis:
+      The following Python program contains the code for the Bernoulli Naïve Bayes analysis:
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/5b_NSCH_Bernoulli_Naive_Bayes_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
         5b_NSCH_Bernoulli_Naive_Bayes_Analysis.
       </a>      
@@ -1086,11 +1090,11 @@
       The first step of the code is to read in the family-level data from NSCH. Next, the following features were kept and missing values were replaced with the mode: 
       child's screen time usage, child's age, housing instability, family food and cash assistance, adequate and continuous insurance, health status, preventative care 
       visits, and a place to get health care. Dummy variables were created for the features. The reference categories were NOT dropped, as all categories are needed to 
-      complete the Naive Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Features, target 
+      complete the Naïve Bayes analysis. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Features, target 
       and sample weights are split into training and test sets. <br>
       <br>
      
-      Next, the Bernoulli Naive Bayes classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The following 
+      Next, the Bernoulli Naïve Bayes classifier is instanciated and fit with the above target, feature and sample weight variables using the training data. The following 
       hyperparameters were used: 'alpha': 1.0, 'binarize': 0.0, 'class_prior': None, 'fit_prior': True, 'force_alpha': True. Measures of model performance are calculated, 
       including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of log probabilities for the features. Finally, partial 
       dependency plots are created for each feature.      
@@ -1101,7 +1105,7 @@
     <h3>Results</h3> 
     
     <p> 
-      The weighted Multinomial Naive Bayes classifier was first run with the default threshold of 0.5. As shown in Figure 27, the model performed poorly with zero true 
+      The weighted Multinomial Naïve Bayes classifier was first run with the default threshold of 0.5. As shown in Figure 27, the model performed poorly with zero true 
       positives detected. As such, we conducted an analysis of the accuracy, recall and f1-scores by various thresholds (Figure 18 and 29) and determined that a threshold 
       of 0.3 provided the best balance of these measures.  
     </p>
@@ -1119,7 +1123,7 @@
     <img src="images/Q9_AdeqSleep_MNB_PrecRecall.png" alt="Q9_AdeqSleep_MNB_PrecRecall" width="1200"><br><br>
 
     <p>
-      The multinomial Naive Bayes model was updated with a threshold of 0.3, rerun and assessed for performance. The updated model performed better (Figure 30), although 
+      The multinomial Naïve Bayes model was updated with a threshold of 0.3, rerun and assessed for performance. The updated model performed better (Figure 30), although 
       there were more false positive results, as one would expect with a threshold of 0.3. The accurracy, f1-score and recall of the model were 0.68, 0.25 and 0.18, 
       respectively. The area under the curve was only 0.56, or slightly better than chance (Figure 31).
     </p>
@@ -1145,7 +1149,7 @@
     <img src="images/Q9_AdeqSleep_MNB_LogProb.png" alt="Q9_AdeqSleep_MNB_LogProb" width="1200"><br><br>
 
     <p>
-      In addition to a multinomial Naive Bayes analysis, we also completed a Bernoulli Naive Bayes analysis. This approach appeared to work much better with our available 
+      In addition to a multinomial Naïve Bayes analysis, we also completed a Bernoulli Naïve Bayes analysis. This approach appeared to work much better with our available 
       data. Creating dummy variables for multi-level features allowed us to differenciate the influence of the groupings within the features. The confusion matrix is provided 
       in Figure 33. Although the accuracy was okay at 0.70, the f1-score (0.23) and recall (0.15). As illustrated by the ROC-curve in Figure 34, the area under the curve was 
       0.66.
@@ -1175,7 +1179,7 @@
    
     <p> 
       The American Academy of Sleep Medicine recommends that to promote optimal health, teens should regularly sleep eight to 10 hours per 24-hour period (Ref: Paruthi). 
-      This Naive Bayes analysis found that older teens, teens using screens for 3 or more hours per day, those with poorer health, and those with housing instability 
+      This Naïve Bayes analysis found that older teens, teens using screens for 3 or more hours per day, those with poorer health, and those with housing instability 
       are more at risk for inadequate sleep. Helping these groups obtain enough sleep could improve overall physical and mental health for these groups.
     </p> 
 
@@ -1303,7 +1307,7 @@
       Features and target are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
       in Table 10. The training and test data are disjoint because the training data are used to train the model and help it to 
       learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Tables 11 and 12 provide the first five five rows of data for the training and testing data, respectively. 
+      may appear perform better than it actually does, which could lead to misuse of the model. Tables 11 and 12 provide the first five rows of data for the training and testing data, respectively. 
     </p> 
     
     <br>
@@ -1568,7 +1572,7 @@
       Features and target are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
       in Table 14. The training and test data are disjoint because the training data are used to train the model and help it to 
       learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Tables 15 and 16 provide the first five five rows of data for the training 
+      may appear perform better than it actually does, which could lead to misuse of the model. Tables 15 and 16 provide the first five rows of data for the training 
       and testing data, respectively. 
     </p> 
     
@@ -1691,7 +1695,7 @@
    
     <p> 
       The XGBoost model found that not having a usual place to receive health care is the most predictive feature of not receiving preventative care. Other features, such 
-      as lower education, older children and living outside of the Northeast, were also important features. This suggests that targetting those who are most likely 
+      as lower education, older children and living outside of the Northeast, were also important features. This suggests that targeting those who are most likely 
       to miss visits with public health messaging and helping people find a regular place for care are viable interventions in increasing preventative care coverage.
     </p> 
 
@@ -1710,91 +1714,25 @@
     
   </div>
 
-  <div id="Regression" class="tab-content">
-    <h2>Regression</h2>
+  <div id="Results" class="tab-content">
+    <h2>Summary of Results</h2>
 
-    <img src="Website_Pic8.jpg" alt="Regression image"  width="1200">
+    <img src="Website_Pic8.jpg" alt="Results image"  width="1200">
     
-    <br>
-    <h3>Overview</h3>
+
    
     <p> 
     </p>
 
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-    
-    <br>
-    <h3>Data Prep</h3>
-    
-    <p> 
-    </p>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <h3>Code</h3>
-    
-    <p> 
-    </p>
-    
-    <br>
-    <h3>Results</h3> 
-    
-    <p> 
-    </p>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-    
-   
-    <br>
-    <h3>Conclusions</h3>
-   
+  
     <p> 
     </p> 
 
     
   </div>
 
-  <div id="NN" class="tab-content">
-    <h2>Neural Networks</h2>
+  <div id="ProjectChallenges" class="tab-content">
+    <h2>Project Challenges</h2>
 
     <div class="top-images">
       <img src="Website_Pic19.JPG" alt="NN image 3">
@@ -1808,78 +1746,202 @@
     <p> 
     </p>
 
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-    
-    <br>
-    <h3>Data Prep</h3>
-    
     <p> 
     </p>
 
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <h3>Code</h3>
-    
-    <p> 
-    </p>
-    
-    <br>
-    <h3>Results</h3> 
-    
-    <p> 
-    </p>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-
-    <br>
-    <b>Figure</b><br>
-    <img src="images/blank.png" alt="blank" width="1200"><br><br>
-    
-   
-    <br>
-    <h3>Conclusions</h3>
-   
     <p> 
     </p> 
 
     
   </div>
 
+  <div id="Conclusions" class="tab-content"> 
+    
+    <h1>Conclusions</h1>  
+    
+    <div class="top-images">
+      <img src="Website_Pic11.JPG" alt="Conclusion image 3">
+      <img src="Website_Pic9.jpg" alt="Conclusion image 2">
+      <img src="Website_Pic18.JPG" alt="Conclusion image 1">
+    </div>
+        
+    <h3>Summary of findings</h3>
+    
+    <p>    
+        This research found several important findings across our main outcomes of rates of full vaccination by 24 months, sufficient sleep among teenagers, 
+        adequate insurance coverage, and uptake of preventative care. We found that preventative care and insurance coverage are good predictors of immunization coverage. 
+        K-Means and hierarchical clustering illustrated that states that have similar rates of insurance and preventative care coverage cluster together. Those with 
+        lower coverage tended to also have lower immunization rates. Those with medium to high insurance and preventative care rates also clustered together. This group 
+        tended to also have medium to high immunization coverage. These results show the interrelatedness of preventative care with insurance and immunizations. 
+        They identify that a gap in coverage for insurance and preventative care corresponds to a gap in childhood immunization rates. This interdependency suggests that 
+        improving one of these measures may positively influence the others. PCA analysis supported these findings and showed that states with higher populations <18, 
+        fewer primary care providers, less preventative care and reduced insurance coverage may require additional support to increase immunization coverage.
+    </p>
+
+    <p>
+        The American Academy of Sleep Medicine recommends that to promote optimal health, teens should regularly sleep eight to 10 hours per 24-hour period (Ref: Paruthi). 
+        For the sleep analysis, we employed a Bernoulli Naïve Bayes. Influential features for inadequate sleep included: older teens, greater screentime (3+ hrs/day),  
+        housing instability and children in poorer health. Helping these groups obtain enough sleep could improve their overall physical and mental health.
+    </p>
+
+    <p>
+        The decision tree with the state-level outcome of good insurance found that per capita spending on public health of at least $147 per person delineated the data fairly 
+        well into states with and without good insurance coverage. This has important implications for states hoping to bolster insurance coverage for their residents. Since the 
+        median public health spending is $123, on average states would only need to increase their spending by approximately $20-$23 per person in order to reach this threshold. 
+        Such an investment could provide residents with greater access to health coverage. According to the American Hospital Association, "studies confirm that coverage improves 
+        access to care; supports positive health outcomes, including an individual’s sense of their own health and well-being; incentivizes appropriate use of health care resources; 
+        and reduces financial strain on individuals, families and communities.
+    </p>
+      
+    <p>
+        The XGBoost model found that not having a usual place to receive health care is the most predictive feature of not receiving preventative care. Other features, such 
+        as lower education, older children and living outside of the Northeast, were also important features. This suggests that targeting those who are most likely to miss 
+        visits with public health messaging and helping people find a regular place for care are viable interventions in increasing preventative care coverage.  
+    </p>
+    
+    <p>
+    </p>   
+
+      
+    </p>
+
+    <p>
+      
+    </p>
+
+    
+  </div>
+
+  </div>
+
+  <div id="References" class="tab-content">
+    <h2>References</h2>
+
+    <img src="Website_Pic5.jpg" alt="Results image"  width="1200">
+    
+<ol class="ref-list">
+  <li>WHO–UNICEF–Lancet Commission, 2020.</li>
+
+  <li>
+    National Academies of Sciences, Engineering, and Medicine. 2024. 
+    <i>Launching Lifelong Health by Improving Health Care for Children, Youth, and Families.</i> 
+    Washington, DC: The National Academies Press. 
+    <a href="https://doi.org/10.17226/27835" target="_blank">https://doi.org/10.17226/27835</a>
+  </li>
+
+  <li>
+    Mandela, N. <i>Address by Nelson Mandela at Vaccine Conference.</i> South Africa 2002. 
+    <a href="http://www.mandela.gov.za/mandela_speeches/2002/0204_vaccine.htm" target="_blank">
+      http://www.mandela.gov.za/mandela_speeches/2002/0204_vaccine.htm
+    </a>
+  </li>
+
+  <li>
+    National Academies of Sciences, Engineering, and Medicine… 2024 Dec 30. 
+    <i>Child Health and Health Care: Uniqueness, Societal Importance, and Vision for the Future.</i>
+    Available from: 
+    <a href="https://www.ncbi.nlm.nih.gov/books/NBK610738/" target="_blank">
+      https://www.ncbi.nlm.nih.gov/books/NBK610738/
+    </a>
+  </li>
+
+  <li>
+    United Nations International Children’s Emergency Fund (UNICEF). Report card no. 6: 
+    <i>Child poverty in rich countries 2005.</i> UNICEF Innocenti Research Centre; 2005.
+    <a href="https://www.unicef-irc.org/publications/pdf/repcard6e.pdf" target="_blank">
+      https://www.unicef-irc.org/publications/pdf/repcard6e.pdf
+    </a>
+  </li>
+
+  <li>
+    Davis, Alex. <i>A Guide to Clustering Algorithms.</i> Towards Data Science. Sep 6, 2024.
+  </li>
+
+  <li>
+    Andreoni, Riccardo. <i>Dimensionality Reduction Made Simple.</i> Towards Data Science. Feb 7, 2024.
+  </li>
+
+  <li>
+    Sena, Marcus. <i>Principal Component Analysis Made Easy.</i> Towards Data Science. Jun 8, 2024.
+  </li>
+
+  <li>
+    <i>Feature Selection Techniques in Machine Learning.</i> GeeksforGeeks. Aug 30, 2025.
+  </li>
+
+  <li>
+    <i>What is Feature Extraction?</i> GeeksforGeeks. Aug 30, 2025.
+  </li>
+
+  <li>
+    Mueller, Vincent. <i>Eigenvalues and eigenvectors in PCA.</i> Sep 18, 2021.
+  </li>
+
+  <li>
+    Baladram, S. <i>Bernoulli Naive Bayes, Explained.</i> Towards Data Science. Aug 2024.  
+    <a href="https://towardsdatascience.com/bernoulli-naive-bayes-explained-a-visual-guide-with-code-examples-for-beginners-aec39771ddd6/" target="_blank">
+      https://towardsdatascience.com/bernoulli-naive-bayes-explained-a-visual-guide-with-code-examples-for-beginners-aec39771ddd6/
+    </a>
+  </li>
+
+  <li>
+    Yıldırım, S. <i>Naive Bayes Classifier – Explained.</i> Medium (TDS Archive). Feb 2020.  
+    <a href="https://medium.com/data-science/naive-bayes-classifier-explained-50f9723571ed" target="_blank">
+      https://medium.com/data-science/naive-bayes-classifier-explained-50f9723571ed
+    </a>
+  </li>
+
+  <li>
+    Mocquin, Y. <i>Multinomial Naive Bayes Classifier.</i> Towards Data Science. Mar 2024.  
+    <a href="https://towardsdatascience.com/multinomial-naive-bayes-classifier-c861311caff9/" target="_blank">
+      https://towardsdatascience.com/multinomial-naive-bayes-classifier-c861311caff9/
+    </a>
+  </li>
+
+  <li>
+    Paruthi, S., Brooks L., D'Ambrosio C., et al. <i>Recommended Amount of Sleep for Pediatric Populations.</i>  
+    Journal of Clinical Sleep Medicine (2016).  
+    <a href="https://doi.org/10.5664/jcsm.5866" target="_blank">https://doi.org/10.5664/jcsm.5866</a>
+  </li>
+
+  <li>
+    Dash, S. <i>Decision Trees Explained – Entropy, Information Gain, Gini Index, CCP Pruning.</i>  
+    Towards Data Science. Nov 2022.  
+    <a href="https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/" target="_blank">
+      https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/
+    </a>
+  </li>
+
+  <li>
+    <i>Decision Trees.</i> Geeks for Geeks. June 2025.  
+    <a href="https://www.geeksforgeeks.org/machine-learning/decision-tree/" target="_blank">
+      https://www.geeksforgeeks.org/machine-learning/decision-tree/
+    </a>
+  </li>
+
+  <li>
+    Schoen C, DesRoches C. <i>Uninsured and unstably insured: the importance of continuous insurance coverage.</i>  
+    Health Serv Res. 2000 Apr;35(1 Pt 2):187–206. PMID: 10778809; PMCID: PMC1089095.
+  </li>
+
+  <li>
+    American Hospital Association. <i>Report: The Importance of Health Coverage.</i>
+  </li>
+
+  <li> 
+    Subha. Boosting — Adaboost, Gradient Boost and XGBoost. Medium. Mar 29, 2024.          
+    Available from: https://medium.com/@pingsubhak/boosting-adaboost-gradient-boost-and-xgboost-bdda87eed44e </i>
+  </li>
+    
+  <li> 
+    GradientBoosting vs AdaBoost vs XGBoost vs CatBoost vs LightGBM. GeeksforGeeks. Jul 23, 2025. 
+    Available from: https://www.geeksforgeeks.org/machine-learning/gradientboosting-vs-adaboost-vs-xgboost-vs-catboost-vs-lightgbm/ </i>
+  </li>
+  
+</ol>
+    
+  </div>
+  
   <!-- JavaScript for Tab Switching -->
   <script>
     function openTab(event, tabId) {
