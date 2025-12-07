@@ -318,7 +318,7 @@
   <li>
     <p class="question">How does a family's poverty level impact overall child health?</p>
     <p class="answer">As overall health status decreases, the proportion of children at the highest income group (i.e. 400% or more of the poverty level) also decreases. The relationship between health status and poverty 
-      is also evaluated for those below the federal poverty level and shows that as health worses more children are in families below the poverty level.</p>
+      is also evaluated for those below the federal poverty level and shows that as health worsens more children are in families below the poverty level.</p>
   </li>
 
   <li>
@@ -428,7 +428,7 @@
     <h3>Exploratory Data Analysis (EDA)</h3>
    
     <p>
-      As noted in the introduction, this research explored 10 questions. Data were explored in Python using the program
+      This research explored 10 questions in Python using the program: 
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/2_NSCH_AHR_Visualizations.ipynb" target="_blank" rel="noopener noreferrer">
         2_NSCH_AHR_Visualizations.
       </a>
@@ -439,15 +439,11 @@
       values (N=54,159). 
     </p>
     <p>
-      <b>Question 1: What is the relationship between the percentage of households living below the federal poverty level (<b>AHR, 16184:poverty</b>) and children receiving 
-          preventative care check-ups (<b>NSCH, state-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>)?</b>
-      <br><br>
-      On average, states reported over 10% of households living below the federal poverty level (median(P25, P75) = 12.2(11.05,13.65)). The percentage of children 
-      receiving at least one preventative care visit ranged from 69.8% to 89.3%. Figure 1 illustrates that as the percentage of households below the federal poverty 
-      level increases (i.e. more people living in poverty), the percentage of children receiving preventative care decreases.<br>  
-      <br>
-      <b>Figure 1</b><br>
-      <img src="images/Q1_preventative_care_Poverty_reg.png" alt="Q1 Preventative Care Poverty" width="1200"><br><br>
+      <b>Question 1: What state-wide factors predict state-wide immunization coverage (<b>AHR, 18114:vaccination, low versus medium or high coverage</b>) by 24-months?</b>
+      <br><br>  
+         
+    <b>Figure 1</b><br>
+    <img src="images/Q2_good_immun_pairwise_scatter.png" alt="Q2 pairwise scatter" width="1200"><br><br>
       
     </p>
     <br>
@@ -473,7 +469,7 @@
       <br>
       <b>Figure 3</b><br>
       <img src="images/Q3_providers_public_health_reg_LT400.png" alt="Q3 Providers Public Health" width="1200"><br><br>
-      Of note, Washington DC is excluded from Figure 4. DC has active providers per 100,000, and public health spending per capita in DC is $1,084.
+      Of note, Washington DC is excluded from Figure 4. DC has 553.6 active providers per 100,000, and public health spending per capita in DC is $1,084.
     </p>
     <br>
     <p>
@@ -485,7 +481,7 @@
       <br>
       <b>Figure 4</b><br>
       <img src="images/Q4_place_for_care_providers_reg_LT450.png" alt="Q4 Place For Care Providers" width="1200"><br><br>
-      Of note, Washington DC is excluded from Figure 4. DC has active providers per 100,000, and the percent of children in DC who have a place 
+      Of note, Washington DC is excluded from Figure 4. DC has 553.6 active providers per 100,000, and the percent of children in DC who have a place 
       to receive care regularly is 77.6%.
     </p>
     <br>
@@ -501,11 +497,11 @@
     </p>
     <br>
     <p>   
-      <b>Question 6: What effect does having continuous and adequate insurance (<b>NSCH, individual-level, E2/E3, insurance status, smAdeqIns_23</b>) have on overall child health 
-          (<b>NSCH, individual-level, A1, excellent/very good/good/fair/poor, nomChHlthSt_23</b>)?</b>
+      <b>Question 6: What features predict insurance coverage (<b>NSCH, individual-level, E2/E3, insurance status, smAdeqIns_23 rolled up</b> and 
+      <b>AHR, 16125:Uninsured</b>)?</b>
       <br><br>
-      As the child'e health status worses from 'Excellent' to 'Poor', we see a trend with adequate insuance coverage decreasing. As shown in Figure 6, among those with 
-      excellent health, 69% have adequate insurance. This drops to 45% having adequate insurance among those with poor health.<br>
+      We first evaluated the child level data before exploring the state-level data. As the child's health status worsens from 'Excellent' to 'Poor', we see a trend with adequate insurance coverage decreasing. 
+      As shown in Figure 6, among those with excellent health, 69% have adequate insurance. This drops to 45% having adequate insurance among those with poor health.<br>
       <br>
       <b>Figure 6</b><br>
       <img src="images/Q6_K2Q01_smAdeqIns_heat.png" alt="Q6 Adequate Insurance Heatmap" width="1200"><br><br>
@@ -516,7 +512,7 @@
           child health (<b>NSCH, individual-level, A1, excellent/very good/good/fair/poor, nomChHlthSt_23</b>)?</b>
       <br><br>
       As overall health status decreases, the proportion of children at the highest income group (i.e. 400% or more of the poverty level) also decreases (Figure 7a). 
-      The relationship between health status and poverty is also evaluated for those below the federal poverty level in Figure 7b and shows that as health worses more children
+      The relationship between health status and poverty is also evaluated for those below the federal poverty level in Figure 7b and shows that as health worsens more children
       are in families below the poverty level.<br>
       <br>
       <b>Figure 7a</b><br>
@@ -539,8 +535,7 @@
     </p>
     <br>
     <p>       
-      <b>Question 9: Among teenagers, what impact does use of electronics (<b>NSCH, individual-level, H6, time spent in front of the TV/computer/cellphone playing games/social 
-          media (not counting homework), ScreenTime_23</b>) have on whether child slept the average recommended number of hours for age (<b>NSCH, individual-level, H5, hours, HrsSleep_23
+      <b>Question 9: Among teenagers, what features predict inadequate sleep (less than the average recommended number of hours for age) (<b>NSCH, individual-level, H5, hours, HrsSleep_23
           (Child slept recommended age-appropriate hours during an average day/on most weeknights, age 4 months – 17)</b>)? </b>
       <br><br>
       Limiting screen time appears to play a role for adequate hours of sleep for teenagers. Once the average hours of screen time exceed 1 hour per day, the weighted proportion of teens 
@@ -551,15 +546,19 @@
     </p>
     <br>
     <p>  
-      <b>Question 10: Does moving two or more times in the last year (<b>NSCH, individual-level, I11, number of places lived in the last year greater than 2, PlacesLived_23</b>) influence children
-          receiving preventative care check-ups (<b>NSCH, individual-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>) </b>
+      <b>Question 10: What factors contribute to children not accessing preventive care check-ups (<b>NSCH, individual-level, C1/C2, 1 or more visits versus no visits, PrevMed_23</b>)?</b>
       <br><br>
       Children experiencing housing instability or living three or more places in the last year received a preventative care visit 69% of the time. Conversely, 80% of children who did not move more 
       than once experienced a preventative care visit.<br>
       <br>
       <b>Table 1</b><br>
       <img src="images/Q10_PrevMed_PlacesLived_Tab.png" alt="Q10 Preventive Medical Visits by Places Lived" width="1200"><br><br>
-    
+
+      On average, states reported over 10% of households living below the federal poverty level (median(P25, P75) = 12.2(11.05,13.65)). The percentage of children 
+      receiving at least one preventative care visit ranged from 69.8% to 89.3%. As the percentage of households below the federal poverty 
+      level increases (i.e. more people living in poverty), the percentage of children receiving preventative care decreases.<br>  
+    </p>
+     
   </div>
 
   <div id="Clustering" class="tab-content">
@@ -603,9 +602,9 @@
       <img src="images/Hierarchical_Clustering_Davis_Towards_Data_Science.webp" alt="HC_Davis_TDS" style="width: 1200px; height: auto;"><br><br>        
       
       <br>
-      For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest stems from Questions 2 and 6, which explore the 
-      relationships between children receiving preventative care check-ups and insurance coverage with good vaccination coverage for children by age two and the overall health of the children. 
-      The outcome of interest for this analysis is good vaccination coverage (< 67.5% of the state population is low coverage and 67.5% or greater is medium to high coverage). <br>
+      For this analysis, both K-Means and hierarchical clustering were used to uncover patterns in the data. The primary question of interest addresses Question1, which explores features 
+      related to good vaccination coverage for children by age two. The outcome of interest for this analysis is good vaccination coverage where < 67.5% coverage of the state 
+      population is low coverage and 67.5% or greater is medium to high coverage. <br>
       <br>
       <b>Figure 10</b><br>
       <img src="images/Q2_insured_pcare_good_immun_scatter.png" alt="Q2 Good Immunization Scatterplot" style="width: 1200px; height: auto;"><br><br>
@@ -642,7 +641,7 @@
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/3_NSCH_AHR_Cluster_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
         3_NSCH_AHR_Cluster_Analysis.
       </a>
-      After the data are read in and the features are standardized, the next step of the code is finding the best value for k. From here, the program completes K-Means clustering 
+      After the data are read in and the features standardized, the next step of the code is finding the best value for k. From here, the program completes K-Means clustering 
       with the determined value of k. The code iteratively shows how the clusters stabilize over the iterations. Next the clusters are compared to the true values for immunization status. 
       The accuracy is assessed and the confusion matrix is generated. <br>
       <br>
@@ -655,7 +654,8 @@
     <h3>Results</h3>
    
     <p> 
-      Figure 11 shows how the groupings varied when attempting k=2-10 clusters. On visual inspection, 2-3 clusters look the best.<br>
+      States were evently split on insurance coverage with 25/51 (49%) having low coverage and 26/51 (51%) having medium or high coverage. Clustering appeared to work well for these data. Figure 11 shows how the 
+      groupings varied when attempting k=2-10 clusters. On visual inspection, 2-3 clusters look the best.<br>
       <br>
       <b>Figure 11</b><br>
       <img src="images/Q2_insured_pcare_good_immun_k.png" alt="Q2 Good Immunization k" width="1200"><br><br>
@@ -712,7 +712,7 @@
     </p>    
 
     <br>
-    <h3></h3>
+    <h3>Conclusions</h3>
    
     <p> 
       K-Means and hierarchical clustering showed that there are unique similarities within states that have similar rates of insurance and preventative care coverage. States clustering together 
@@ -775,7 +775,7 @@
       <img src="images/Andreoni_PCA.png" alt="Andreoni_PCA_TDS" style="width: 1200px; height: auto;"><br><br>
 
       The mathematical elements of principal components are their eigenvalues and eigenvectors. Eigenvectors are vectors that when scaled remain on the same line (i.e. they either do not 
-      change their direction or they flip to the opposite direction. The scaling factor for the eigenvectors is the corresponding eigenvalue, which is the magnitude of the scaling. 
+      change their direction or they flip to the opposite direction). The scaling factor for the eigenvectors is the corresponding eigenvalue, which is the magnitude of the scaling. 
     
     </p>
     
@@ -783,8 +783,8 @@
     <h3>Data Prep</h3>
     
     <p> 
-      PCA requires the use of unlabeled numerical data. Unlabeled means that we have not included in the analysis the labeled groupings. For this analysis we included ten continous variables, specifically
-      the following state-level features were kept and standardized: percent of children receiving at least one preventative_care visit, percentage of children in excellent or very good health, percent of 
+      PCA requires the use of unlabeled numerical data. Unlabeled means that we have not included in the analysis the labeled groupings. For this analysis we included ten continuous variables, specifically
+      the following state-level features were kept and standardized: percent of children receiving at least one preventative care visit, percentage of children in excellent or very good health, percent of 
       children who had a place they usually went to for healthcare, percentage of the population younger than age 18, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
       percentage of households living at or above the federal poverty level, number of active primary care providers per 100,000 population, public health funding per capita, percentage of the population 
       covered by private or public health insurance, and sum of the social support and engagement measures. Because we were interested in binary immunization coverage as an outcome, we did not include this 
@@ -817,7 +817,7 @@
         4_NSCH_AHR_PCA_Analysis.
       </a>
       The first step of the code is to read in the state-level data from NSCH and AHR. Next, the following continuous state-level features were kept and standardized: percent of children receiving at least one 
-      preventative_care visit, percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, percentage of the population younger than 
+      preventative care visit, percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, percentage of the population younger than 
       age 18, percentage of adults age 25 and older with at least a high school diploma or equivalent, percentage of households living at or above the federal poverty level, number of active primary care 
       providers per 100,000 population, public health funding per capita, percentage of the population covered by private or public health insurance, and sum of the social support and engagement measures. <br>
       <br>
@@ -850,7 +850,7 @@
     <img src="images/Q2_PCA_cumulative_variance.png" alt="Q2 PCA Variance" width="1200"><br><br>
 
     <p>
-      To better understand the direction, magnitude and features involved in each principal components, we completed a loading analysis. Table 3 provides the loadings for each principal component and feature. 
+      To better understand the direction, magnitude and features involved in each principal component, we completed a loading analysis. Table 3 provides the loadings for each principal component and feature. 
       Interestingly, the only feature positively correlated with PC1 is the state population under age 18. All other variables are negatively correlated with PC1. We see greater variability in the loadings for 
       PC2 with excellent or good health, a place for care, completing high school, above the poverty line, engagement in the community and the population less than 18 showing positive correlation with PC2. <br>      
     </p>  
@@ -891,7 +891,7 @@
     <img src="images/Q2_good_immun_3PC.png" alt="Q2 Good Immunization 3 PC" width="1200"><br><br>
     
     <br>
-    <h3></h3>
+    <h3>Conclusions</h3>
    
     <p> 
       Through PCA, we found that states with large numbers of children under the age of 18 that also have lower values for primary care providers, preventative care and 
@@ -1004,11 +1004,11 @@
     <h3>Data Prep</h3>
     
     <p> 
-      Both multinomial and Bernoulli Naïve Bayes were preformed. As explained above, multinomial Naïve Bayes requires discrete features (such as word counts). From the 
-      family-level data from NSCH, we selected count variables. Specifically, the following features were kept and missing values were replaced with the mode: 
-      five-level health status, child's screen time usage, child's age, three-level family food and cash assistance, number of family members in the household, and 
-      highest-level of adult education for the family. The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. Figure 25a 
-      shows the features selected for multinomial Naïve Bayes by the adequacy of sleep among teenagers. 
+      Both multinomial and Bernoulli Naïve Bayes were preformed. As explained above, multinomial Naïve Bayes requires discrete features (such as word counts). Although our data did not really fit the 
+      required type. We attempted multinomial Naïve Bayes in line with the project guidelines. From the family-level data from NSCH, we selected count variables. Specifically, the following features were 
+      kept and missing values were replaced with the mode: five-level health status, five-level child's screen time usage, child's age, three-level family food and cash assistance, number of family members 
+      in the household, and highest-level of adult education for the family (four-levels). The target variable of inadequate hours of sleep for age was also kept and replaced with the mode if missing. 
+      Figure 25 shows the features selected for multinomial Naïve Bayes by the adequacy of sleep among teenagers. 
     </p>
 
     <br>
@@ -1018,8 +1018,8 @@
     <p>
       Features, target and sample weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
       in Table 4. The training and test data are disjoint because these data sets serve different purposes. The training data are used to train the model and help it to 
-      learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Tables 5 and 6 provide the first five rows of data for the training and testing data, respectively. 
+      learn patterns from the data. The test data are used to evaluate the model's performance on unseen data. If the model is tested on the same data it was trained on, it 
+      may appear to perform better than it actually does, which could lead to misuse of the model. Tables 5 and 6 provide the first five rows of data for the training and testing data, respectively. 
     </p> 
     
     <br>
@@ -1123,8 +1123,8 @@
     <h3>Results</h3> 
     
     <p> 
-      The weighted Multinomial Naïve Bayes classifier was first run with the default threshold of 0.5. As shown in Figure 27, the model performed poorly with zero true 
-      positives detected. As such, we conducted an analysis of the accuracy, recall and f1-scores by various thresholds (Figure 18 and 29) and determined that a threshold 
+      Of the 15,391 teenages who participated in NSCH, 4272 (27.8%) reported inadequate sleep. The weighted Multinomial Naïve Bayes classifier was first run with the default threshold of 0.5. As shown in Figure 27, 
+      the model performed poorly with zero true positives detected. As such, we conducted an analysis of the accuracy, recall and f1-scores by various thresholds (Figure 28 and 29) and determined that a threshold 
       of 0.3 provided the best balance of these measures.  
     </p>
 
@@ -1142,7 +1142,7 @@
 
     <p>
       The multinomial Naïve Bayes model was updated with a threshold of 0.3, rerun and assessed for performance. The updated model performed better (Figure 30), although 
-      there were more false positive results, as one would expect with a threshold of 0.3. The accurracy, f1-score and recall of the model were 0.68, 0.25 and 0.18, 
+      there were more false positive results, as one would expect with a threshold of 0.3. The accuracy, f1-score and recall of the model were 0.68, 0.25 and 0.18, 
       respectively. The area under the curve was only 0.56, or slightly better than chance (Figure 31).
     </p>
     
@@ -1155,7 +1155,7 @@
     <img src="images/Q9_AdeqSleep_MNB_ROC.png" alt="Q9_AdeqSleep_MNB_ROC" width="1200"><br><br>
 
     <p>
-      To better understand the relatioship between the features and the target variable, we calculated log-probabilities for each feature. A positive log-probability 
+      To better understand the relationship between the features and the target variable, we calculated log-probabilities for each feature. A positive log-probability 
       score indicates that the feature is more associated with class 1 (inadequate sleep). A negative score means it is more associated with class 0 (adequate sleep).
       The magnitude of the score shows how influential the feature is. As seen in Figure 32, the child having poorer health status and greater screen time are associated 
       with inadequate sleep, while care givers having greater education and larger family size are associated with adequate sleep. We verified these relationships with 
@@ -1168,8 +1168,8 @@
 
     <p>
       In addition to a multinomial Naïve Bayes analysis, we also completed a Bernoulli Naïve Bayes analysis. This approach appeared to work much better with our available 
-      data. Creating dummy variables for multi-level features allowed us to differenciate the influence of the groupings within the features. The confusion matrix is provided 
-      in Figure 33. Although the accuracy was okay at 0.70, the f1-score (0.23) and recall (0.15). As illustrated by the ROC-curve in Figure 34, the area under the curve was 
+      data. Creating dummy variables for multi-level features allowed us to differentiate the influence of the groupings within the features. The confusion matrix is provided 
+      in Figure 33. Although the accuracy was good at 0.70, the f1-score (0.23) and recall (0.15) were poor. As illustrated by the ROC-curve in Figure 34, the area under the curve was 
       0.66.
     </p>
     
@@ -1182,7 +1182,7 @@
     <img src="images/Q9_AdeqSleep_BNB_ROC.png" alt="Q9_AdeqSleep_BNB_ROC" width="1200"><br><br>
     
     <p>
-      We also looked at log probabilites for the features and saw interesting patterns emerge (Figure 35). Younger children (ages 13 and 14) and children with less screen time 
+      We also looked at log probabilities for the features and saw interesting patterns emerge (Figure 35). Younger children (ages 13 and 14) and children with less screen time 
       per day (0-2 hours) were associated with having adequate sleep for their age. Conversely, older teens (ages 16 and 17), children with greater screen time per day 
       (3 or more hours), children experiencing housing instability, and children with poorer health were associated with having inadequate sleep for age. We confirmed these 
       associations by reviewing partial dependency plots for all features (data not shown).
@@ -1193,18 +1193,18 @@
     <img src="images/Q9_AdeqSleep_BNB_LogDiff.png" alt="Q9_AdeqSleep_BNB_LogDiff" width="1200"><br><br>
    
     <br>
-    <h3></h3>
+    <h3>Conclusions</h3>
    
     <p> 
       The American Academy of Sleep Medicine recommends that to promote optimal health, teens should regularly sleep eight to 10 hours per 24-hour period (Ref: Paruthi). 
       This Naïve Bayes analysis found that older teens, teens using screens for 3 or more hours per day, those with poorer health, and those with housing instability 
-      are more at risk for inadequate sleep. Helping these groups obtain enough sleep could improve overall physical and mental health for these groups.
+      are more at risk for inadequate sleep. Helping these groups obtain enough sleep could improve their overall physical and mental health.
     </p> 
 
     <h3>References</h3>
     
     <ul> 
-        <li>Baladram, S. Bernoulli Naive Bayes, Explained: A Visual Guide with Code Examples for Beginners. Unclocking predicive power through Yes/No probability. 
+        <li>Baladram, S. Bernoulli Naive Bayes, Explained: A Visual Guide with Code Examples for Beginners. Unlocking predictive power through Yes/No probability. 
           Towards Data Science. August 2024. <br>
           Available from: https://towardsdatascience.com/bernoulli-naive-bayes-explained-a-visual-guide-with-code-examples-for-beginners-aec39771ddd6/ </li>
         <li>Yıldırım, S. Naive Bayes Classifier – Explained. Theory and implementation with scikit-learn. Medium, Towards Data Science Archive. Feb 2020.<br>
@@ -1230,7 +1230,7 @@
     <p> 
       Decision Trees are a supervised machine learning algorithm for classification analysis. The root node of the tree contains the entire dataset (refer to the 
       illustration of the tree structure). From the root node, the tree branches out to decision nodes until a leaf or final class assignment node is met. Leaf nodes may 
-      be pure (i.e. all datapoints in the leaf belong to the same class) or impure (i.e. the data in the lead are mixed classes). 
+      be pure (i.e. all datapoints in the leaf belong to the same class) or impure (i.e. the data in the leaf are mixed classes). 
     </p>
 
     <br>
@@ -1244,7 +1244,7 @@
 
     <p>      
       We can measure how mixed the data are by calculating the entropy before and after the split, and then calculate the information gain. Entropy is calculated as follows, 
-      where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and \P_i is the proportion in class i:
+      where "s" is the subset of data, "k" is the number of possible classes (e.g. Yes/No), and P<sub>i</sub> is the proportion in class i:
     </p>
     
      <p>
@@ -1280,7 +1280,7 @@
     <p>
       Alternatively, we can determine the best split using the GINI index. The GINI Index calculates the probability of misclassifying a random instance. Because we don't 
       want to incorrectly classify a record, a lower GINI index is better. The formula for the GINI Index is as follows, where "j" is the number of possible classes 
-      (e.g. Yes/No), and \P_i is the proportion of the class in the node:
+      (e.g. Yes/No), and P<sub>i</sub> is the proportion of the class in the node:
     </p>
     
      <p>
@@ -1324,8 +1324,8 @@
     <p>
       Features and target are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
       in Table 10. The training and test data are disjoint because the training data are used to train the model and help it to 
-      learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Tables 11 and 12 provide the first five rows of data for the training and testing data, respectively. 
+      learn patterns from the data. The test data are used to evaluate the model's performance on unseen data. If the model is tested on the same data it was trained on, it 
+      may appear to perform better than it actually does, which could lead to misuse of the model. Tables 11 and 12 provide the first five rows of data for the training and testing data, respectively. 
     </p> 
     
     <br>
@@ -1370,7 +1370,7 @@
       </a>
       The first step of the code is to read in the state-level data from NSCH and AHR. Next, the following continuous state-level features were kept: 
       percentage of children in excellent or very good health, percent of children who had a place they usually went to for healthcare, 
-      percent of children receiving at least one preventative_care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
+      percent of children receiving at least one preventative care visit, percentage of adults age 25 and older with at least a high school diploma or equivalent, 
       percentage of the population younger than age 18, percentage of households living at or above the federal poverty level, 
       public health funding per capita, and sum of the social support and engagement measures. Social support and engagement measures is missing for Washington DC. This missing 
       value has been replaced with the median social support. The target variable was constructed as good insurance coverage if the 
@@ -1383,8 +1383,8 @@
       The resulting hyperparameters for the optimal model were: 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': 8, 'max_features': None, 
       'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
       'random_state': 4567, 'splitter': 'best'. Measures of model performance are calculated, 
-      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. 
-      Additionally, the trees is plotted to assess how the data are split. Finally, partial dependency plots are created for each feature.<br> 
+      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature importance based on mean decrease in impurity. 
+      Additionally, the tree is plotted to assess how the data are split. Finally, partial dependency plots are created for each feature.<br> 
       <br>
       
       The Python program for the random forest analysis is located here:
@@ -1400,16 +1400,16 @@
       The following hyperparameters were used: 'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 
       'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 
       'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 4567, 'verbose': 0, 'warm_start': False. Measures of model performance are calculated, 
-      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature imporance based on mean decrease in impurity. In 
+      including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of feature importance based on mean decrease in impurity. In 
       order to gain an understanding of how the model was splitting features, one of the trees is plotted. Finally, partial dependency plots are created for each feature.      
     </p>    
     <br>
     <h3>Results</h3> 
     
     <p> 
-      The decision tree with the state-level outcome of good insurance was fit on the training set, which included 35 states (~70%). The model performance was assessed on the 
-      test set of 16 states. As shown in Figure 37, the model performed pretty well with an accuracy was 0.75. The f1-score (0.60) and recall (0.60) were better than chance. 
-      Per capita spending on public health topped the important features with a feature importance score of 0.5 (Figure 38). Although to a lesser degree, other important 
+      Few states have good insurance coverage for their residents with only 15/51 (29.4%) meeting this defined benchmark. The decision tree with the state-level outcome of good insurance was fit on the training set, 
+      which included 35 states (~70%). The model performance was assessed on the test set of 16 states. As shown in Figure 37, the model performed well with an accuracy was 0.75. Both the f1-score (0.60) and 
+      recall (0.60) indicate strong performance. Per capita spending on public health topped the important features with a feature importance score of 0.5 (Figure 38). Although to a lesser degree, other important 
       features for predicting good insurance included the proportion of the population above the poverty line, use of preventative care, health status of the population 
       and a supportive community.      
     </p>
@@ -1423,11 +1423,11 @@
     <img src="images/Q6_insurance_DT_feature_importance.png" alt="Q6_insurance_DT_feature_importance" width="1200"><br><br>
 
     <p>
-      The optimal decision tree had a mx depth of 8. For illustrative purposes, Figure 39 shows the first few levels. As seen with the feature importance analysis 
-      public health plays an important role in the classification by splitting the root node at less than or equal to $146 per person spent on public health. For context 
-      the median value of public health spending is $123 per person. Branching to the left, 25 states spent $146 or less per person on public health and 23 of these were 
-      classified as not good insurance. In contrast, ten states branched to the right because they spent more than $146 per person on public health. Eight of these states 
-      were classified as meeting good insurance coverage.<br>
+      The optimal decision tree had a max depth of 8. For illustrative purposes, Figure 39 shows the first few levels. As seen with the feature importance analysis 
+      public health plays an important role in the classification by splitting the root node at less than or equal to $146 per person spent on public health. For context, 
+      most states spend between $100-200 per capita on public health (median(P25, P75) = $123 (96.0, 156.5)). Branching to the left, 25 states spent $146 or less per person 
+      on public health and 23 of these were classified as not good insurance. In contrast, ten states branched to the right because they spent more than $146 per person on public 
+      health. Eight of these states were classified as meeting good insurance coverage.<br>
       <br>
       As illustrated by Figure 40, the ROC-curve of the test data yielded an area under the curve of 0.709. This indicates that the model has a good ability to 
       distinguish between states with and without good insurance coverage.
@@ -1447,12 +1447,12 @@
     </p>
       
     <br>
-    <h3></h3>
+    <h3>Conclusions</h3>
    
     <p> 
-      The decision tree with the state-level outcome of good insurance found that per capita spending on public health of at least $147 per person deliniated the data fairly well into states with and without good 
+      The decision tree with the state-level outcome of good insurance found that per capita spending on public health of at least $147 per person delineated the data fairly well into states with and without good 
       insurance coverage. This has important implications for states hoping to bolster insurance coverage for their residents. Since the median public health spending is $123, on average states would only need to 
-      increase their spending by approximately $20-$23 per person in order to reach this threshold. Such an investment could provide residents with greater access to health coverage. According to the American Hospital 
+      increase their spending by approximately $24 per person in order to reach this threshold. Such an investment could provide residents with greater access to health coverage. According to the American Hospital 
       Association, "studies confirm that coverage improves access to care; supports positive health outcomes, including an individual’s sense of their own health and well-being; incentivizes appropriate use of health care resources; and reduces financial strain 
       on individuals, families and communities.      
     </p> 
@@ -1561,7 +1561,7 @@
     <p>
       In comparison, Gradient Boost and XGBoost minimize the residuals. As with regression, harder to classify points have larger residuals. Weak 
       learners are combined to create a strong learner (illustration below). Gradient Boost also uses a learning rate; however, it typically ranges from 0.01 to 3.0 
-      and scales the contribution of each new tree to the final combined model. A smaller learning rate genearlly results in a better fitting model, but requires more iterations to converge.
+      and scales the contribution of each new tree to the final combined model. A smaller learning rate generally results in a better fitting model, but requires more iterations to converge.
     </p>
     
     <br>
@@ -1572,13 +1572,13 @@
     <h3>Data Prep</h3>
     
     <p> 
-      This analysis includes both individual chatacteristics from NSCH and state-level data from AHR (those that do not overlap with NSCH, e.g., excluded insurance 
+      This analysis includes both individual characteristics from NSCH and state-level data from AHR (those that do not overlap with NSCH, e.g., excluded insurance 
       coverage and poverty). The following individual-level features were kept: place to get health care (binary), age (continuous), birth sex (binary), housing instability (binary), 
       family receiving WIC (binary), family food and cash assistance (ordinal), poverty level (ordinal), count of related-family members in house (ordinal), health status
       (ordinal), continuous and adequate insurance (binary), screen time usage (ordinal), adequate sleep (binary), and highest level of education received by an adult in 
       the household (ordinal). State-level features that were kept included: percentage of the population younger than age 18, number of primary care_providers per 100,000 
-      people, public health funding per capita, sum of the social support and engagement measures, and region (categorical). The target variable was not receiving 
-      preventative care. Ordinal variables entered the model as catgorical with order, binary were recoded as 0/1, and region was one-hot encoded with the first region 
+      people, public health funding per capita, sum of the social support and engagement measures, and region (categorical). The target variable assesed not receiving 
+      preventative care. Ordinal variables entered the model as categorical with order, binary were recoded as 0/1, and region was one-hot encoded with the first region 
       dropped. Figure 41 provides a heatmap of the features that were considered for the model.
     </p>
 
@@ -1587,10 +1587,10 @@
     <img src="images/Q10_heatmap_XGB_features.png" alt="Q10_heatmap_GGB_features" width="1200"><br><br>
 
     <p>
-      Features and target are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
+      Features, target, and weights are split into training and test sets. The split worked well for a relatively even distribution of the target variable, as shown
       in Table 14. The training and test data are disjoint because the training data are used to train the model and help it to 
-      learn pattern from the data. The test data are used to evaluate the model's perfomance on unseen data. If the model is tested on the same data it was trained on, it 
-      may appear perform better than it actually does, which could lead to misuse of the model. Tables 15 and 16 provide the first five rows of data for the training 
+      learn patterns from the data. The test data are used to evaluate the model's performance on unseen data. If the model is tested on the same data it was trained on, it 
+      may appear to perform better than it actually does, which could lead to misuse of the model. Tables 15 and 16 provide the first five rows of data for the training 
       and testing data, respectively. 
     </p> 
     
@@ -1631,16 +1631,16 @@
       <a href="https://github.com/vt-art/NSCH-Machine-Learning-Project/blob/main/code/8b_NSCH_AHR_XGB_Analysis.ipynb" target="_blank" rel="noopener noreferrer">
         8b_NSCH_AHR_XGB_Analysis.
       </a>
-      The first step of the code is to read in the state-level and individual-level data from AHR and NSCH. Next, the aformentioned features are kept and missing 
+      The first step of the code is to read in the state-level and individual-level data from AHR and NSCH. Next, the aforementioned features are kept and missing 
       value are replaced with the most common values. The target variable of no preventative care was constructed as 1=no preventative care, 0=preventative care 
       from the variable "PrevMed_23", which is an indicator variable for receiving preventative care. Additionally, class imbalance was addressed with scale_pos_weight
       where the imbalance weight was determined from a ratio of sample-weighted counts for negative and positive cases (i.e. spw = weighted_neg / weighted_pos). For 
-      preventative care, for each posisive case (i.e. no preventative care) there are 3.87 negative cases. <br>
+      preventative care, for each positive case (i.e. no preventative care) there are 3.87 negative cases. <br>
       <br>
       
       Next, the XGBoost classifier is instanciated, fit with the above target, feature and sample weight variables, and tuned using the training data. 
       Measures of model performance are calculated, including weighted accuracy, recall, f1-score and ROC/AUC for the test set. This follows with the calculation of 
-      feature imporance based on gain. Additionally, we examine the first, fifth and tenth trees to assess how the data are split. This process was repeated twice.  
+      feature importance based on gain. Additionally, we examine the first, fifth and tenth trees to assess how the data are split. This process was repeated twice.  
       First, we used the xgb.XGBClassifier() from `xgboost`. This method integrates well with sklearn; however, it is less efficient with large-survey data that requires 
       sampling weights. As such, we also implemented the XGBoost model using xgb.DMatrix(). Using DMatrix directly results in faster model-building and natural integration 
       of the sampling weights.<br> 
@@ -1651,7 +1651,8 @@
     <h3>Results</h3> 
     
     <p> 
-      The two approaches for fitting the XGBoost model resulted in almost identicle results. As expected, DMatrix was much faster than xgb.XGBClassifier(). Since the 
+      Of the 54,159 children included in the NSCH, 8872 (16.38%) did not receive preventative care. We weighted and assessed these data with XGBoost. The two approaches for fitting the XGBoost model 
+      resulted in almost identical results. As expected, DMatrix was much faster than xgb.XGBClassifier(). Since the 
       results were so similar, we will focus on those from DMatrix. As shown in Figure 42, the model performed okay with an accuracy was 0.67. The f1-score (0.46) and 
       recall (0.66). Although we captured 66% of the true positive cases, we missed 34%.       
     </p>
@@ -1694,7 +1695,7 @@
     <p>
       The most important feature for predicting no preventative care when assessed by gain was having a usual place for care (37%) (Figure 44). Although to a lesser 
       degree, other important features included adult education (7%), the child's age (7%) and Northeastern states (5%). Figure 45 shows the directionality of the 
-      effect with not having a place for care, houshold adults having less education, older children and not living in the Northeast were all related to not receiving 
+      effect with not having a place for care, household adults having less education, older children and not living in the Northeast were all related to not receiving 
       preventative care. 
     </p>
     
@@ -1709,7 +1710,7 @@
     
       
     <br>
-    <h3></h3>
+    <h3>Conclusions</h3>
    
     <p> 
       The XGBoost model found that not having a usual place to receive health care is the most predictive feature of not receiving preventative care. Other features, such 
@@ -1738,13 +1739,160 @@
     <img src="Website_Pic8.jpg" alt="Results image"  width="1200">
     
 
-   
     <p> 
+      Through exploratory data analysis and machine learning, we attempted to gain insights about the health of American children from the 2023
+      <a href="https://www.childhealthdata.org/learn-about-the-nsch" target="_blank">National Survey of Children's Health (NSCH)</a> 
+      and 
+      <a href="https://www.childhealthdata.org/learn-about-the-nsch" target="_blank">America's Health Rankings (AHR).</a> 
+      We initially explored 10 questions through EDA and identified interesting patterns for questions 1, 6, 9, and 10, specifically:<br>
+        <ul>
+          <li>Question 1: What state-wide factors predict state-wide immunization coverage by 24-months?</li>
+          <li>Question 6: What state-wide features predict state-wide insurance coverage?</li>
+          <li>Question 9: Among teenagers, what features predict inadequate sleep?  </li>
+          <li>Question 10: What factors contribute to children not accessing preventive care?</li>
+        </ul> 
+      These four questions were explored in greater detail through various unsupervised and supervised machine learning methods. Performance varied widely across models, with cluster analysis, 
+      Principle Component Analysis and tree-based approaches providing the best fit for the data. Naïve Bayes performed the worst. Table 17 provides a comparison of model performance for the various 
+      methods. Please refer to the individual tabs for visualizations of the findings.
     </p>
 
-  
-    <p> 
-    </p> 
+    <table>
+  <caption><strong>Table 17. Model Performance</strong> <br>
+  </caption>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Research Question</th>
+      <th>Model Performance Metrics</th>
+      <th>Summary of Results</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>K-Means Clustering</strong></td>
+      <td>Question 1: What state-wide factors predict state-wide immunization coverage by 24-months?</td>
+      <td>
+          Accuracy = 0.71<br>
+          Recall = 0.73<br>
+          Precision = 0.70<br>
+          F1-score = 0.72
+      </td>
+      <td>
+        K-Means predicted the states on the further sides of each cluster correctly, while the area of intersection had greater misclassification. 
+        There are unique similarities within states that have similar rates of insurance and preventative care coverage. States clustering together with 
+        lower coverage tended to also have lower immunization coverage. Those with medium to high insurance and preventative care rates tended to also have medium to high immunization coverage. 
+        These results are in-line with the visual inspection of the data which showed a positive correlation between insurance and preventative care, as well as higher immunization rates for 
+        states with higher insurance and preventative care coverage. These results identify a gap for states with low coverage. Making care accessible through insurance and preventative care 
+        appears to be related to higher childhood immunization rates.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Hierarchical Clustering</strong></td>
+      <td>Question 1: What state-wide factors predict state-wide immunization coverage by 24-months?</td>
+      <td>
+          Accuracy = 0.75<br>
+          Recall = 0.85<br>
+          Precision = 0.71<br>
+          F1-score = 0.77
+      </td>
+      <td>
+        Performed better than K-Means. As with K-Means, the points on the further sides of each cluster were identified correctly, while the area of intersection was more problematic. Hierarchical clustering 
+        also showed the same relationships as K-Means between insurance, preventative care and immunization coverage.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>PCA</strong></td>
+      <td>Question 1: What state-wide factors predict state-wide immunization coverage by 24-months?</td>
+      <td>
+          Ten features were reduced to seven, which captured 95% of the variation in the data. PC1 accounted for approximately 43% of the variation in the data, followed by PC2 with 23% of the variance.
+      </td>
+      <td>
+        The only feature positively correlated with PC1 is the state population under age 18. We see greater variability in the loadings for PC2 with excellent or good health, a place for care, completing high school, 
+        above the poverty line, engagement in the community and the population less than 18 showing positive correlation with PC2. The biplot for PC1 and PC2 shows that PC1 uniquely separates states with large numbers 
+        of children under age 18 that also have lower values for primary care providers, preventative care and insurance. States in this quadrant with positive PC1 and positive PC2 include many Southern and Southwest 
+        states - South Carolina, Georgia, Arkansas, Oklahoma, Texas and Nevada, as well as Indiana and New Jersey. The states in the quadrant where PC1 is negative and PC2 is positive, have higher levels of 
+        health, income, completing high school, places to regularly receive care and engagement. However, this same quadrant has lower levels for features related to health care access (primary care providers, preventative 
+        care and insurance). This suggests that although these states may have better education and less poverty, there may be gaps in health care coverage. Western states (Utah, Idaho, Colorado, Wyoming, Montana, Washington) 
+        and mid-Western states (South Dakota, North Dakota, Minnesota, Kansas, Nebraska, Iowa, Illinois, and Ohio) primarily make up this group. Arkansas, Virginia and Maryland are also included. When both PC1 and PC2 are 
+        negative, we see that states in this quadrant are higher in primary care providers, preventative care and insurance. These states are lower in population under 18 with higher completion of 
+        high school and percentage above the poverty line, suggesting that what makes them unique is the high health care coverage. States in the last quadrant where PC1 is positive, but PC2 is negative have higher population 
+        < 18 with some healthcare services available and weaker education and economic measures.</td>
+    </tr>
+    <tr>
+      <td><strong>Multinomial Naïve Bayes</strong></td>
+      <td>Question 9: Among teenagers, what features predict inadequate sleep?</td>
+      <td>
+          Accuracy = 0.68<br>
+          F1-score = 0.25<br>
+          Recall = 0.18<br>
+          ROC-AUC = 0.56
+      </td>
+      <td>
+        Due to extremely poor model performance with a threshold of 0.5. We completed a threshold analysis and found that 0.3 provided the best balance of accuracy, recall and f1-scores. 
+        Although the model performed poorly, we assessed the log probability differences for the features. We found that the child having poorer health status and greater screen time are associated with inadequate sleep, 
+        while care givers having greater education and larger family size are associated with adequate sleep.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Bernoulli Naïve Bayes</strong></td>
+      <td>Question 9: Among teenagers, what features predict inadequate sleep?</td>
+      <td>
+          Accuracy = 0.70<br>
+          F1-score = 0.23<br>
+          Recall = 0.15<br>
+          ROC-AUC = 0.66
+      </td>
+      <td>The model had high accuracy, but low F1-score and recall. As with the Multinomial Naïve Bayes, we calculated log probability differences for the features. Younger children (ages 13 and 14) and children with less 
+        screen time per day (0-2 hours) were associated with having adequate sleep for their age. Conversely, older teens (ages 16 and 17), children with greater screen time per day (3 or more hours), children experiencing 
+        housing instability, and children with poorer health were associated with having inadequate sleep for age. </td>
+    </tr>
+    <tr>
+      <td><strong>Decision Tree</strong></td>
+      <td>Question 6: What state-wide features predict state-wide insurance coverage?</td>
+      <td>
+          Accuracy = 0.75<br>
+          F1-score = 0.60<br>
+          Recall = 0.60<br>
+          ROC-AUC = 0.71
+      </td>
+      <td>
+        The model performed well. Per capita spending on public health topped the important features with a feature importance score of 0.5. Although to a lesser degree, other important features for predicting good 
+        insurance coverage included the proportion of the population above the poverty line, use of preventative care, health status of the population and a supportive community. The optimal decision tree had a max depth of 8. 
+        Public health plays an important role in the classification by splitting the root node at less than or equal to $146 per person spent on public health. For context the median value of public health spending is $123 per
+        person. Branching to the left, 25 states spent $146 or less per person on public health and 23 of these were classified as not good insurance. In contrast, ten states branched to the right because they spent more than
+        $146 per person on public health. Eight of these states were classified as meeting good insurance coverage.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Random Forest, and XGBoost</strong></td>
+      <td>Question 9: Among teenagers, what features predict inadequate sleep?</td>
+      <td>
+          Accuracy = 0.57<br>
+          F1-score = 0.39<br>
+          Recall = 0.48<br>
+          ROC-AUC = 0.58
+      </td>
+      <td>
+        The model performed poorly at predicting inadequate sleep. Important features included not having insurance, not having a place to receive care and not having preventative care each had a feature importance score of 
+        approximately 0.1.
+      </td>
+    </tr>    
+    <tr>
+      <td><strong>XGBoost</strong></td>
+      <td>Question 10: What factors contribute to children not accessing preventive care?</td>
+      <td>
+          Accuracy = 0.67<br>
+          F1-score = 0.46<br>
+          Recall = 0.66<br>
+          ROC-AUC = 0.73
+      </td>
+      <td>
+        Although we captured 66% of the true positives with the model, we missed 34%. The most important feature for predicting no preventative care when assessed by gain was having a usual place for care (37%). 
+        Although to a lesser degree, other important features included adult education (7%), the child's age (7%) and Northeastern states (5%). Regarding the directionality of these effects, not having a place for care, 
+        household adults having less education, older children and not living in the Northeast were all related to not receiving preventative care.</td>
+    </tr>  
+  </tbody>
+</table>
 
     
   </div>
@@ -1757,17 +1905,39 @@
       <img src="Website_Pic15.jpg" alt="NN image 2">
       <img src="Website_Pic16.jpg" alt="NN image 1">
     </div>
+
     
     <br>
-    <h3>Overview</h3>
+    <h3>Data Acquisition Challenges</h3>
    
     <p> 
+      The US government funds several large studies on the health and well-being of children. Generally, these data are publicly available on the National Institute of Child Health and Human Development - Data and 
+      Specimen Repository. However, the website has been down since May 2025 for new data requests. As such, this project relied on publicly available household survey data with location identifiers at the state-level. 
+      As with many large studies, the National Survey of Child Health requires weighting the data to roll the data up to the state-level.
     </p>
 
     <p> 
+      American Health Rankings include good documentation for accessing the data via API. However, there are many variables and determining the individual variable names to pull with the API was challenging.
+    </p>
+    
+    <br>
+    <h3>Model Challenges</h3>
+   
+    <p> 
+      The weighted Multinomial Naïve Bayes classifier was first run with the default threshold of 0.5. The model performed poorly with zero true positives detected. As such, we conducted an analysis of the accuracy, 
+      recall and f1-scores by various thresholds and determined that a threshold of 0.3 provided the best balance of these measures. From here we were able to improve the model. However, neither the multinomial nor the 
+      Bernoulli Naïve Bayes models performed well.
     </p>
 
     <p> 
+      Some of the models did not support weighting the data with sampling weights. For example, there is no support in sklearn.cluster.AgglomerativeClustering() for weights. As such, we focused on state-level analyses 
+      for these models. 
+    </p>
+
+    <p> 
+      The class-imbalance for our outcomes posed challenges, particularly when using the weighted-individual data. Of all the model types, XGBoost handled this the best with scale_pos_weight where the imbalance weight 
+      was determined from a ratio of sample-weighted counts for negative and positive cases (i.e. spw = weighted_neg / weighted_pos). For preventative care, for each positive case (i.e. no preventative care) there are
+      3.87 negative cases. We were able to incorporate this with the sampling weights for the individual subjects.
     </p> 
 
     
@@ -1825,23 +1995,13 @@
         visits with public health messaging and helping people find a regular place for care are viable interventions in increasing preventative care coverage.  
     </p>
     
-    <p>
-    </p>   
-
-      
-    </p>
-
-    <p>
-      
-    </p>
-
     
   </div>
 
-  </div>
 
   <div id="References" class="tab-content">
-    <h2>References</h2>
+    
+    <h1>References</h1>
 
     <img src="Website_Pic5.jpg" alt="Results image"  width="1200">
     
@@ -1967,6 +2127,186 @@
 </ol>
     
   </div>
+
+  <div id="About_Me" class="tab-content">
+    
+    <h1>About Me</h1>
+  
+  <p>
+    I’m a biostatistician and data scientist with over 20 years of experience applying statistical methods,
+    data management, and programming to address complex challenges in public health, healthcare, and social
+    science research. I hold master's degrees in Maternal and Child Health and Biostatistics from the
+    University of North Carolina Chapel Hill (2003).
+  </p>
+
+  <p>
+    Currently, I’m expanding my skill set as a full-time master’s student in the Data Science program at the
+    University of Colorado Boulder (expected graduation May 2026).
+  </p>
+
+  <p>
+    Alongside my studies, I work part-time as a research biostatistician at RTI International, where I’ve spent most
+    of my career.
+  </p>
+
+  <p>
+    Above all, I am mission-focused and purpose-driven. My passion lies in using data to advance knowledge, influence
+    policy, and create lasting, positive change for communities and families.
+  </p>
+
+  <hr>
+
+  <h3>Coursework</h3>
+  <p>My academic coursework at CU Boulder includes:</p>
+  <ul>
+    <li>data structures and algorithms</li>
+    <li>frequentist and Bayesian statistics</li>
+    <li>data mining</li>
+    <li>machine learning</li>
+    <li>applied deep learning</li>
+  </ul>
+
+  <p>
+    In addition to being proficient in SAS, I’m building fluency in Python and R and continually learning
+    modern data science tools and frameworks.
+  </p>
+
+  <hr>
+
+  <h3>Work Experience</h3>
+
+  <p>I’ve led statistical teams and contributed to more than a dozen large-scale maternal and child health studies, including:</p>
+  <ul>
+    <li>randomized controlled trials</li>
+    <li>observational cohorts</li>
+    <li>evaluation projects</li>
+  </ul>
+
+  <p>My work spans the full research lifecycle:</p>
+  <ul>
+    <li>protocol development and study design</li>
+    <li>advanced modeling</li>
+    <li>data analysis</li>
+    <li>publication</li>
+  </ul>
+
+  <p>
+    I've co-authored more than 50 peer-reviewed publications and actively support capacity building by mentoring junior
+    analysts and collaborating with global partners across the U.S., South Asia, Africa, and Central America.
+  </p>
+
+  <hr>
+
+  <h3>Selected Project Experience</h3>
+
+  <ul>
+    <li>
+      <a href="https://numom2b.org/" target="_blank">
+        NHLBI nuMoM2b Heart Health Study 2
+      </a>
+      – Domestic network of observational and lab studies about heart health, particularly among those who experienced
+      an adverse pregnancy outcome (2020 to date)
+    </li>
+
+    <li>
+      <a href="https://globalnetwork.azurewebsites.net/" target="_blank">
+        NICHD Global Network for Women’s and Children’s Health Research
+      </a>
+      – International network of RCTs, registry, lab, and observational studies across 7 clinical sites, focusing on
+      impactful interventions promoting maternal and child health in low-resource areas (2004 to date)
+    </li>
+
+    <li>
+      <a href="https://www.isrctn.com/ISRCTN44033252" target="_blank">
+        WHO and BMGF Possible Severe Bacterial Infection (PSBI) Trial
+      </a>
+      – International RCT in 7 countries evaluating care for infants with PSBI (2020 to 2025)
+    </li>
+
+    <li>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3665402/" target="_blank">
+        NICHD Stillbirth Collaborative Research Network
+      </a>
+      – Domestic case-control, vital record, and lab analysis study of stillbirth in the US (2003 to 2017)
+    </li>
+
+    <li>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/17413262/" target="_blank">
+        NIMH HIV/Sexually Transmitted Disease Prevention Trial (C-POL)
+      </a>
+      – International HIV-prevention evaluation study in 5 countries (2006 to 2009)
+    </li>
+
+    <li>
+      <a href="https://www.measureevaluation.org/resources/publications/ms-05-13.html" target="_blank">
+        USAID Priorities for Local AIDS Control Efforts
+      </a>
+      – International HIV-prevention evaluation study (2002 to 2003)
+    </li>
+
+    <li>
+      <a href="https://iris.who.int/handle/10665/269468" target="_blank">
+        USAID Evaluation of Tanzanian Information Systems
+      </a>
+      – International program evaluation of data collection systems in Tanzania (2002 to 2003)
+    </li>
+  </ul>
+
+  <hr>
+
+  <h3>Publications</h3>
+
+  <p><strong>Select Publications</strong></p>
+
+  <ul>
+    <li>
+      Patterson JK, Thorsten VR, Eggleston B, et al. (2023) Building a predictive model of low birth weight in
+      low- and middle-income countries: a prospective cohort study.
+      <em>BMC Pregnancy Childbirth</em>. 22;23(1):600.
+      doi: 10.1186/s12884-023-05866-1.
+    </li>
+
+    <li>
+      Shankar, K., Hwang, K., Westcott, J.L., et al. (2023). Associations between ambient temperature and pregnancy outcomes
+      from three south Asian sites of the Global Network Maternal Newborn Health Registry: A retrospective cohort study.
+      <em>BJOG: An International Journal of Obstetrics and Gynaecology</em>.
+      http://doi.org/10.1111/1471-0528.17616.
+    </li>
+
+    <li>
+      Althabe, F., Belizan, J. M., McClure, E. M., et al. (2015). A population-based, multifaceted strategy to implement
+      antenatal corticosteroid treatment versus standard care for the reduction of neonatal mortality due to preterm birth
+      in low-income and middle-income countries: The ACT cluster-randomised trial.
+      <em>Lancet</em>, 385(9968), 629–639.
+      https://doi.org/10.1016/S0140-6736(14)61651-2.
+    </li>
+
+    <li>
+      Reddy, U. M., Page, G., Saade, G. R., et al. (2012). Karyotype versus microarray testing for genetic abnormalities
+      after stillbirth. <em>New England Journal of Medicine</em>, 367(23), 2185–2193.
+      https://doi.org/10.1056/NEJMoa1201569.
+    </li>
+  </ul>
+
+  <p><strong>Full List of Publications</strong><br>
+    <a href="https://www.ncbi.nlm.nih.gov/myncbi/vanessa.thorsten.1/bibliography/public/" target="_blank">
+      https://www.ncbi.nlm.nih.gov/myncbi/vanessa.thorsten.1/bibliography/public/
+    </a>
+  </p>
+
+  <hr>
+
+  <h3>Contact Information</h3>
+  <ul>
+    <li>GitHub: <a href="https://github.com/vt-art" target="_blank">@vt-art</a></li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/vanessa-thorsten-8500a64/" target="_blank">Vanessa Thorsten</a></li>
+    <li>Email: <a href="mailto:vanessa.thorsten@proton.me">vanessa.thorsten@proton.me</a></li>
+  </ul>
+
+</div>
+
+
+
   
   <!-- JavaScript for Tab Switching -->
   <script>
